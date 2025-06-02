@@ -36,6 +36,13 @@ export default defineConfig({
 
 This ensures the correct asset paths when served from GitHub Pages.
 
+If you're using react-router, make sure to specify the basename in your router configuration:
+
+```jsx
+<BrowserRouter basename="your-repo-name">
+```
+Replace `your-repo-name` with your actual repository name.
+
 ---
 
 ### 3. Set Up GitHub Actions Workflow
