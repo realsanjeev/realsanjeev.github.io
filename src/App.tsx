@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +14,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      {/* NOTE(sanjeev): When deploying to a repository other than `github-username.github.io`, make sure to include the basename="repo-name" in BrowserRouter. */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
