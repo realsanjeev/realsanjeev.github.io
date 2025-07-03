@@ -40,7 +40,7 @@ const Hero = () => {
             >
             <Button
               size="lg"
-              className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-full tracking-wide text-base shadow-sm transition-all duration-200"
+              className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-full tracking-wide text-base shadow-xs transition-all duration-200"
             >
               <FiMail className="mr-2 h-5 w-5" />
               Contact Me

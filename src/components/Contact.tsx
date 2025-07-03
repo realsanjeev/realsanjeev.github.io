@@ -107,7 +107,7 @@ const Contact = () => {
               <textarea 
                 placeholder="Your Message [Feature not implemented]. Please contact via LinkedIn or direct email"
                 rows={6}
-                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder:text-gray-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
               />
               <Button className="w-full bg-blue-600 hover:bg-blue-700">
                 Send Message
