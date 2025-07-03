@@ -42,10 +42,7 @@ const Projects = () => {
             </h3>
             <p className="text-gray-600 mb-1">Bachelor's Degree Final Year</p>
             <p className="text-gray-700 mb-4 leading-relaxed">
-              Developed a system capable of generating novel musical compositions with multiple instrument tracks.
-              Investigated various neural network architectures for sequential data generation, implementing an LSTM-based model
-              for music creation. Explored hybrid approaches combining algorithmic composition (tone-matrix derived from image data)
-              with deep learning model outputs.
+              I developed a system for generating original multi-instrument musical compositions using an LSTM-based neural network model. I researched various architectures for sequential data generation and integrated algorithmic composition techniques, such as tone-matrix derived from image data, with deep learning outputs to enhance creativity.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
@@ -69,9 +66,7 @@ const Projects = () => {
             </h3>
             <p className="text-gray-600 mb-1">Bachelor's Degree Third Year</p>
             <p className="text-gray-700 mb-4 leading-relaxed">
-              Applied Convolutional Neural Networks (CNNs) within the PyTorch framework for classifying music genres from audio features.
-              Experimented with different CNN architectures and hyperparameters to optimize genre recognition accuracy on the GTZAN dataset.
-              Analyzed model performance, documented findings, and discussed limitations in a comprehensive project report.
+              I implemented Convolutional Neural Networks (CNNs) in PyTorch to classify music genres using GTZAN dataset audio features. I optimized model accuracy through experiments with CNN architectures and hyperparameters, evaluated performance, and documented findings and limitations in a concise project report.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
@@ -94,9 +89,7 @@ const Projects = () => {
             </h3>
             <p className="text-gray-600 mb-1">ML Internship</p>
             <p className="text-gray-700 mb-4 leading-relaxed">
-              Developed and fine-tuned a BART-based model for abstractive summarization of Nepali news articles.
-              Implemented and evaluated the Low-Rank Adaptation (LoRA) technique for parameter-efficient fine-tuning (PEFT) in a
-              resource-constrained setting.
+              During my machine learning internship, I spearheaded a project focused on abstractive text summarization for Nepali news articles utilizing a BART-based model. I successfully developed and fine-tuned the model, implementing the Low-Rank Adaptation (LoRA) technique to achieve parameter-efficient fine-tuning (PEFT) in a resource-constrained environment. The project involved rigorous evaluation to ensure optimal performance, contributing to advancements in natural language processing for low-resource languages like Nepali.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
