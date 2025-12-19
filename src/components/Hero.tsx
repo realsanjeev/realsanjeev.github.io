@@ -4,8 +4,7 @@ import { Button } from '@/components/ui/button';
 import { FiMail } from 'react-icons/fi';
 
 // You can swap this placeholder filename for any other from the provided placeholder list.
-const heroImageUrl =
-  "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=900&q=80"; // Stylish laptop workspace image
+const heroImageUrl = "hero-image.png";
 
 const Hero = () => {
   return (
@@ -34,10 +33,10 @@ const Hero = () => {
         </p>
         <div className="flex justify-center">
           <a
-              href="https://www.linkedin.com/in/realsanjeev"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            href="https://www.linkedin.com/in/realsanjeev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button
               size="lg"
               className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-full tracking-wide text-base shadow-sm transition-all duration-200"
