@@ -5,8 +5,7 @@ import path from "path";
 const repoName = "realsanjeev.github.io"
 
 // https://vitejs.dev/config/
-export default defineConfig
-(({ mode }) => ({
+export default defineConfig(({ mode }) => ({
   // NOTE(sanjeev): When deploying a repository other than `{github-username}.github.io`, explicitly define the base URL using the repository name.
   // base: `/${repoName}/`,
   base: ``,
