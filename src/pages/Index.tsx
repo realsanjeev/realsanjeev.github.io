@@ -5,31 +5,46 @@ import About from '@/components/About';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import Blog from '@/components/Blog';
-import Contact from '@/components/Contact';
 import Publications from '@/components/Publications';
+import Contact from '@/components/Contact';
+import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Navigation />
-      <Hero />
+      <RevealOnScroll>
+        <Hero />
+      </RevealOnScroll>
       <div id="about">
-        <About />
+        <RevealOnScroll delay={100}>
+          <About />
+        </RevealOnScroll>
       </div>
       <div id="experience">
-        <Experience />
+        <RevealOnScroll delay={100}>
+          <Experience />
+        </RevealOnScroll>
       </div>
       <div id="projects">
-        <Projects />
+        <RevealOnScroll delay={100}>
+          <Projects />
+        </RevealOnScroll>
       </div>
       {/* <div id="publications">
-        <Publications />
+        <RevealOnScroll delay={100}>
+          <Publications />
+        </RevealOnScroll>
       </div> */}
       <div id="blog">
-        <Blog />
+        <RevealOnScroll delay={100}>
+          <Blog />
+        </RevealOnScroll>
       </div>
       <div id="contact">
-        <Contact />
+        <RevealOnScroll delay={100}>
+          <Contact />
+        </RevealOnScroll>
       </div>
     </div>
   );
