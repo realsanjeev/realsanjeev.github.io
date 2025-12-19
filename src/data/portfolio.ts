@@ -17,6 +17,30 @@ export interface Project {
     detailedDescription?: string;
 }
 
+
+export interface BlogPost {
+    title: string;
+    excerpt: string;
+    date: string;
+    readTime: string;
+    tags: string[];
+    url: string;
+}
+
+export interface Publication {
+    title: string;
+    authors: string;
+    venue: string;
+    type: string;
+    abstract: string;
+    links: {
+        paper?: string;
+        code?: string;
+        demo?: string;
+        supplement?: string;
+    };
+}
+
 export const EXPERIENCES: Experience[] = [
     {
         title: "Machine Learning Engineer",
@@ -101,6 +125,78 @@ export const GITHUB_PROJECTS: Project[] = [
         description: "An implementation of reinforcement learning applied to the classic Snake game, demonstrating AI gameplay.",
         url: "https://github.com/defyingdemonprogram/Reinforcement-Learning-in-Python-Game",
     },
+];
+
+export const BLOG_POSTS: BlogPost[] = [
+    {
+        title: "Nepali Text Summarization",
+        excerpt: "This project addresses the challenges of Nepali text summarization using transformer models like mBART, focusing on fine-tuning for linguistic accuracy and data scarcity.",
+        date: "Feb 26, 2024",
+        readTime: "7 min read",
+        tags: ["Nepali NLP", "Transformer Models", "mBART", "Text Summarization", "Multilingual AI"],
+        url: "https://medium.com/@sanjeev-bhandari/nepali-text-summarization-2df72a8a3080"
+    },
+    {
+        title: "Model Merging: A new way of creating model",
+        excerpt: "Explore innovative techniques like SLERP, TIES, and DARE to merge multiple language models into a single, efficient model without extensive retraining.",
+        date: "Jul 6, 2024",
+        readTime: "4 min read",
+        tags: ["Model Merging", "SLERP", "TIES", "DARE", "Language Models", "AI Efficiency"],
+        url: "https://medium.com/@sanjeev-bhandari/model-merging-a-new-way-of-creating-model-e62e6d14ef97"
+    },
+    {
+        title: "🦀 Supercharge Python with Rust: Building Fast Python Extensions with PyO3 and Maturin",
+        excerpt: "Learn how to enhance Python performance by building native extensions using Rust, PyO3, and Maturin, including benchmarking for performance gains.",
+        date: "May 23, 2025",
+        readTime: "3 min read",
+        tags: ["Python", "Rust", "PyO3", "Maturin", "Performance Optimization", "Machine Learning"],
+        url: "https://medium.com/@sanjeev-bhandari/supercharge-python-with-rust-building-fast-python-extensions-with-pyo3-and-maturin-da09306d97a8"
+    },
+    {
+        title: "Creating the SnowFlake In C using recursive method with raylib",
+        excerpt: "A step-by-step guide to drawing a recursive snowflake fractal in C using Raylib, covering setup, code implementation, and build automation.",
+        date: "Nov 27, 2024",
+        readTime: "4 min read",
+        tags: ["C Programming", "Raylib", "Graphics Programming", "Fractals", "Recursive Algorithms"],
+        url: "https://medium.com/@sanjeev-bhandari/creating-the-snowflake-in-c-using-raylib-07a0c4fa5e17"
+    }
+];
+
+export const PUBLICATIONS: Publication[] = [
+    {
+        title: "Advances in Deep Learning for Computer Vision: A Comprehensive Survey",
+        authors: "Sanjeev Bhandari, Co-Author A, Co-Author B",
+        venue: "Conference on Computer Vision and Pattern Recognition (CVPR) 2023",
+        type: "Conference Paper",
+        abstract: "This paper presents a comprehensive survey of recent advances in deep learning architectures for computer vision tasks, highlighting breakthrough methods and future research directions.",
+        links: {
+            paper: "#",
+            code: "#",
+            demo: "#"
+        }
+    },
+    {
+        title: "Efficient Training of Large Language Models with Distributed Computing",
+        authors: "Sanjeev Bhandari, Research Team",
+        venue: "International Conference on Machine Learning (ICML) 2023",
+        type: "Conference Paper",
+        abstract: "We propose a novel distributed training framework that significantly reduces the computational overhead of training large language models while maintaining model performance.",
+        links: {
+            paper: "#",
+            code: "#"
+        }
+    },
+    {
+        title: "Transfer Learning in Medical Image Analysis: Challenges and Opportunities",
+        authors: "Sanjeev Bhandari, Medical AI Team",
+        venue: "Journal of Machine Learning Research (JMLR) 2022",
+        type: "Journal Article",
+        abstract: "This work explores the application of transfer learning techniques in medical imaging, addressing domain adaptation challenges and presenting novel solutions for healthcare AI.",
+        links: {
+            paper: "#",
+            supplement: "#"
+        }
+    }
 ];
 
 export const SKILLS = [
