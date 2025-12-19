@@ -39,7 +39,7 @@ const Blog = () => {
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs font-medium"
+                      className="px-2 py-1 bg-blue-100 text-blue-800 rounded-sm text-xs font-medium"
                     >
                       {tag}
                     </span>

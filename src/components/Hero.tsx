@@ -8,7 +8,7 @@ const heroImageUrl = "hero-image.png";
 
 const Hero = () => {
   return (
-    <section className="min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-slate-50 to-white border-b border-gray-100">
+    <section className="min-h-[60vh] flex items-center justify-center bg-linear-to-br from-slate-50 to-white border-b border-gray-100">
       <div className="max-w-5xl mx-auto px-6 text-center pt-24 pb-14">
         <div className="mb-12 flex justify-center">
           <div className="relative group">
@@ -19,7 +19,7 @@ const Hero = () => {
               draggable={false}
               loading="lazy"
             />
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 rounded-xl bg-linear-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
         </div>
         <h1 className="text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight font-serif">
@@ -39,7 +39,7 @@ const Hero = () => {
           >
             <Button
               size="lg"
-              className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-full tracking-wide text-base shadow-sm transition-all duration-200"
+              className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-full tracking-wide text-base shadow-xs transition-all duration-200"
             >
               <FiMail className="mr-2 h-5 w-5" />
               Contact Me

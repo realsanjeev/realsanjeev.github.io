@@ -12,7 +12,7 @@ const Contact = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">Let's Connect</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            I'm always interested in discussing new opportunities, research collaborations, 
+            I'm always interested in discussing new opportunities, research collaborations,
             or just chatting about the latest developments in AI and machine learning.
           </p>
         </div>
@@ -91,23 +91,23 @@ const Contact = () => {
           <div>
             <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
             <form className="space-y-4">
-              <Input 
-                placeholder="Your Name" 
+              <Input
+                placeholder="Your Name"
                 className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
               />
-              <Input 
-                type="email" 
-                placeholder="Your Email" 
+              <Input
+                type="email"
+                placeholder="Your Email"
                 className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
               />
-              <Input 
-                placeholder="Subject" 
+              <Input
+                placeholder="Subject"
                 className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
               />
-              <textarea 
+              <textarea
                 placeholder="Your Message [Feature not implemented]. Please contact via LinkedIn or direct email"
                 rows={6}
-                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder:text-gray-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
               />
               <Button className="w-full bg-blue-600 hover:bg-blue-700">
                 Send Message
