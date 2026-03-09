@@ -11,9 +11,9 @@ const About = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            About <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Me</span>
+            About <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">Me</span>
           </h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full" />
+          <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -26,7 +26,7 @@ const About = () => {
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
               With a background in both theoretical foundations and practical implementation, I enjoy tackling
-              complex challenges in <span className="font-semibold text-blue-600">computer vision</span>, <span className="font-semibold text-blue-600">natural language processing</span>, and <span className="font-semibold text-blue-600">deep learning</span>. I believe
+              complex challenges in <span className="font-semibold text-emerald-600">computer vision</span>, <span className="font-semibold text-emerald-600">natural language processing</span>, and <span className="font-semibold text-emerald-600">deep learning</span>. I believe
               that AI has the potential to transform industries and improve lives worldwide.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
@@ -36,15 +36,15 @@ const About = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">3+</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">3+</div>
                 <div className="text-sm text-gray-500 mt-1">Years Experience</div>
               </div>
               <div className="text-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">20+</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">20+</div>
                 <div className="text-sm text-gray-500 mt-1">Projects</div>
               </div>
               <div className="text-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">4</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">4</div>
                 <div className="text-sm text-gray-500 mt-1">Publications</div>
               </div>
             </div>
@@ -55,7 +55,7 @@ const About = () => {
             {/* Research Interests */}
             <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2.5 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl text-white">
+                <div className="p-2.5 bg-gradient-to-br from-emerald-500 to-cyan-600 rounded-xl text-white">
                   <FaBrain className="h-5 w-5" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">{SKILLS[0].category}</h3>
@@ -64,7 +64,7 @@ const About = () => {
                 {(SKILLS[0].items as string[]).map((interest) => (
                   <span
                     key={interest}
-                    className="px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 rounded-xl text-sm font-medium border border-blue-100 hover:shadow-md transition-shadow cursor-default"
+                    className="px-4 py-2 bg-gradient-to-r from-emerald-50 to-cyan-50 text-emerald-700 rounded-xl text-sm font-medium border border-emerald-100 hover:shadow-md transition-shadow cursor-default"
                   >
                     {interest}
                   </span>
@@ -75,7 +75,7 @@ const About = () => {
             {/* Technical Skills */}
             <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2.5 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl text-white">
+                <div className="p-2.5 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl text-white">
                   <FaCode className="h-5 w-5" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">{SKILLS[1].category}</h3>
@@ -84,7 +84,7 @@ const About = () => {
                 {(SKILLS[1].items as { name: string, value: string }[]).map((skill, index) => (
                   <div key={skill.name} className="group">
                     <h4 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" />
+                      <span className="w-1.5 h-1.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full" />
                       {skill.name}
                     </h4>
                     <p className="text-sm text-gray-600 bg-gray-50 rounded-lg px-3 py-2 group-hover:bg-gray-100 transition-colors">

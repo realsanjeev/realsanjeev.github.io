@@ -32,7 +32,7 @@ const Hero = () => {
                   Sanjeev
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-emerald-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">
                   Bhandari
                 </span>
               </h1>
@@ -54,28 +54,30 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center px-6 py-3.5 text-base font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+                className="inline-flex items-center px-6 py-3.5 text-base font-medium text-white bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
               >
                 <FiMail className="mr-2 h-5 w-5" />
                 Get in Touch
               </a>
               <a
-                href="#"
+                href="mailto:075bei033.sanjeev@pcampus.edu.np?subject=Request for CV&body=Hi Sanjeev,%0D%0A%0D%0AI'm interested in learning more about your background. Could you please share your CV?%0D%0A%0D%0AThanks!"
                 className="inline-flex items-center px-6 py-3.5 text-base font-medium text-gray-700 bg-white hover:bg-gray-50 border border-gray-200 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
                 <FiDownload className="mr-2 h-5 w-5" />
-                Download CV
+                Request CV
               </a>
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center gap-3 pt-4">
+            <div className="flex items-center gap-3 pt-4" role="list" aria-label="Social media profiles">
               <span className="text-sm text-gray-500 mr-2">Find me on</span>
               <a
                 href="https://linkedin.com/in/realsanjeev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 text-gray-600 hover:text-white hover:bg-blue-600 bg-gray-100 hover:bg-blue-600 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
+                aria-label="LinkedIn Profile"
+                role="listitem"
               >
                 <FaLinkedinIn className="h-5 w-5" />
               </a>
@@ -84,6 +86,8 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 text-gray-600 hover:text-white hover:bg-gray-900 bg-gray-100 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
+                aria-label="GitHub Profile"
+                role="listitem"
               >
                 <FaGithub className="h-5 w-5" />
               </a>
@@ -92,6 +96,8 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 text-gray-600 hover:text-white hover:bg-gray-900 bg-gray-100 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
+                aria-label="Twitter/X Profile"
+                role="listitem"
               >
                 <FaXTwitter className="h-5 w-5" />
               </a>
@@ -100,6 +106,8 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 text-gray-600 hover:text-white hover:bg-green-600 bg-gray-100 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
+                aria-label="Medium Profile"
+                role="listitem"
               >
                 <FaMedium className="h-5 w-5" />
               </a>
@@ -108,6 +116,8 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 text-gray-600 hover:text-white hover:bg-yellow-500 bg-gray-100 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
+                aria-label="Hugging Face Profile"
+                role="listitem"
               >
                 <SiHuggingface className="h-5 w-5" />
               </a>
@@ -118,12 +128,12 @@ const Hero = () => {
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative">
               {/* Decorative rings */}
-              <div className="absolute inset-0 rounded-full border-2 border-blue-200/50 scale-110" />
-              <div className="absolute inset-0 rounded-full border border-indigo-200/30 scale-125" />
+              <div className="absolute inset-0 rounded-full border-2 border-emerald-200/50 scale-110" />
+              <div className="absolute inset-0 rounded-full border border-cyan-200/30 scale-125" />
               
               {/* Main image container */}
               <div className="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem]">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 rounded-full blur-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-cyan-600/20 rounded-full blur-2xl" />
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-slate-100 to-slate-200">
                   <img
                     src="hero-image.png"

@@ -10,9 +10,9 @@ const Experience = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Work <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Experience</span>
+            Work <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">Experience</span>
           </h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full" />
+          <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
           <p className="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
             My professional journey in machine learning and AI development
           </p>
@@ -21,7 +21,7 @@ const Experience = () => {
         {/* Timeline */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-600 transform md:-translate-x-1/2" />
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-600 via-cyan-600 to-teal-600 transform md:-translate-x-1/2" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
@@ -32,19 +32,26 @@ const Experience = () => {
                 }`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full border-4 border-white shadow-lg transform -translate-x-1/2 md:-translate-x-1/2 mt-6 z-10" />
+                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-full border-4 border-white shadow-lg transform -translate-x-1/2 md:-translate-x-1/2 mt-6 z-10" />
 
                 {/* Content */}
                 <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
-                  <div className="group bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:border-blue-100 transition-all duration-300">
-                    {/* Header */}
+                  <div className="group bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:border-emerald-100 transition-all duration-300">
+                    {/* Header with Logo */}
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl text-white group-hover:scale-110 transition-transform duration-300">
-                        <FiBriefcase className="h-5 w-5" />
-                      </div>
+                      {exp.logo && (
+                        <div className="flex-shrink-0 w-12 h-12 rounded-xl overflow-hidden border-2 border-emerald-100 shadow-sm">
+                          <img
+                            src={exp.logo}
+                            alt={`${exp.company} logo`}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
                       <div className={index % 2 !== 0 ? 'md:text-right' : ''}>
                         <h3 className="text-xl font-bold text-gray-900">{exp.title}</h3>
-                        <p className="text-blue-600 font-semibold">{exp.company}</p>
+                        <p className="text-emerald-600 font-semibold">{exp.company}</p>
                         <span className="inline-block mt-1 px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
                           {exp.period}
                         </span>
@@ -56,9 +63,23 @@ const Experience = () => {
                       {exp.description}
                     </p>
 
+                    {/* Tech Stack */}
+                    {exp.techStack && exp.techStack.length > 0 && (
+                      <div className={`flex flex-wrap gap-2 mb-4 ${index % 2 !== 0 ? 'md:justify-end' : ''}`}>
+                        {exp.techStack.map((tech, techIdx) => (
+                          <span
+                            key={techIdx}
+                            className="px-3 py-1.5 bg-gradient-to-r from-emerald-50 to-cyan-50 text-emerald-700 rounded-lg text-xs font-medium border border-emerald-100"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
                     {/* Achievements */}
                     <div className={index % 2 !== 0 ? 'md:text-right' : ''}>
-                      <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                      <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2 justify-start">
                         <FiCheckCircle className="h-4 w-4 text-green-500" />
                         Key Achievements
                       </h4>
@@ -66,9 +87,9 @@ const Experience = () => {
                         {exp.achievements.map((achievement, i) => (
                           <li
                             key={i}
-                            className="text-sm text-gray-600 flex items-start gap-2"
+                            className={`text-sm text-gray-600 flex items-start gap-2 ${index % 2 !== 0 ? 'md:flex-row-reverse md:text-right' : ''}`}
                           >
-                            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
+                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0" />
                             <span>{achievement}</span>
                           </li>
                         ))}

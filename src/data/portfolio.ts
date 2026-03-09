@@ -5,6 +5,8 @@ export interface Experience {
     period: string;
     description: string;
     achievements: string[];
+    techStack?: string[];
+    logo?: string;
 }
 
 export interface Project {
@@ -15,6 +17,7 @@ export interface Project {
     type?: 'major' | 'minor' | 'internship' | 'github';
     downloadUrl?: string;
     detailedDescription?: string;
+    image?: string;
 }
 
 
@@ -25,6 +28,7 @@ export interface BlogPost {
     readTime: string;
     tags: string[];
     url: string;
+    image?: string;
 }
 
 export interface Publication {
@@ -52,7 +56,9 @@ export const EXPERIENCES: Experience[] = [
             "Contributed to the development of a Retrieval-Augmented Generation (RAG) application, Sensei GPT, for educational content generation using LLMs",
             "Developed a FastAPI-based service for deploying a facial recognition system",
             "Worked closely with global stakeholders and senior engineers to engineer production-ready ML solutions"
-        ]
+        ],
+        techStack: ["PyTorch", "OpenCV", "FastAPI", "Docker", "RAG", "LLM"],
+        logo: "https://ui-avatars.com/api/?name=TAI+Inc&background=0D9488&color=fff&size=128"
     },
     {
         title: "Machine Learning Trainee – R&D Focus",
@@ -64,7 +70,9 @@ export const EXPERIENCES: Experience[] = [
             "Explored and applied parameter-efficient fine-tuning methods such as LoRA and QLoRA",
             "Researched and tested model merging methodologies for optimized performance",
             "Investigated methods for extending context length in pre-trained language models"
-        ]
+        ],
+        techStack: ["LoRA", "QLoRA", "HuggingFace", "LangChain", "Neo4j", "Graph RAG"],
+        logo: "https://ui-avatars.com/api/?name=TAI+Inc&background=0D9488&color=fff&size=128"
     },
     {
         title: "Python Intern",
@@ -75,7 +83,9 @@ export const EXPERIENCES: Experience[] = [
             "Initiated development of a Nepali text summarization model using BART, including dataset curation and training",
             "Applied LoRA for fine-tuning, acquiring practical understanding of parameter-efficient fine-tuning techniques",
             "Gained experience with tools such as Docker, Jenkins, and the Neo4j graph database"
-        ]
+        ],
+        techStack: ["Python", "BART", "Transformers", "Docker", "Jenkins", "NLP"],
+        logo: "https://ui-avatars.com/api/?name=TAI+Inc&background=0D9488&color=fff&size=128"
     }
 ];
 
@@ -86,21 +96,27 @@ export const MAJOR_PROJECTS: Project[] = [
         description: "Bachelor's Degree Final Year",
         detailedDescription: "Developed a system capable of generating novel musical compositions with multiple instrument tracks. Investigated various neural network architectures for sequential data generation, implementing an LSTM-based model for music creation. Explored hybrid approaches combining algorithmic composition (tone-matrix derived from image data) with deep learning model outputs.",
         downloadUrl: "https://drive.google.com/drive/folders/1ZsLWk0B2BmMbE0fqo6sSO5H2HlNNxwGY",
-        url: "#"
+        url: "#",
+        image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&fit=crop",
+        tags: ["LSTM", "Deep Learning", "Python", "Music AI"]
     },
     {
         name: "Music Genre Recognition using Deep Learning",
         type: 'minor',
         description: "Bachelor's Degree Third Year",
         detailedDescription: "Applied Convolutional Neural Networks (CNNs) within the PyTorch framework for classifying music genres from audio features. Experimented with different CNN architectures and hyperparameters to optimize genre recognition accuracy on the GTZAN dataset.",
-        url: "https://github.com/realsanjeev/Music-genre-classification-using-deep-learning"
+        url: "https://github.com/realsanjeev/Music-genre-classification-using-deep-learning",
+        image: "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=600&h=400&fit=crop",
+        tags: ["CNN", "PyTorch", "Audio Processing", "GTZAN"]
     },
     {
         name: "Abstractive Text Summarization in Nepali using BART",
         type: 'internship',
         description: "ML Internship",
         detailedDescription: "Developed and fine-tuned a BART-based model for abstractive summarization of Nepali news articles. Implemented and evaluated the Low-Rank Adaptation (LoRA) technique for parameter-efficient fine-tuning (PEFT) in a resource-constrained setting.",
-        url: "https://medium.com/@sanjeev-bhandari/nepali-text-summarization-2df72a8a3080"
+        url: "https://medium.com/@sanjeev-bhandari/nepali-text-summarization-2df72a8a3080",
+        image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop",
+        tags: ["NLP", "BART", "LoRA", "Nepali", "Transformers"]
     }
 ];
 
@@ -109,21 +125,29 @@ export const GITHUB_PROJECTS: Project[] = [
         name: "Essay Writer Using Agent",
         description: "A blog-writing app that uses an autonomous agent to search the web and generate content, built with LangGraph.",
         url: "https://github.com/realsanjeev/Essay-writer-using-Agent",
+        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&h=400&fit=crop",
+        tags: ["LangGraph", "AI Agent", "Web Search"]
     },
     {
         name: "OpenCV Object Detection",
         description: "Object detection using the Mediapipe library, along with a prototype app that enables drawing through hand gestures.",
         url: "https://github.com/realsanjeev/Object-Detection-using-OpenCV",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop",
+        tags: ["OpenCV", "Mediapipe", "Computer Vision"]
     },
     {
         name: "Real-Time Whisper Transcription",
         description: "A real-time transcription app powered by Whisper, useful for generating subtitles for live video content.",
         url: "https://github.com/realsanjeev/whisper-realtime-transcriber",
+        image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=400&fit=crop",
+        tags: ["Whisper", "Speech-to-Text", "Real-time"]
     },
     {
         name: "Reinforcement Learning in Python Game",
         description: "An implementation of reinforcement learning applied to the classic Snake game, demonstrating AI gameplay.",
         url: "https://github.com/defyingdemonprogram/Reinforcement-Learning-in-Python-Game",
+        image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=600&h=400&fit=crop",
+        tags: ["Reinforcement Learning", "Python", "Game AI"]
     },
 ];
 
@@ -134,7 +158,8 @@ export const BLOG_POSTS: BlogPost[] = [
         date: "Feb 26, 2024",
         readTime: "7 min read",
         tags: ["Nepali NLP", "Transformer Models", "mBART", "Text Summarization", "Multilingual AI"],
-        url: "https://medium.com/@sanjeev-bhandari/nepali-text-summarization-2df72a8a3080"
+        url: "https://medium.com/@sanjeev-bhandari/nepali-text-summarization-2df72a8a3080",
+        image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop"
     },
     {
         title: "Model Merging: A new way of creating model",
@@ -142,7 +167,8 @@ export const BLOG_POSTS: BlogPost[] = [
         date: "Jul 6, 2024",
         readTime: "4 min read",
         tags: ["Model Merging", "SLERP", "TIES", "DARE", "Language Models", "AI Efficiency"],
-        url: "https://medium.com/@sanjeev-bhandari/model-merging-a-new-way-of-creating-model-e62e6d14ef97"
+        url: "https://medium.com/@sanjeev-bhandari/model-merging-a-new-way-of-creating-model-e62e6d14ef97",
+        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop"
     },
     {
         title: "🦀 Supercharge Python with Rust: Building Fast Python Extensions with PyO3 and Maturin",
@@ -150,7 +176,8 @@ export const BLOG_POSTS: BlogPost[] = [
         date: "May 23, 2025",
         readTime: "3 min read",
         tags: ["Python", "Rust", "PyO3", "Maturin", "Performance Optimization", "Machine Learning"],
-        url: "https://medium.com/@sanjeev-bhandari/supercharge-python-with-rust-building-fast-python-extensions-with-pyo3-and-maturin-da09306d97a8"
+        url: "https://medium.com/@sanjeev-bhandari/supercharge-python-with-rust-building-fast-python-extensions-with-pyo3-and-maturin-da09306d97a8",
+        image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&h=400&fit=crop"
     },
     {
         title: "Creating the SnowFlake In C using recursive method with raylib",
@@ -158,7 +185,8 @@ export const BLOG_POSTS: BlogPost[] = [
         date: "Nov 27, 2024",
         readTime: "4 min read",
         tags: ["C Programming", "Raylib", "Graphics Programming", "Fractals", "Recursive Algorithms"],
-        url: "https://medium.com/@sanjeev-bhandari/creating-the-snowflake-in-c-using-raylib-07a0c4fa5e17"
+        url: "https://medium.com/@sanjeev-bhandari/creating-the-snowflake-in-c-using-raylib-07a0c4fa5e17",
+        image: "https://images.unsplash.com/photo-1549488347-19a97d0963d7?w=600&h=400&fit=crop"
     }
 ];
 
@@ -221,4 +249,25 @@ export const NAV_ITEMS = [
     { name: 'Projects', href: '#projects' },
     { name: 'Blog', href: '#blog' },
     { name: 'Contact', href: '#contact' }
+];
+
+export const TESTIMONIALS = [
+    {
+        name: "Senior Engineer",
+        role: "TAI Inc.",
+        content: "Sanjeev has an exceptional ability to quickly understand complex ML concepts and implement them in production. His work on our document verification system was outstanding.",
+        avatar: "https://ui-avatars.com/api/?name=Senior+Engineer&background=0D9488&color=fff&size=128"
+    },
+    {
+        name: "Project Manager",
+        role: "TAI Inc.",
+        content: "Working with Sanjeev has been a pleasure. He consistently delivers high-quality solutions and brings innovative ideas to the table. His expertise in NLP and computer vision is impressive.",
+        avatar: "https://ui-avatars.com/api/?name=Project+Manager&background=0891b2&color=fff&size=128"
+    },
+    {
+        name: "Research Colleague",
+        role: "ML Research Team",
+        content: "Sanjeev's contributions to our RAG research were invaluable. His deep understanding of transformer models and fine-tuning techniques helped us achieve breakthrough results.",
+        avatar: "https://ui-avatars.com/api/?name=Research+Colleague&background=7c3aed&color=fff&size=128"
+    }
 ];

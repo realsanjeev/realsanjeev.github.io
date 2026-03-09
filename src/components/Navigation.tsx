@@ -1,10 +1,11 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { FaLinkedinIn, FaGithub, FaXTwitter } from 'react-icons/fa6';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   const navItems = [
     { name: 'About', href: '#about' },
@@ -14,12 +15,67 @@ const Navigation = () => {
     { name: 'Contact', href: '#contact' }
   ];
 
+  // Scroll spy to highlight active section using Intersection Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -79% 0px' // Triggers when element is near the top of the viewport
+      }
+    );
+
+    const sectionIds = ['about', 'experience', 'projects', 'blog', 'contact'];
+    sectionIds.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Close menu on Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isMenuOpen]);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  const handleNavClick = (href: string) => {
+    setActiveSection(href);
+    setIsMenuOpen(false);
+  };
+
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200/50 z-50 shadow-sm">
+    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200/50 z-50 shadow-sm" role="navigation" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="group">
+          <a href="#" className="group" aria-label="Home">
             <span className="text-2xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
               SB
             </span>
@@ -31,10 +87,20 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="relative px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors group"
+                onClick={() => handleNavClick(item.href)}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors group ${
+                  activeSection === item.href
+                    ? 'text-gray-900'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+                aria-current={activeSection === item.href ? 'page' : undefined}
               >
                 {item.name}
-                <span className="absolute inset-x-4 bottom-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <span
+                  className={`absolute inset-x-4 bottom-0 h-0.5 bg-gradient-to-r from-emerald-600 to-cyan-600 transition-transform duration-300 origin-left ${
+                    activeSection === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`}
+                />
               </a>
             ))}
           </div>
@@ -46,6 +112,7 @@ const Navigation = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
+              aria-label="LinkedIn Profile"
             >
               <FaLinkedinIn className="h-5 w-5" />
             </a>
@@ -54,6 +121,7 @@ const Navigation = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              aria-label="GitHub Profile"
             >
               <FaGithub className="h-5 w-5" />
             </a>
@@ -62,12 +130,14 @@ const Navigation = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              aria-label="Twitter/X Profile"
             >
               <FaXTwitter className="h-5 w-5" />
             </a>
             <a
               href="#contact"
-              className="ml-2 px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+              onClick={() => handleNavClick('#contact')}
+              className="ml-2 px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
             >
               Let's Talk
             </a>
@@ -77,10 +147,29 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="md:hidden p-2 h-10 w-10"
+            className="md:hidden p-2 h-10 w-10 relative"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? '✕' : '☰'}
+            {/* Animated Hamburger Icon */}
+            <div className="w-5 h-5 relative">
+              <span
+                className={`absolute h-0.5 w-5 bg-gray-600 rounded-full transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? 'rotate-45 top-2' : 'top-0.5'
+                }`}
+              />
+              <span
+                className={`absolute h-0.5 w-5 bg-gray-600 rounded-full transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? 'opacity-0' : 'opacity-100 top-2'
+                }`}
+              />
+              <span
+                className={`absolute h-0.5 w-5 bg-gray-600 rounded-full transition-all duration-300 ease-in-out ${
+                  isMenuOpen ? '-rotate-45 top-2' : 'top-3.5'
+                }`}
+              />
+            </div>
           </Button>
         </div>
 
@@ -92,8 +181,13 @@ const Navigation = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => handleNavClick(item.href)}
+                  className={`block px-4 py-3 rounded-lg transition-colors font-medium ${
+                    activeSection === item.href
+                      ? 'text-emerald-600 bg-emerald-50'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                  aria-current={activeSection === item.href ? 'page' : undefined}
                 >
                   {item.name}
                 </a>
@@ -104,6 +198,7 @@ const Navigation = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 text-gray-500 hover:text-blue-600"
+                  aria-label="LinkedIn Profile"
                 >
                   <FaLinkedinIn className="h-5 w-5" />
                 </a>
@@ -112,6 +207,7 @@ const Navigation = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 text-gray-500 hover:text-gray-900"
+                  aria-label="GitHub Profile"
                 >
                   <FaGithub className="h-5 w-5" />
                 </a>
@@ -120,6 +216,7 @@ const Navigation = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 text-gray-500 hover:text-gray-900"
+                  aria-label="Twitter/X Profile"
                 >
                   <FaXTwitter className="h-5 w-5" />
                 </a>

@@ -13,9 +13,9 @@ const Blog = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Blog & <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Articles</span>
+            Blog & <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">Articles</span>
           </h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto rounded-full" />
+          <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
           <p className="text-lg text-gray-600 mt-6 max-w-3xl mx-auto">
             Sharing insights on machine learning, AI research, and the future of technology.
             Follow my journey as I explore the cutting edge of artificial intelligence.
@@ -29,24 +29,38 @@ const Blog = () => {
               key={index}
               className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
             >
-              {/* Card Top Border */}
-              <div className="h-1.5 bg-gradient-to-r from-green-500 to-emerald-600" />
-              
+              {/* Blog Post Image */}
+              {post.image && (
+                <div className="relative h-48 overflow-hidden bg-gray-100">
+                  <img
+                    src={post.image}
+                    alt={`${post.title} featured image`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Medium Badge */}
+                  <div className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur-sm rounded-lg shadow-md">
+                    <FaMedium className="h-5 w-5 text-green-600" />
+                  </div>
+                </div>
+              )}
+
               <div className="p-6">
                 {/* Meta Info */}
                 <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                   <div className="flex items-center gap-1.5">
-                    <FiCalendar className="h-4 w-4 text-green-600" />
+                    <FiCalendar className="h-4 w-4 text-emerald-600" />
                     <span>{post.date}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <FiClock className="h-4 w-4 text-green-600" />
+                    <FiClock className="h-4 w-4 text-emerald-600" />
                     <span>{post.readTime}</span>
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-green-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-emerald-600 transition-colors">
                   {post.title}
                 </h3>
 
@@ -60,7 +74,7 @@ const Blog = () => {
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 rounded-full text-xs font-medium border border-green-100 hover:bg-green-100 transition-colors cursor-default"
+                      className="px-3 py-1 bg-gradient-to-r from-emerald-50 to-cyan-50 text-emerald-700 rounded-full text-xs font-medium border border-emerald-100 hover:bg-emerald-100 transition-colors cursor-default"
                     >
                       #{tag}
                     </span>
@@ -90,7 +104,7 @@ const Blog = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
+            <Button className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
               <FaMedium className="mr-2 h-5 w-5" />
               Follow on Medium
             </Button>

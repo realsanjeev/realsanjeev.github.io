@@ -56,9 +56,9 @@ const Contact = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Let's <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Connect</span>
+            Let's <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Connect</span>
           </h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-blue-400 to-indigo-400 mx-auto rounded-full" />
+          <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
           <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
             I'm always interested in discussing new opportunities, research collaborations,
             or just chatting about the latest developments in AI and machine learning.
@@ -79,7 +79,7 @@ const Contact = () => {
             <div className="space-y-4">
               <a
                 href="mailto:075bei033.sanjeev@pcampus.edu.np"
-                className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 hover:border-blue-400/50 transition-all duration-200 group"
+                className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 hover:border-emerald-400/50 transition-all duration-200 group"
               >
                 <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl">
                   <FiMail className="h-5 w-5" />
