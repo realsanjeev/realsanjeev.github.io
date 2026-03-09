@@ -35,7 +35,7 @@ const Experience = () => {
                 <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-full border-4 border-white shadow-lg transform -translate-x-1/2 md:-translate-x-1/2 mt-6 z-10" />
 
                 {/* Content */}
-                <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
+                <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
                   <div className="group bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl hover:border-emerald-100 transition-all duration-300">
                     {/* Header with Logo */}
                     <div className="flex items-start gap-4 mb-4">
@@ -49,7 +49,7 @@ const Experience = () => {
                           />
                         </div>
                       )}
-                      <div className={index % 2 !== 0 ? 'md:text-right' : ''}>
+                      <div>
                         <h3 className="text-xl font-bold text-gray-900">{exp.title}</h3>
                         <p className="text-emerald-600 font-semibold">{exp.company}</p>
                         <span className="inline-block mt-1 px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
@@ -65,7 +65,7 @@ const Experience = () => {
 
                     {/* Tech Stack */}
                     {exp.techStack && exp.techStack.length > 0 && (
-                      <div className={`flex flex-wrap gap-2 mb-4 ${index % 2 !== 0 ? 'md:justify-end' : ''}`}>
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {exp.techStack.map((tech, techIdx) => (
                           <span
                             key={techIdx}
@@ -78,7 +78,7 @@ const Experience = () => {
                     )}
 
                     {/* Achievements */}
-                    <div className={index % 2 !== 0 ? 'md:text-right' : ''}>
+                    <div>
                       <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2 justify-start">
                         <FiCheckCircle className="h-4 w-4 text-green-500" />
                         Key Achievements
@@ -87,7 +87,7 @@ const Experience = () => {
                         {exp.achievements.map((achievement, i) => (
                           <li
                             key={i}
-                            className={`text-sm text-gray-600 flex items-start gap-2 ${index % 2 !== 0 ? 'md:flex-row-reverse md:text-right' : ''}`}
+                            className="text-sm text-gray-600 flex items-start gap-2"
                           >
                             <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0" />
                             <span>{achievement}</span>
