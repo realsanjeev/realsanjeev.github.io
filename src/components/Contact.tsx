@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { FiMail, FiSend, FiMapPin, FiPhone } from 'react-icons/fi';
+import { FiMail, FiSend, FiMapPin } from 'react-icons/fi';
 import { SiHuggingface } from 'react-icons/si';
 import { FaGithub, FaXTwitter, FaLinkedinIn, FaMedium } from 'react-icons/fa6';
 

@@ -30,15 +30,18 @@ const Publications = () => {
               <p className="text-gray-700 mb-4 leading-relaxed">{pub.abstract}</p>
 
               <div className="flex flex-wrap gap-3">
-                {Object.entries(pub.links).map(([type, url]) => (
+                {Object.entries(pub.links).map(([type, linkUrl]) => (
                   <Button
                     key={type}
                     variant="outline"
                     size="sm"
                     className="capitalize"
+                    asChild
                   >
-                    {type === 'paper' ? <FiFileText className="mr-2 h-4 w-4" /> : <FiLink className="mr-2 h-4 w-4" />}
-                    {type}
+                    <a href={linkUrl} target="_blank" rel="noopener noreferrer">
+                      {type === 'paper' ? <FiFileText className="mr-2 h-4 w-4" /> : <FiLink className="mr-2 h-4 w-4" />}
+                      {type}
+                    </a>
                   </Button>
                 ))}
               </div>

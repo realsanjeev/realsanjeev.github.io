@@ -97,7 +97,7 @@ export const MAJOR_PROJECTS: Project[] = [
         detailedDescription: "Developed a system capable of generating novel musical compositions with multiple instrument tracks. Investigated various neural network architectures for sequential data generation, implementing an LSTM-based model for music creation. Explored hybrid approaches combining algorithmic composition (tone-matrix derived from image data) with deep learning model outputs.",
         downloadUrl: "https://drive.google.com/drive/folders/1ZsLWk0B2BmMbE0fqo6sSO5H2HlNNxwGY",
         url: "#",
-        image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1717699841849-98dcc1c6184a?q=400&w=600&auto=format&fit=crop",
         tags: ["LSTM", "Deep Learning", "Python", "Music AI"]
     },
     {
@@ -106,7 +106,7 @@ export const MAJOR_PROJECTS: Project[] = [
         description: "Bachelor's Degree Third Year",
         detailedDescription: "Applied Convolutional Neural Networks (CNNs) within the PyTorch framework for classifying music genres from audio features. Experimented with different CNN architectures and hyperparameters to optimize genre recognition accuracy on the GTZAN dataset.",
         url: "https://github.com/realsanjeev/Music-genre-classification-using-deep-learning",
-        image: "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=600&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1768033402852-dbafede8eae6?q=400&w=600&auto=format&fit=crop",
         tags: ["CNN", "PyTorch", "Audio Processing", "GTZAN"]
     },
     {
@@ -186,7 +186,7 @@ export const BLOG_POSTS: BlogPost[] = [
         readTime: "4 min read",
         tags: ["C Programming", "Raylib", "Graphics Programming", "Fractals", "Recursive Algorithms"],
         url: "https://medium.com/@sanjeev-bhandari/creating-the-snowflake-in-c-using-raylib-07a0c4fa5e17",
-        image: "https://images.unsplash.com/photo-1549488347-19a97d0963d7?w=600&h=400&fit=crop"
+        image: "https://images.unsplash.com/photo-1703192163744-2f9cc399755f?w=600&h=400&fit=crop"
     }
 ];
 

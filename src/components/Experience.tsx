@@ -1,5 +1,5 @@
 import { EXPERIENCES } from "@/data/portfolio";
-import { FiBriefcase, FiCheckCircle } from "react-icons/fi";
+import { FiCheckCircle } from "react-icons/fi";
 
 const Experience = () => {
   const experiences = EXPERIENCES;

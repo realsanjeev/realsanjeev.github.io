@@ -1,10 +1,8 @@
 
 import { SKILLS } from '@/data/portfolio';
-import { FaBrain, FaCode, FaLaptopCode } from 'react-icons/fa';
+import { FaBrain, FaCode } from 'react-icons/fa';
 
 const About = () => {
-  const skillIcons = [FaBrain, FaCode, FaLaptopCode];
-
   return (
     <section className="py-24 bg-gradient-to-b from-white to-slate-50" id="about">
       <div className="max-w-7xl mx-auto px-6">
@@ -81,7 +79,7 @@ const About = () => {
                 <h3 className="text-xl font-bold text-gray-900">{SKILLS[1].category}</h3>
               </div>
               <div className="space-y-4">
-                {(SKILLS[1].items as { name: string, value: string }[]).map((skill, index) => (
+                {(SKILLS[1].items as { name: string; value: string }[]).map((skill) => (
                   <div key={skill.name} className="group">
                     <h4 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full" />

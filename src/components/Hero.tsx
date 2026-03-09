@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { FiMail, FiDownload } from 'react-icons/fi';
 import { FaLinkedinIn, FaGithub, FaXTwitter, FaMedium } from 'react-icons/fa6';
 import { SiHuggingface } from 'react-icons/si';
