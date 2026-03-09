@@ -136,7 +136,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-cyan-600/20 rounded-full blur-2xl" />
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-slate-100 to-slate-200">
                   <img
-                    src="hero-image.png"
+                    src="/hero-image.png"
                     alt="Sanjeev Bhandari"
                     className="w-full h-full object-cover"
                     draggable={false}

@@ -58,7 +58,7 @@ export const EXPERIENCES: Experience[] = [
             "Worked closely with global stakeholders and senior engineers to engineer production-ready ML solutions"
         ],
         techStack: ["PyTorch", "OpenCV", "FastAPI", "Docker", "RAG", "LLM"],
-        logo: "https://ui-avatars.com/api/?name=TAI+Inc&background=0D9488&color=fff&size=128"
+        logo: "/tai-logo.jpg"
     },
     {
         title: "Machine Learning Trainee – R&D Focus",
@@ -72,7 +72,7 @@ export const EXPERIENCES: Experience[] = [
             "Investigated methods for extending context length in pre-trained language models"
         ],
         techStack: ["LoRA", "QLoRA", "HuggingFace", "LangChain", "Neo4j", "Graph RAG"],
-        logo: "https://ui-avatars.com/api/?name=TAI+Inc&background=0D9488&color=fff&size=128"
+        logo: "/tai-logo.jpg"
     },
     {
         title: "Python Intern",
@@ -85,7 +85,7 @@ export const EXPERIENCES: Experience[] = [
             "Gained experience with tools such as Docker, Jenkins, and the Neo4j graph database"
         ],
         techStack: ["Python", "BART", "Transformers", "Docker", "Jenkins", "NLP"],
-        logo: "https://ui-avatars.com/api/?name=TAI+Inc&background=0D9488&color=fff&size=128"
+        logo: "/tai-logo.jpg"
     }
 ];
 
