@@ -43,7 +43,7 @@ const Projects = () => {
           </h2>
           <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
           <p className="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
-            A collection of my academic and personal projects showcasing ML and software development skills
+            A collection of my academic and research projects showcasing ML and software development skills
           </p>
         </div>
 
