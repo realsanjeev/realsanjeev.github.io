@@ -1,6 +1,5 @@
 import React from 'react';
 import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Experience from '@/components/Experience';
@@ -48,7 +47,6 @@ const Index = () => {
           </RevealOnScroll>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
