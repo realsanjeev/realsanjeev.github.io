@@ -235,7 +235,7 @@ export const SKILLS = [
     {
         category: "Technical Skills",
         items: [
-            { name: "Programming Languages", value: "Python (Proficient), Java, C, C++, JavaScript" },
+            { name: "Programming Languages", value: "Python (Proficient), C, C++, JavaScript, Java" },
             { name: "AI/ML Libraries", value: "PyTorch, HuggingFace, LangChain, TensorFlow/Keras, Scikit-learn" },
             { name: "Web Frameworks", value: "FastAPI, Django, Streamlit, Flask" },
             { name: "Developer Tools", value: "Git, Docker, Jenkins, Linux/Unix" }

@@ -110,6 +110,65 @@ Make sure to replace `{your-username}` and `{your-repo-name}` accordingly.
 * [GitHub Actions](https://docs.github.com/en/actions)
 * [GitHub Pages](https://pages.github.com/)
 * [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)
+* [EmailJS](https://www.emailjs.com/) - Contact form functionality
+
+---
+
+## 📧 Contact Form Setup (EmailJS)
+
+The contact form uses **EmailJS** to send emails directly from the frontend. To enable it:
+
+### 1. Create an EmailJS Account
+
+1. Go to [EmailJS](https://www.emailjs.com/) and sign up for a free account
+2. Free tier: **50 emails/month** (sufficient for most portfolios)
+
+### 2. Set Up Email Service
+
+1. In EmailJS dashboard, go to **Email Services**
+2. Click **Add New Service** → Select your email provider (Gmail, Outlook, etc.)
+3. Connect your account and note the **Service ID** (e.g., `service_abc123`)
+
+### 3. Create Email Template
+
+1. Go to **Email Templates** → **Create New Template**
+2. Use these variables in your template:
+   ```
+   From Name: {{from_name}}
+   From Email: {{from_email}}
+   Subject: {{subject}}
+   Message: {{message}}
+   Reply-To: {{reply_to}}
+   ```
+3. Save and note the **Template ID** (e.g., `template_xyz789`)
+
+### 4. Configure Environment Variables
+
+1. Copy `.env.example` to `.env.local`:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. Fill in your credentials in `.env.local`:
+   ```env
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
+   VITE_EMAILJS_SERVICE_ID=your_service_id_here
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
+   ```
+
+3. Get your **Public Key** from **Account** → **API Keys**
+
+### 5. For Deployment (GitHub Actions)
+
+Add environment variables to your GitHub repo:
+
+1. Go to **Settings** → **Secrets and variables** → **Actions**
+2. Add these secrets:
+   - `VITE_EMAILJS_PUBLIC_KEY`
+   - `VITE_EMAILJS_SERVICE_ID`
+   - `VITE_EMAILJS_TEMPLATE_ID`
+
+3. Update `.github/workflows/deploy.yml` to pass these variables during build
 
 ---
 
