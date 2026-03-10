@@ -44,27 +44,47 @@ const Index = () => {
         <meta name="twitter:description" content="Portfolio of Sanjeev Bhandari, ML Engineer." />
         <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/45820805?v=4" />
 
-        <script type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Sanjeev Bhandari",
-            "alternateName": "realsanjeev",
-            "url": "https://realsanjeev.github.io",
-            "jobTitle": "Machine Learning Engineer",
-            "sameAs": [
-              "https://linkedin.com/in/realsanjeev",
-              "https://github.com/realsanjeev",
-              "https://x.com/realsanjeev2",
-              "https://medium.com/@sanjeev-bhandari",
-              "https://huggingface.co/sanjeev-bhandari01"
-            ],
-            "knowsAbout": ["Machine Learning", "Deep Learning", "Artificial Intelligence"],
-            "worksFor": {
-              "@type": "Organization",
-              "name": "TAI Inc."
-            }
-          }) }}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Sanjeev Bhandari",
+              "alternateName": "realsanjeev",
+              "url": "https://realsanjeev.github.io",
+              "image": "https://avatars.githubusercontent.com/u/45820805?v=4",
+              "jobTitle": "Machine Learning Engineer",
+              "sameAs": [
+                "https://linkedin.com/in/realsanjeev",
+                "https://github.com/realsanjeev",
+                "https://x.com/realsanjeev2",
+                "https://medium.com/@sanjeev-bhandari",
+                "https://huggingface.co/sanjeev-bhandari01",
+                "https://bhandarisanjeev.com.np",
+                "https://bhandarisanjeeev.com.np"
+              ],
+              "knowsAbout": [
+                "Machine Learning",
+                "Deep Learning",
+                "Artificial Intelligence"
+              ],
+              "hasCredential": {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "Bachelor's Degree",
+                "name": "Electronics and Information Engineering",
+                "recognizedBy": {
+                  "@type": "GovernmentOrganization",
+                  "name": "Nepal Engineering Council (NEC)",
+                  "url": "https://nec.gov.np"
+                }
+              },
+              "worksFor": {
+                "@type": "Organization",
+                "name": "TAI Inc."
+              }
+            })
+          }}
         />
       </Helmet>
       <Navigation />
