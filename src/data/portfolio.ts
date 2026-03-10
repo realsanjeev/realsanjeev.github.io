@@ -242,32 +242,3 @@ export const SKILLS = [
         ]
     }
 ];
-
-export const NAV_ITEMS = [
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' }
-];
-
-export const TESTIMONIALS = [
-    {
-        name: "Senior Engineer",
-        role: "TAI Inc.",
-        content: "Sanjeev has an exceptional ability to quickly understand complex ML concepts and implement them in production. His work on our document verification system was outstanding.",
-        avatar: "https://ui-avatars.com/api/?name=Senior+Engineer&background=0D9488&color=fff&size=128"
-    },
-    {
-        name: "Project Manager",
-        role: "TAI Inc.",
-        content: "Working with Sanjeev has been a pleasure. He consistently delivers high-quality solutions and brings innovative ideas to the table. His expertise in NLP and computer vision is impressive.",
-        avatar: "https://ui-avatars.com/api/?name=Project+Manager&background=0891b2&color=fff&size=128"
-    },
-    {
-        name: "Research Colleague",
-        role: "ML Research Team",
-        content: "Sanjeev's contributions to our RAG research were invaluable. His deep understanding of transformer models and fine-tuning techniques helped us achieve breakthrough results.",
-        avatar: "https://ui-avatars.com/api/?name=Research+Colleague&background=7c3aed&color=fff&size=128"
-    }
-];

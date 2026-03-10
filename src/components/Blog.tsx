@@ -5,8 +5,6 @@ import { BLOG_POSTS } from '@/data/portfolio';
 import { FaMedium } from 'react-icons/fa6';
 
 const Blog = () => {
-  const blogPosts = BLOG_POSTS;
-
   return (
     <section className="py-24 bg-gradient-to-b from-slate-50 to-white" id="blog">
       <div className="max-w-7xl mx-auto px-6">
@@ -24,7 +22,7 @@ const Blog = () => {
 
         {/* Blog Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {blogPosts.map((post, index) => (
+          {BLOG_POSTS.map((post, index) => (
             <article
               key={index}
               className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"

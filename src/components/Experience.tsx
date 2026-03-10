@@ -2,8 +2,6 @@ import { EXPERIENCES } from "@/data/portfolio";
 import { FiCheckCircle } from "react-icons/fi";
 
 const Experience = () => {
-  const experiences = EXPERIENCES;
-
   return (
     <section className="py-24 bg-gradient-to-b from-slate-50 to-white" id="experience">
       <div className="max-w-7xl mx-auto px-6">
@@ -24,7 +22,7 @@ const Experience = () => {
           <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-600 via-cyan-600 to-teal-600 transform md:-translate-x-1/2" />
 
           <div className="space-y-12">
-            {experiences.map((exp, index) => (
+            {EXPERIENCES.map((exp, index) => (
               <div
                 key={index}
                 className={`relative flex flex-col md:flex-row gap-8 ${

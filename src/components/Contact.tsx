@@ -9,7 +9,7 @@ import { FiMail, FiSend, FiMapPin, FiLoader, FiAlertCircle, FiCheck } from "reac
 import { SiHuggingface } from "react-icons/si";
 import { FaGithub, FaXTwitter, FaLinkedinIn, FaMedium } from "react-icons/fa6";
 
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "@/components/ui/sonner";
 
 interface FormData {
   name: string;
@@ -23,7 +23,6 @@ type FormErrors = Partial<FormData>;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const Contact = () => {
-  const { toast } = useToast();
 
   const formRef = useRef<HTMLFormElement>(null);
   const lastSubmitRef = useRef<number>(0);
@@ -147,8 +146,7 @@ const Contact = () => {
 
     const now = Date.now();
     if (now - lastSubmitRef.current < 10000) {
-      toast({
-        title: "Please wait",
+      toast("Please wait", {
         description: "You just sent a message."
       });
       return;
@@ -184,19 +182,16 @@ const Contact = () => {
       triggerConfetti();
       setSuccess(true);
 
-      toast({
-        title: "Message Sent 🚀",
+      toast("Message Sent", {
         description: "Thanks for reaching out!"
       });
 
       resetForm();
 
       setTimeout(() => setSuccess(false), 4000);
-    } catch (err) {
-      toast({
-        title: "Failed to send",
-        description: "Please try again later.",
-        variant: "destructive"
+    } catch {
+      toast("Failed to send", {
+        description: "Please try again later."
       });
     } finally {
       setIsSubmitting(false);
