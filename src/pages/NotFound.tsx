@@ -47,18 +47,18 @@ const NotFound = () => {
         {/* Quick Links */}
         <div className="grid sm:grid-cols-2 gap-4 mb-8">
           <a
-            href="#about"
+            href="/#about"
             className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 hover:border-emerald-400/50 transition-all duration-200 group"
           >
             <p className="text-sm text-gray-400 mb-1">Learn about</p>
             <p className="text-lg font-semibold group-hover:text-emerald-400 transition-colors">About Me</p>
           </a>
           <a
-            href="#projects"
+            href="/#experience"
             className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 hover:border-emerald-400/50 transition-all duration-200 group"
           >
             <p className="text-sm text-gray-400 mb-1">Check out</p>
-            <p className="text-lg font-semibold group-hover:text-emerald-400 transition-colors">My Projects</p>
+            <p className="text-lg font-semibold group-hover:text-emerald-400 transition-colors">Experience</p>
           </a>
         </div>
 
@@ -83,7 +83,7 @@ const NotFound = () => {
         {/* Contact CTA */}
         <p className="text-gray-400 mt-8">
           Looking for something specific?{' '}
-          <a href="#contact" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4">
+          <a href="/#contact" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4">
             Get in touch
           </a>
         </p>

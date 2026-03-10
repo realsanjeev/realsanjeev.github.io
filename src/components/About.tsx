@@ -1,5 +1,4 @@
-
-import { SKILLS } from '@/data/portfolio';
+import { SKILLS, SkillItem } from '@/data/portfolio';
 import { FaBrain, FaCode } from 'react-icons/fa';
 
 const About = () => {
@@ -59,14 +58,17 @@ const About = () => {
                 <h3 className="text-xl font-bold text-gray-900">{SKILLS[0].category}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                {(SKILLS[0].items as string[]).map((interest) => (
-                  <span
-                    key={interest}
-                    className="px-4 py-2 bg-gradient-to-r from-emerald-50 to-cyan-50 text-emerald-700 rounded-xl text-sm font-medium border border-emerald-100 hover:shadow-md transition-shadow cursor-default"
-                  >
-                    {interest}
-                  </span>
-                ))}
+                {SKILLS[0].items.map((item) => {
+                  const interest = typeof item === 'string' ? item : item.name;
+                  return (
+                    <span
+                      key={interest}
+                      className="px-4 py-2 bg-gradient-to-r from-emerald-50 to-cyan-50 text-emerald-700 rounded-xl text-sm font-medium border border-emerald-100 hover:shadow-md transition-shadow cursor-default"
+                    >
+                      {interest}
+                    </span>
+                  );
+                })}
               </div>
             </div>
 
@@ -79,7 +81,7 @@ const About = () => {
                 <h3 className="text-xl font-bold text-gray-900">{SKILLS[1].category}</h3>
               </div>
               <div className="space-y-4">
-                {(SKILLS[1].items as { name: string; value: string }[]).map((skill) => (
+                {(SKILLS[1].items as SkillItem[]).map((skill) => (
                   <div key={skill.name} className="group">
                     <h4 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full" />

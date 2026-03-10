@@ -79,11 +79,9 @@ const Contact = () => {
   ];
 
   useEffect(() => {
-    if (emailJsPublicKey) emailjs.init(emailJsPublicKey);
-
     const firstInput = formRef.current?.querySelector("input");
     firstInput?.focus();
-  }, [emailJsPublicKey]);
+  }, []);
 
   const validate = () => {
     const newErrors: FormErrors = {};
@@ -198,9 +196,10 @@ const Contact = () => {
       resetForm();
 
       setTimeout(() => setSuccess(false), 4000);
-    } catch {
+    } catch (err) {
+      console.error("EmailJS Error:", err);
       toast("Failed to send", {
-        description: "Please try again later."
+        description: "Please try again later. Error: " + (err instanceof Error ? err.message : "Unknown error")
       });
     } finally {
       setIsSubmitting(false);

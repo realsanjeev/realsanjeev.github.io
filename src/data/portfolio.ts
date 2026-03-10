@@ -1,4 +1,12 @@
+export interface SkillItem {
+    name: string;
+    value: string;
+}
 
+export interface SkillCategory {
+    category: string;
+    items: string[] | SkillItem[];
+}
 export interface Experience {
     title: string;
     company: string;
@@ -227,7 +235,7 @@ export const PUBLICATIONS: Publication[] = [
     }
 ];
 
-export const SKILLS = [
+export const SKILLS: SkillCategory[] = [
     {
         category: "Research Interests",
         items: ['Natural Language Processing', 'Computer Vision', 'Large Language Models', 'PEFT Techniques', 'AI Safety', 'Deep Learning']
