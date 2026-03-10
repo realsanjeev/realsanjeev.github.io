@@ -136,7 +136,7 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Button variant="outline" size="sm" className="hover:bg-emerald-50 hover:border-emerald-300">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-700 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700">
                           <FiFileText className="mr-2 h-4 w-4" />
                           PDF
                         </Button>
@@ -148,7 +148,7 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Button variant="outline" size="sm" className="hover:bg-gray-900 hover:text-white hover:border-gray-900">
+                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900">
                           {project.type === 'internship' ? (
                             <>
                               <FiLink className="mr-2 h-4 w-4" />
@@ -225,10 +225,10 @@ const Projects = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-shrink-0 p-3 bg-gray-50 hover:bg-gray-900 hover:text-white rounded-xl transition-all duration-200 group-hover:-translate-y-1"
+                      className="flex-shrink-0 p-3 bg-gray-100 hover:bg-gray-900 hover:text-white rounded-xl transition-all duration-200 group-hover:-translate-y-1"
                       aria-label={`View ${project.name} on GitHub`}
                     >
-                      <FiArrowRight className="h-5 w-5" />
+                      <FiArrowRight className="h-5 w-5 text-gray-600 hover:text-white" />
                     </a>
                   </div>
                 </div>
