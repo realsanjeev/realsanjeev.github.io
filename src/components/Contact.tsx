@@ -81,7 +81,7 @@ const Contact = () => {
 
     const firstInput = formRef.current?.querySelector("input");
     firstInput?.focus();
-  }, []);
+  }, [emailJsPublicKey]);
 
   const validate = () => {
     const newErrors: FormErrors = {};
