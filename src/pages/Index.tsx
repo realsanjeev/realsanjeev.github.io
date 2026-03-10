@@ -44,11 +44,12 @@ const Index = () => {
         <meta name="twitter:description" content="Portfolio of Sanjeev Bhandari, ML Engineer." />
         <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/45820805?v=4" />
 
-        <script type="application/ld+json">
-          {JSON.stringify({
+        <script type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Sanjeev Bhandari",
+            "alternateName": "realsanjeev",
             "url": "https://realsanjeev.github.io",
             "jobTitle": "Machine Learning Engineer",
             "sameAs": [
@@ -58,12 +59,13 @@ const Index = () => {
               "https://medium.com/@sanjeev-bhandari",
               "https://huggingface.co/sanjeev-bhandari01"
             ],
+            "knowsAbout": ["Machine Learning", "Deep Learning", "Artificial Intelligence"],
             "worksFor": {
               "@type": "Organization",
               "name": "TAI Inc."
             }
-          })}
-        </script>
+          }) }}
+        />
       </Helmet>
       <Navigation />
       <main id="main-content">

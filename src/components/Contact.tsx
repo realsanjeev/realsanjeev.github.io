@@ -43,6 +43,8 @@ const Contact = () => {
   const emailJsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
   const emailJsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
 
+  const isEmailJsConfigured = emailJsPublicKey && emailJsServiceId && emailJsTemplateId;
+
   const socialLinks = [
     {
       name: "LinkedIn",
@@ -141,6 +143,13 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!isEmailJsConfigured) {
+      toast("Configuration Error", {
+        description: "Email service is not configured. Please contact the site administrator."
+      });
+      return;
+    }
 
     if (isSubmitting) return;
 

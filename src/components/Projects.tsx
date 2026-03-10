@@ -7,7 +7,7 @@ import { FaGraduationCap, FaProjectDiagram, FaList } from "react-icons/fa";
 type ProjectFilter = 'all' | 'major' | 'minor' | 'internship';
 
 const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
+  const [activeFilter, setActiveFilter] = useState<ProjectFilter>('major');
 
   const getProjectTypeConfig = (type?: string) => {
     switch (type) {
@@ -22,8 +22,8 @@ const Projects = () => {
     }
   };
 
-  const filteredProjects = activeFilter === 'all' 
-    ? MAJOR_PROJECTS 
+  const filteredProjects = activeFilter === 'all'
+    ? MAJOR_PROJECTS
     : MAJOR_PROJECTS.filter(project => project.type === activeFilter);
 
   const filterTabs: { id: ProjectFilter; label: string; icon: React.ReactNode }[] = [

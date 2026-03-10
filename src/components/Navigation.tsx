@@ -26,7 +26,7 @@ const Navigation = () => {
         });
       },
       {
-        rootMargin: '-20% 0px -79% 0px' // Triggers when element is near the top of the viewport
+        rootMargin: '-20% 0px -50% 0px' // Triggers when element is near the top of the viewport
       }
     );
 
