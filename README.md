@@ -107,6 +107,7 @@ Make sure to replace `{your-username}` and `{your-repo-name}` accordingly.
 * [Vite](https://vitejs.dev/)
 * [React](https://reactjs.org/)
 * [TypeScript](https://www.typescriptlang.org/)
+- [React Font icons](https://react-icons.github.io/react-icons/)
 * [GitHub Actions](https://docs.github.com/en/actions)
 * [GitHub Pages](https://pages.github.com/)
 * [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)

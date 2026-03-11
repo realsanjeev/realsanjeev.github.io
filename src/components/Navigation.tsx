@@ -19,18 +19,16 @@ const Navigation = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        // Find the first visible section (topmost one in viewport)
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-
-        if (visibleSections.length > 0) {
-          const currentActive = `#${visibleSections[0].target.id}`;
-          setActiveSection(currentActive);
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionId = `#${entry.target.id}`;
+            setActiveSection(sectionId);
+          }
+        });
       },
       {
-        rootMargin: '-20% 0px -35% 0px' // Triggers when element is in the upper portion of viewport
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
       }
     );
 
