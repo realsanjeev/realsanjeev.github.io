@@ -64,15 +64,15 @@ const Projects = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-slate-50" id="projects">
+    <section className="py-24 bg-gradient-to-b from-background to-muted" id="projects">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
             Featured <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Projects</span>
           </h2>
           <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
-          <p className="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
             A collection of my academic and research projects showcasing ML and software development skills
           </p>
         </div>
@@ -86,7 +86,7 @@ const Projects = () => {
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                 activeFilter === tab.id
                   ? 'bg-gradient-to-r from-emerald-600 to-cyan-600 text-white shadow-lg shadow-emerald-500/25'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-emerald-300 hover:bg-emerald-50'
+                  : 'bg-card text-foreground border border-border hover:border-emerald-500/50 hover:bg-emerald-500/10'
               }`}
             >
               {tab.icon}
@@ -104,11 +104,11 @@ const Projects = () => {
             return (
               <div
                 key={index}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+                className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Project Image */}
                 {project.image && (
-                  <div className="relative h-48 overflow-hidden bg-gray-100">
+                  <div className="relative h-48 overflow-hidden bg-muted">
                     <img
                       src={project.image}
                       alt={`${project.name} - ${project.description}`}
@@ -132,11 +132,11 @@ const Projects = () => {
                   </div>
 
                   {/* Project Name */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-emerald-600 transition-colors">
                     {project.name}
                   </h3>
 
-                  <p className="text-sm text-gray-500 mb-4">{project.description}</p>
+                  <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
 
                   {/* Tech Tags */}
                   {project.tags && project.tags.length > 0 && (
@@ -144,7 +144,7 @@ const Projects = () => {
                       {project.tags.map((tag, idx) => (
                         <span
                           key={idx}
-                          className="px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium"
+                          className="px-2.5 py-1 bg-muted text-muted-foreground rounded-md text-xs font-medium"
                         >
                           {tag}
                         </span>
@@ -153,7 +153,7 @@ const Projects = () => {
                   )}
 
                   {/* Description */}
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3">
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3">
                     {project.detailedDescription}
                   </p>
 
@@ -166,7 +166,7 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-700 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700">
+                        <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-emerald-500/10 hover:border-emerald-500/50 hover:text-emerald-600">
                           <FiFileText className="mr-2 h-4 w-4" />
                           PDF
                         </Button>
@@ -178,7 +178,7 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900">
+                        <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-foreground hover:text-background hover:border-foreground">
                           {project.type === 'internship' ? (
                             <>
                               <FiLink className="mr-2 h-4 w-4" />
@@ -203,10 +203,10 @@ const Projects = () => {
         {/* GitHub Projects Section */}
         <div>
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-gray-900 rounded-lg text-white">
+            <div className="p-2 bg-foreground rounded-lg text-background">
               <FiGithub className="h-5 w-5" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900">More on GitHub</h3>
+            <h3 className="text-2xl font-bold text-foreground">More on GitHub</h3>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -217,7 +217,7 @@ const Projects = () => {
               return (
                 <div
                   key={idx}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl hover:border-gray-200 transition-all duration-300"
+                  className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-xl hover:border-border/50 transition-all duration-300"
                 >
                   {/* Gradient Header with Language Icon */}
                   <div className={`relative h-24 bg-gradient-to-r ${gradient} p-6`}>
@@ -233,10 +233,10 @@ const Projects = () => {
                   </div>
 
                   <div className="p-6">
-                    <h4 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                    <h4 className="text-lg font-bold text-foreground mb-2 group-hover:text-emerald-600 transition-colors">
                       {project.name}
                     </h4>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                       {project.description}
                     </p>
                     {/* Tech Tags */}
@@ -245,7 +245,7 @@ const Projects = () => {
                         {project.tags.map((tag, tagIdx) => (
                           <span
                             key={tagIdx}
-                            className="px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium"
+                            className="px-2.5 py-1 bg-muted text-muted-foreground rounded-md text-xs font-medium"
                           >
                             {tag}
                           </span>

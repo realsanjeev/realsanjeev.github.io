@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
+import { ModeToggle } from '@/components/ui/mode-toggle';
 import { SOCIAL_LINKS } from '@/constants';
 
 const Navigation = () => {
@@ -18,7 +19,7 @@ const Navigation = () => {
 
   const getActiveSection = useCallback(() => {
     const scrollPosition = window.scrollY + 150;
-    
+
     for (const id of sectionIds) {
       const section = document.getElementById(id);
       if (section) {
@@ -72,12 +73,12 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200/50 z-50 shadow-sm" role="navigation" aria-label="Main navigation">
+    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50 shadow-sm" role="navigation" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#" className="group" aria-label="Home">
-            <span className="text-2xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-clip-text text-transparent">
               SB
             </span>
           </a>
@@ -91,8 +92,8 @@ const Navigation = () => {
                 onClick={() => handleNavClick(item.href)}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors group ${
                   activeSection === item.href
-                    ? 'text-gray-900'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'text-foreground'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
                 aria-current={activeSection === item.href ? 'page' : undefined}
               >
@@ -106,15 +107,16 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Social Links - Desktop */}
-          <div className="hidden md:flex items-center space-x-3">
+          {/* Theme Toggle & Social Links - Desktop */}
+          <div className="hidden md:flex items-center space-x-2">
+            <ModeToggle />
             {SOCIAL_LINKS.slice(0, 3).map((social) => (
               <a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-2 text-gray-700 hover:text-gray-900 rounded-lg transition-all duration-200 hover:bg-gray-100 ${social.color}`}
+                className={`p-2 text-muted-foreground hover:text-foreground rounded-lg transition-all duration-200 hover:bg-accent ${social.color}`}
                 aria-label={social.ariaLabel}
               >
                 <social.icon className="h-5 w-5" />
@@ -141,17 +143,17 @@ const Navigation = () => {
             {/* Animated Hamburger Icon */}
             <div className="w-5 h-5 relative">
               <span
-                className={`absolute h-0.5 w-5 bg-gray-600 rounded-full transition-all duration-300 ease-in-out ${
+                className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
                   isMenuOpen ? 'rotate-45 top-2' : 'top-0.5'
                 }`}
               />
               <span
-                className={`absolute h-0.5 w-5 bg-gray-600 rounded-full transition-all duration-300 ease-in-out ${
+                className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
                   isMenuOpen ? 'opacity-0' : 'opacity-100 top-2'
                 }`}
               />
               <span
-                className={`absolute h-0.5 w-5 bg-gray-600 rounded-full transition-all duration-300 ease-in-out ${
+                className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
                   isMenuOpen ? '-rotate-45 top-2' : 'top-3.5'
                 }`}
               />
@@ -161,7 +163,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-6 border-t border-gray-100 animate-in slide-in-from-top-2 duration-200">
+          <div className="md:hidden py-6 border-t border-border animate-in slide-in-from-top-2 duration-200">
             <div className="space-y-2">
               {navItems.map((item) => (
                 <a
@@ -170,29 +172,29 @@ const Navigation = () => {
                   onClick={() => handleNavClick(item.href)}
                   className={`block px-4 py-3 rounded-lg transition-colors font-medium ${
                     activeSection === item.href
-                      ? 'text-emerald-600 bg-emerald-50'
-                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+                      ? 'text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                   }`}
                   aria-current={activeSection === item.href ? 'page' : undefined}
                 >
                   {item.name}
                 </a>
               ))}
-              <div className="flex items-center space-x-3 px-4 pt-4 border-t border-gray-100 mt-4">
+              <div className="flex items-center space-x-3 px-4 pt-4 border-t border-border mt-4">
                 {SOCIAL_LINKS.slice(0, 3).map((social) => (
                   <a
                     key={social.name}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-2 text-gray-700 hover:text-gray-900 transition-colors hover:bg-gray-100 rounded-lg ${social.color}`}
+                    className={`p-2 text-muted-foreground hover:text-foreground transition-colors hover:bg-accent rounded-lg ${social.color}`}
                     aria-label={social.ariaLabel}
                   >
                     <social.icon className="h-5 w-5" />
                   </a>
                 ))}
               </div>
-            </div>
+            </div>+
           </div>
         )}
       </div>

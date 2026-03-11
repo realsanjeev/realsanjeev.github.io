@@ -14,7 +14,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-white relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
@@ -32,7 +32,7 @@ const NotFound = () => {
         <h1 className="text-4xl sm:text-5xl font-bold mb-4">
           Page Not Found
         </h1>
-        
+
         <p className="text-xl text-gray-300 mb-8 leading-relaxed">
           Oops! The page you're looking for doesn't exist or has been moved.
         </p>
