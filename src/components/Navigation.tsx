@@ -19,19 +19,18 @@ const Navigation = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        let currentActive = '';
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            currentActive = `#${entry.target.id}`;
-          }
-        });
-        // Only update if we found an intersecting section
-        if (currentActive) {
+        // Find the first visible section (topmost one in viewport)
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleSections.length > 0) {
+          const currentActive = `#${visibleSections[0].target.id}`;
           setActiveSection(currentActive);
         }
       },
       {
-        rootMargin: '-20% 0px -50% 0px' // Triggers when element is near the top of the viewport
+        rootMargin: '-20% 0px -35% 0px' // Triggers when element is in the upper portion of viewport
       }
     );
 
@@ -118,7 +117,7 @@ const Navigation = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-2 text-gray-500 rounded-lg transition-all duration-200 ${social.color}`}
+                className={`p-2 text-gray-700 hover:text-gray-900 rounded-lg transition-all duration-200 hover:bg-gray-100 ${social.color}`}
                 aria-label={social.ariaLabel}
               >
                 <social.icon className="h-5 w-5" />
@@ -189,7 +188,7 @@ const Navigation = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-2 text-gray-500 transition-colors ${social.color}`}
+                    className={`p-2 text-gray-700 hover:text-gray-900 transition-colors hover:bg-gray-100 rounded-lg ${social.color}`}
                     aria-label={social.ariaLabel}
                   >
                     <social.icon className="h-5 w-5" />

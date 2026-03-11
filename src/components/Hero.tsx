@@ -68,18 +68,18 @@ const Hero = () => {
 
             {/* Social Links */}
             <div className="flex items-center gap-3 pt-4" role="list" aria-label="Social media profiles">
-              <span className="text-sm text-gray-500 mr-2">Find me on</span>
+              <span className="text-sm text-gray-700 font-medium mr-2">Find me on</span>
               {SOCIAL_LINKS.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2.5 bg-gray-100 rounded-lg transition-all duration-200 hover:-translate-y-0.5 ${social.color}`}
+                  className={`p-2.5 bg-gray-200 rounded-lg transition-all duration-200 hover:-translate-y-0.5 group ${social.color}`}
                   aria-label={social.ariaLabel}
                   role="listitem"
                 >
-                  <social.icon className="h-5 w-5" />
+                  <social.icon className="h-5 w-5 text-gray-700 group-hover:text-inherit" />
                 </a>
               ))}
             </div>
