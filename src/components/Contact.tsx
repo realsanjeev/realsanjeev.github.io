@@ -292,7 +292,7 @@ const Contact = () => {
                   placeholder="Name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={errors.name ? "border-red-500 focus-visible:ring-red-500" : "bg-white/5 border-white/10 text-white placeholder:text-gray-400 focus-visible:ring-emerald-500"}
+                  className={errors.name ? "border-red-500 focus-visible:ring-red-500" : "bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-emerald-500 focus-visible:border-emerald-500"}
                 />
                 {errors.name && (
                   <p className="text-red-400 text-xs flex items-center gap-1 mt-1">
@@ -308,7 +308,7 @@ const Contact = () => {
                   placeholder="Email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={errors.email ? "border-red-500 focus-visible:ring-red-500" : "bg-white/5 border-white/10 text-white placeholder:text-gray-400 focus-visible:ring-emerald-500"}
+                  className={errors.email ? "border-red-500 focus-visible:ring-red-500" : "bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-emerald-500 focus-visible:border-emerald-500"}
                 />
                 {errors.email && (
                   <p className="text-red-400 text-xs flex items-center gap-1 mt-1">
@@ -324,7 +324,7 @@ const Contact = () => {
                 placeholder="Subject"
                 value={formData.subject}
                 onChange={handleChange}
-                className={errors.subject ? "border-red-500 focus-visible:ring-red-500" : "bg-white/5 border-white/10 text-white placeholder:text-gray-400 focus-visible:ring-emerald-500"}
+                className={errors.subject ? "border-red-500 focus-visible:ring-red-500" : "bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-emerald-500 focus-visible:border-emerald-500"}
               />
               {errors.subject && (
                 <p className="text-red-400 text-xs flex items-center gap-1 mt-1">
@@ -340,7 +340,7 @@ const Contact = () => {
                 placeholder="Your message..."
                 value={formData.message}
                 onChange={handleChange}
-                className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/5 border text-base sm:text-sm ${errors.message ? "border-red-500 focus-visible:ring-red-500" : "border-white/10 focus-visible:ring-emerald-500"} text-white placeholder:text-gray-400 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 resize-none`}
+                className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-base sm:text-sm text-white placeholder:text-gray-400 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 resize-none transition-colors`}
               />
               {errors.message && (
                 <p className="text-red-400 text-xs flex items-center gap-1 mt-1">
@@ -352,7 +352,7 @@ const Contact = () => {
             <Button
               disabled={isSubmitting}
               type="submit"
-              className="w-full py-5 sm:py-6 text-sm sm:text-base rounded-xl"
+              className="w-full py-5 sm:py-6 text-sm sm:text-base rounded-xl bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white font-medium shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-lg"
             >
               {isSubmitting ? (
                 <>
