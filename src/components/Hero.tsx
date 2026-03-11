@@ -1,8 +1,7 @@
 
 import React from 'react';
 import { FiMail, FiDownload } from 'react-icons/fi';
-import { FaLinkedinIn, FaGithub, FaXTwitter, FaMedium } from 'react-icons/fa6';
-import { SiHuggingface } from 'react-icons/si';
+import { SOCIAL_LINKS } from '@/constants';
 
 const Hero = () => {
   return (
@@ -70,56 +69,19 @@ const Hero = () => {
             {/* Social Links */}
             <div className="flex items-center gap-3 pt-4" role="list" aria-label="Social media profiles">
               <span className="text-sm text-gray-500 mr-2">Find me on</span>
-              <a
-                href="https://linkedin.com/in/realsanjeev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 text-gray-600 hover:text-white hover:bg-blue-600 bg-gray-100 hover:bg-blue-600 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
-                aria-label="LinkedIn Profile"
-                role="listitem"
-              >
-                <FaLinkedinIn className="h-5 w-5" />
-              </a>
-              <a
-                href="https://github.com/realsanjeev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 text-gray-600 hover:text-white hover:bg-gray-900 bg-gray-100 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
-                aria-label="GitHub Profile"
-                role="listitem"
-              >
-                <FaGithub className="h-5 w-5" />
-              </a>
-              <a
-                href="https://x.com/realsanjeev2"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 text-gray-600 hover:text-white hover:bg-gray-900 bg-gray-100 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
-                aria-label="Twitter/X Profile"
-                role="listitem"
-              >
-                <FaXTwitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://medium.com/@sanjeev-bhandari"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 text-gray-600 hover:text-white hover:bg-green-600 bg-gray-100 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
-                aria-label="Medium Profile"
-                role="listitem"
-              >
-                <FaMedium className="h-5 w-5" />
-              </a>
-              <a
-                href="https://huggingface.co/sanjeev-bhandari01"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 text-gray-600 hover:text-white hover:bg-yellow-500 bg-gray-100 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
-                aria-label="Hugging Face Profile"
-                role="listitem"
-              >
-                <SiHuggingface className="h-5 w-5" />
-              </a>
+              {SOCIAL_LINKS.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2.5 bg-gray-100 rounded-lg transition-all duration-200 hover:-translate-y-0.5 ${social.color}`}
+                  aria-label={social.ariaLabel}
+                  role="listitem"
+                >
+                  <social.icon className="h-5 w-5" />
+                </a>
+              ))}
             </div>
           </div>
 

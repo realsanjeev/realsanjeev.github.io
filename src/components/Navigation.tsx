@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { FaLinkedinIn, FaGithub, FaXTwitter } from 'react-icons/fa6';
+import { SOCIAL_LINKS } from '@/constants';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -112,33 +112,18 @@ const Navigation = () => {
 
           {/* Social Links - Desktop */}
           <div className="hidden md:flex items-center space-x-3">
-            <a
-              href="https://linkedin.com/in/realsanjeev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
-              aria-label="LinkedIn Profile"
-            >
-              <FaLinkedinIn className="h-5 w-5" />
-            </a>
-            <a
-              href="https://github.com/realsanjeev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
-              aria-label="GitHub Profile"
-            >
-              <FaGithub className="h-5 w-5" />
-            </a>
-            <a
-              href="https://x.com/realsanjeev2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
-              aria-label="Twitter/X Profile"
-            >
-              <FaXTwitter className="h-5 w-5" />
-            </a>
+            {SOCIAL_LINKS.slice(0, 3).map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-2 text-gray-500 rounded-lg transition-all duration-200 ${social.color}`}
+                aria-label={social.ariaLabel}
+              >
+                <social.icon className="h-5 w-5" />
+              </a>
+            ))}
             <a
               href="#contact"
               onClick={() => handleNavClick('#contact')}
@@ -198,33 +183,18 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="flex items-center space-x-3 px-4 pt-4 border-t border-gray-100 mt-4">
-                <a
-                  href="https://linkedin.com/in/realsanjeev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-gray-500 hover:text-blue-600"
-                  aria-label="LinkedIn Profile"
-                >
-                  <FaLinkedinIn className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://github.com/realsanjeev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-gray-500 hover:text-gray-900"
-                  aria-label="GitHub Profile"
-                >
-                  <FaGithub className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://x.com/realsanjeev2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-gray-500 hover:text-gray-900"
-                  aria-label="Twitter/X Profile"
-                >
-                  <FaXTwitter className="h-5 w-5" />
-                </a>
+                {SOCIAL_LINKS.slice(0, 3).map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-2 ${social.color}`}
+                    aria-label={social.ariaLabel}
+                  >
+                    <social.icon className="h-5 w-5" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>

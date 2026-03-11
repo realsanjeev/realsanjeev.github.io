@@ -6,8 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { FiMail, FiSend, FiMapPin, FiLoader, FiAlertCircle, FiCheck } from "react-icons/fi";
-import { SiHuggingface } from "react-icons/si";
-import { FaGithub, FaXTwitter, FaLinkedinIn, FaMedium } from "react-icons/fa6";
+import { SOCIAL_LINKS, type SocialLink } from "@/constants";
 
 import { toast } from "@/components/ui/sonner";
 
@@ -39,44 +38,21 @@ const Contact = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Contact-specific styling for social links (dark background)
+  const contactSocialLinks: Omit<SocialLink, 'url' | 'icon' | 'ariaLabel'>[] = SOCIAL_LINKS.map(link => ({
+    ...link,
+    color: link.name === "LinkedIn" ? "hover:bg-blue-600 hover:text-white hover:border-blue-600" :
+      link.name === "GitHub" ? "hover:bg-gray-900 hover:text-white hover:border-gray-900" :
+        link.name === "Twitter/X" ? "hover:bg-gray-900 hover:text-white hover:border-gray-900" :
+          link.name === "Medium" ? "hover:bg-green-600 hover:text-white hover:border-green-600" :
+            "hover:bg-yellow-500 hover:text-white hover:border-yellow-500"
+  }));
+
   const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
   const emailJsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
   const emailJsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
 
   const isEmailJsConfigured = emailJsPublicKey && emailJsServiceId && emailJsTemplateId;
-
-  const socialLinks = [
-    {
-      name: "LinkedIn",
-      url: "https://linkedin.com/in/realsanjeev",
-      icon: FaLinkedinIn,
-      color: "hover:bg-blue-600 hover:text-white hover:border-blue-600"
-    },
-    {
-      name: "GitHub",
-      url: "https://github.com/realsanjeev",
-      icon: FaGithub,
-      color: "hover:bg-gray-900 hover:text-white hover:border-gray-900"
-    },
-    {
-      name: "Twitter/X",
-      url: "https://x.com/realsanjeev2",
-      icon: FaXTwitter,
-      color: "hover:bg-gray-900 hover:text-white hover:border-gray-900"
-    },
-    {
-      name: "Medium",
-      url: "https://medium.com/@sanjeev-bhandari",
-      icon: FaMedium,
-      color: "hover:bg-green-600 hover:text-white hover:border-green-600"
-    },
-    {
-      name: "Hugging Face",
-      url: "https://huggingface.co/sanjeev-bhandari01",
-      icon: SiHuggingface,
-      color: "hover:bg-yellow-500 hover:text-white hover:border-yellow-500"
-    }
-  ];
 
   useEffect(() => {
     const firstInput = formRef.current?.querySelector("input");
@@ -247,7 +223,7 @@ const Contact = () => {
             </div>
 
             <div className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-3">
-              {socialLinks.map((social) => (
+              {contactSocialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
@@ -308,7 +284,7 @@ const Contact = () => {
               className="hidden"
             />
 
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
 
               <div>
                 <Input
@@ -364,7 +340,7 @@ const Contact = () => {
                 placeholder="Your message..."
                 value={formData.message}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${errors.message ? "border-red-500 focus-visible:ring-red-500" : "border-white/10 focus-visible:ring-emerald-500"} text-white placeholder:text-gray-400 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 resize-none`}
+                className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/5 border text-base sm:text-sm ${errors.message ? "border-red-500 focus-visible:ring-red-500" : "border-white/10 focus-visible:ring-emerald-500"} text-white placeholder:text-gray-400 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 resize-none`}
               />
               {errors.message && (
                 <p className="text-red-400 text-xs flex items-center gap-1 mt-1">
@@ -376,7 +352,7 @@ const Contact = () => {
             <Button
               disabled={isSubmitting}
               type="submit"
-              className="w-full py-6 rounded-xl"
+              className="w-full py-5 sm:py-6 text-sm sm:text-base rounded-xl"
             >
               {isSubmitting ? (
                 <>
