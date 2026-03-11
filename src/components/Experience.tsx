@@ -47,12 +47,14 @@ const Experience = () => {
                           />
                         </div>
                       )}
-                      <div>
+                      <div className="flex-1">
                         <h3 className="text-xl font-bold text-gray-900">{exp.title}</h3>
-                        <p className="text-emerald-600 font-semibold">{exp.company}</p>
-                        <span className="inline-block mt-1 px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
-                          {exp.period}
-                        </span>
+                        <div className="flex items-center justify-between gap-4 mt-1">
+                          <p className="text-emerald-600 font-semibold">{exp.company}</p>
+                          <span className="px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full whitespace-nowrap">
+                            {exp.period}
+                          </span>
+                        </div>
                       </div>
                     </div>
 
