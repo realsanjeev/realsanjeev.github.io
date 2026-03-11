@@ -209,25 +209,25 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
+      className="py-16 sm:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
             Let's{" "}
             <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
               Connect
             </span>
           </h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
-          <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
+          <div className="w-16 sm:w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
+          <p className="text-base sm:text-xl text-gray-300 mt-4 sm:mt-6 max-w-3xl mx-auto px-2">
             I'm always interested in discussing new opportunities, research collaborations,
             or just chatting about the latest developments in AI and machine learning.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
           {/* LEFT COLUMN */}
 
@@ -235,53 +235,53 @@ const Contact = () => {
 
             <a
               href="mailto:075bei033.sanjeev@pcampus.edu.np"
-              className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors"
+              className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors"
             >
-              <FiMail className="w-5 h-5 text-emerald-400" />
-              <span>075bei033.sanjeev@pcampus.edu.np</span>
+              <FiMail className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+              <span className="text-sm sm:text-base break-all">075bei033.sanjeev@pcampus.edu.np</span>
             </a>
 
-            <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10">
-              <FiMapPin className="w-5 h-5 text-emerald-400" />
-              <span>Kathmandu, Nepal</span>
+            <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
+              <FiMapPin className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+              <span className="text-sm sm:text-base">Kathmandu, Nepal</span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10 ${social.color} transition-all duration-200 hover:scale-105`}
+                  className={`p-2 sm:p-3 md:p-4 bg-white/5 rounded-xl border border-white/10 ${social.color} transition-all duration-200 hover:scale-105`}
                 >
-                  <social.icon className="mx-auto h-5 w-5" />
+                  <social.icon className="mx-auto h-4 w-4 sm:h-5 sm:w-5" />
                 </a>
               ))}
             </div>
 
             {/* Areas of Interest */}
-            <div className="p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-              <h4 className="text-lg font-semibold mb-4">Open to</h4>
-              <ul className="space-y-2 text-gray-300">
+            <div className="p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Open to</h4>
+              <ul className="space-y-2 text-gray-300 text-sm sm:text-base">
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
                   Research collaborations in AI/ML
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
                   Speaking opportunities at conferences
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
                   Consulting on ML projects
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
                   Open source contributions
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
                   Mentoring and knowledge sharing
                 </li>
               </ul>
@@ -295,7 +295,7 @@ const Contact = () => {
             ref={formRef}
             onSubmit={handleSubmit}
             autoComplete="off"
-            className="space-y-4 p-6 bg-white/5 rounded-2xl border border-white/10"
+            className="space-y-4 p-4 sm:p-6 bg-white/5 rounded-2xl border border-white/10"
           >
 
             {/* honeypot */}

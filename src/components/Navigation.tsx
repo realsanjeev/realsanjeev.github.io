@@ -19,11 +19,16 @@ const Navigation = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        let currentActive = '';
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(`#${entry.target.id}`);
+            currentActive = `#${entry.target.id}`;
           }
         });
+        // Only update if we found an intersecting section
+        if (currentActive) {
+          setActiveSection(currentActive);
+        }
       },
       {
         rootMargin: '-20% 0px -50% 0px' // Triggers when element is near the top of the viewport
