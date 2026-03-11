@@ -189,7 +189,7 @@ const Navigation = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-2 ${social.color}`}
+                    className={`p-2 text-gray-500 transition-colors ${social.color}`}
                     aria-label={social.ariaLabel}
                   >
                     <social.icon className="h-5 w-5" />

@@ -39,7 +39,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Contact-specific styling for social links (dark background)
-  const contactSocialLinks: Omit<SocialLink, 'url' | 'icon' | 'ariaLabel'>[] = SOCIAL_LINKS.map(link => ({
+  const contactSocialLinks: SocialLink[] = SOCIAL_LINKS.map(link => ({
     ...link,
     color: link.name === "LinkedIn" ? "hover:bg-blue-600 hover:text-white hover:border-blue-600" :
       link.name === "GitHub" ? "hover:bg-gray-900 hover:text-white hover:border-gray-900" :
