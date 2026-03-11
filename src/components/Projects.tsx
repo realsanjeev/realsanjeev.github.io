@@ -2,9 +2,39 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FiFileText, FiGithub, FiLink, FiArrowRight } from "react-icons/fi";
 import { MAJOR_PROJECTS, GITHUB_PROJECTS } from "@/data/portfolio";
-import { FaGraduationCap, FaProjectDiagram, FaList } from "react-icons/fa";
+import { FaGraduationCap, FaProjectDiagram, FaList, FaPython, FaJava, FaPenNib, FaTeamspeak, FaGamepad, FaBorderStyle, FaCameraRetro } from "react-icons/fa";
+import { SiPytorch, SiTensorflow, SiJavascript, SiRust, SiImmersivetranslate } from "react-icons/si";
 
 type ProjectFilter = 'all' | 'major' | 'minor' | 'internship';
+
+const getLanguageIcon = (tag: string) => {
+  const normalizedTag = tag.toLowerCase();
+  if (normalizedTag === 'python') return <FaPython className="h-5 w-5" />;
+  if (normalizedTag === 'pytorch') return <SiPytorch className="h-5 w-5" />;
+  if (normalizedTag === 'tensorflow') return <SiTensorflow className="h-5 w-5" />;
+  if (normalizedTag.includes('javascript')) return <SiJavascript className="h-5 w-5" />;
+  if (normalizedTag === 'java') return <FaJava className="h-5 w-5" />;
+  if (normalizedTag === 'rust') return <SiRust className="h-5 w-5" />;
+  if (normalizedTag == 'translation') return <SiImmersivetranslate className="h-5 w-5" />;
+  if (normalizedTag == 'writer') return <FaPenNib className="h-5 w-5" />;
+  if (normalizedTag == 'whisper') return <FaTeamspeak className="h-5 w-5" />;
+  if (normalizedTag == 'game ai') return <FaGamepad className="h-5 w-5" />;
+  if (normalizedTag == 'computer vision') return <FaBorderStyle className="h-5 w-5" />;
+  if (normalizedTag == 'sam') return <FaCameraRetro className="h-5 w-5" />;
+  return <FiGithub className="h-5 w-5" />;
+};
+
+const getGradientForProject = (index: number) => {
+  const gradients = [
+    'from-blue-500 to-indigo-600',
+    'from-purple-500 to-pink-600',
+    'from-emerald-500 to-teal-600',
+    'from-orange-500 to-red-600',
+    'from-cyan-500 to-blue-600',
+    'from-violet-500 to-purple-600',
+  ];
+  return gradients[index % gradients.length];
+};
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
@@ -180,60 +210,61 @@ const Projects = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {GITHUB_PROJECTS.map((project, idx) => (
-              <div
-                key={idx}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl hover:border-gray-200 transition-all duration-300"
-              >
-                {/* Project Image */}
-                {project.image && (
-                  <div className="relative h-40 overflow-hidden bg-gray-100">
-                    <img
-                      src={project.image}
-                      alt={`${project.name} preview`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  </div>
-                )}
+            {GITHUB_PROJECTS.map((project, idx) => {
+              const gradient = getGradientForProject(idx);
+              const primaryTag = project.tags?.[0] || 'Code';
 
-                <div className="p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
-                        {project.name}
-                      </h4>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                        {project.description}
-                      </p>
-                      {/* Tech Tags */}
-                      {project.tags && project.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2">
-                          {project.tags.map((tag, tagIdx) => (
-                            <span
-                              key={tagIdx}
-                              className="px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+              return (
+                <div
+                  key={idx}
+                  className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl hover:border-gray-200 transition-all duration-300"
+                >
+                  {/* Gradient Header with Language Icon */}
+                  <div className={`relative h-24 bg-gradient-to-r ${gradient} p-6`}>
+                    <div className="absolute top-4 right-4 p-3 bg-white/20 backdrop-blur-sm rounded-xl text-white">
+                      {getLanguageIcon(primaryTag)}
                     </div>
+                    <div className="absolute bottom-4 left-6">
+                      <span className="inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
+                        <FiGithub className="mr-1.5 h-3.5 w-3.5" />
+                        GitHub Project
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h4 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                      {project.name}
+                    </h4>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      {project.description}
+                    </p>
+                    {/* Tech Tags */}
+                    {project.tags && project.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.map((tag, tagIdx) => (
+                          <span
+                            key={tagIdx}
+                            className="px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                     <a
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-shrink-0 p-3 bg-gray-100 hover:bg-gray-900 hover:text-white rounded-xl transition-all duration-200 group-hover:-translate-y-1"
-                      aria-label={`View ${project.name} on GitHub`}
+                      className="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:text-emerald-700 transition-colors"
                     >
-                      <FiArrowRight className="h-5 w-5 text-gray-600 hover:text-white" />
+                      View on GitHub
+                      <FiArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </a>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

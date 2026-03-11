@@ -130,32 +130,40 @@ export const MAJOR_PROJECTS: Project[] = [
 
 export const GITHUB_PROJECTS: Project[] = [
     {
+        name: "SAM2-GUI",
+        description: "Video object segmentation and tracking using the SAM2.1 model.",
+        url: "https://github.com/realsanjeev/sam2-gui",
+        tags: ["SAM", "Computer Vision", "Video Segmentation"]
+    },
+    {
         name: "Essay Writer Using Agent",
         description: "A blog-writing app that uses an autonomous agent to search the web and generate content, built with LangGraph.",
         url: "https://github.com/realsanjeev/Essay-writer-using-Agent",
-        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&h=400&fit=crop",
-        tags: ["LangGraph", "AI Agent", "Web Search"]
+        tags: ["Writer", "LangGraph", "AI Agent", "Web Search"]
     },
     {
         name: "OpenCV Object Detection",
         description: "Object detection using the Mediapipe library, along with a prototype app that enables drawing through hand gestures.",
         url: "https://github.com/realsanjeev/Object-Detection-using-OpenCV",
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop",
-        tags: ["OpenCV", "Mediapipe", "Computer Vision"]
+        tags: ["Computer Vision", "OpenCV", "Mediapipe"]
     },
     {
         name: "Real-Time Whisper Transcription",
         description: "A real-time transcription app powered by Whisper, useful for generating subtitles for live video content.",
         url: "https://github.com/realsanjeev/whisper-realtime-transcriber",
-        image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=400&fit=crop",
         tags: ["Whisper", "Speech-to-Text", "Real-time"]
     },
     {
         name: "Reinforcement Learning in Python Game",
         description: "An implementation of reinforcement learning applied to the classic Snake game, demonstrating AI gameplay.",
         url: "https://github.com/defyingdemonprogram/Reinforcement-Learning-in-Python-Game",
-        image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=600&h=400&fit=crop",
-        tags: ["Reinforcement Learning", "Python", "Game AI"]
+        tags: ["Game AI", "Reinforcement Learning", "Q-learning"]
+    },
+    {
+        name: "nepali_unicoder",
+        description: "A python library for converting Nepali Preeti text to Unicode and translating Roman text into Nepali.",
+        url: "https://github.com/realsanjeev/nepali_unicoder",
+        tags: ["Translation", "Nepali", "Unicode", "Text Conversion"]
     },
 ];
 
