@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { SOCIAL_LINKS } from '@/constants';
 
@@ -15,33 +14,33 @@ const Navigation = () => {
     { name: 'Contact', href: '#contact' }
   ];
 
-  // Scroll spy to highlight active section using Intersection Observer
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const sectionId = `#${entry.target.id}`;
-            setActiveSection(sectionId);
-          }
-        });
-      },
-      {
-        rootMargin: '-100px 0px -60% 0px',
-        threshold: 0
-      }
-    );
+  const sectionIds = ['about', 'experience', 'projects', 'blog', 'contact'];
 
-    const sectionIds = ['about', 'experience', 'projects', 'blog', 'contact'];
-    sectionIds.forEach((id) => {
+  const getActiveSection = useCallback(() => {
+    const scrollPosition = window.scrollY + 150;
+    
+    for (const id of sectionIds) {
       const section = document.getElementById(id);
       if (section) {
-        observer.observe(section);
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          return `#${id}`;
+        }
       }
-    });
-
-    return () => observer.disconnect();
+    }
+    return '';
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setActiveSection(getActiveSection());
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [getActiveSection]);
 
   // Close menu on Escape key
   useEffect(() => {
