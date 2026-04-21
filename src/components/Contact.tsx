@@ -290,6 +290,7 @@ const Contact = () => {
                 <Input
                   name="name"
                   placeholder="Name"
+                  autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
                   className={errors.name ? "border-red-500 focus-visible:ring-red-500" : "bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-emerald-400 focus-visible:border-emerald-400"}
@@ -306,6 +307,7 @@ const Contact = () => {
                   name="email"
                   type="email"
                   placeholder="Email"
+                  autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
                   className={errors.email ? "border-red-500 focus-visible:ring-red-500" : "bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-emerald-400 focus-visible:border-emerald-400"}

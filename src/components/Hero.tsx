@@ -17,10 +17,21 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-left space-y-8">
-            {/* Greeting Badge */}
-            <div className="inline-flex items-center px-4 py-2 bg-card/80 backdrop-blur-sm border border-border rounded-full shadow-sm">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2" />
-              <span className="text-sm font-medium text-muted-foreground">Available for opportunities</span>
+            {/* Badges */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center px-4 py-2 bg-card/80 backdrop-blur-sm border border-border rounded-full shadow-sm">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2" />
+                <span className="text-sm font-medium text-muted-foreground">Available for opportunities</span>
+              </div>
+              <a
+                href="https://realsanjeev.github.io/QuickTools"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 backdrop-blur-sm border border-emerald-500/20 rounded-full shadow-sm transition-all duration-200 group"
+              >
+                <span className="text-sm font-medium text-emerald-700 dark:text-emerald-400">Try QuickTools</span>
+                <span className="ml-1.5 text-emerald-600 group-hover:translate-x-0.5 transition-transform">↗</span>
+              </a>
             </div>
 
             {/* Name with Gradient */}
