@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://realsanjeev.github.io/sitemap.xml
+Sitemap: https://bhandarisanjeev.com.np/sitemap.xml
