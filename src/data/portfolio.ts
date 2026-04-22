@@ -122,7 +122,7 @@ export const MAJOR_PROJECTS: Project[] = [
         type: 'internship',
         description: "ML Internship",
         detailedDescription: "Developed and fine-tuned a BART-based model for abstractive summarization of Nepali news articles. Implemented and evaluated the Low-Rank Adaptation (LoRA) technique for parameter-efficient fine-tuning (PEFT) in a resource-constrained setting.",
-        url: "https://medium.com/@sanjeev-bhandari/nepali-text-summarization-2df72a8a3080",
+        url: "https://medium.com/@realsanjeev/nepali-text-summarization-2df72a8a3080",
         image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop",
         tags: ["NLP", "BART", "LoRA", "Nepali", "Transformers"]
     }
@@ -174,7 +174,7 @@ export const BLOG_POSTS: BlogPost[] = [
         date: "Feb 26, 2024",
         readTime: "7 min read",
         tags: ["Nepali NLP", "Transformer Models", "mBART", "Text Summarization", "Multilingual AI"],
-        url: "https://medium.com/@sanjeev-bhandari/nepali-text-summarization-2df72a8a3080",
+        url: "https://medium.com/@realsanjeev/nepali-text-summarization-2df72a8a3080",
         image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop"
     },
     {
@@ -183,7 +183,7 @@ export const BLOG_POSTS: BlogPost[] = [
         date: "Jul 6, 2024",
         readTime: "4 min read",
         tags: ["Model Merging", "SLERP", "TIES", "DARE", "Language Models", "AI Efficiency"],
-        url: "https://medium.com/@sanjeev-bhandari/model-merging-a-new-way-of-creating-model-e62e6d14ef97",
+        url: "https://medium.com/@realsanjeev/model-merging-a-new-way-of-creating-model-e62e6d14ef97",
         image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop"
     },
     {
@@ -192,7 +192,7 @@ export const BLOG_POSTS: BlogPost[] = [
         date: "May 23, 2025",
         readTime: "3 min read",
         tags: ["Python", "Rust", "PyO3", "Maturin", "Performance Optimization", "Machine Learning"],
-        url: "https://medium.com/@sanjeev-bhandari/supercharge-python-with-rust-building-fast-python-extensions-with-pyo3-and-maturin-da09306d97a8",
+        url: "https://medium.com/@realsanjeev/supercharge-python-with-rust-building-fast-python-extensions-with-pyo3-and-maturin-da09306d97a8",
         image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&h=400&fit=crop"
     },
     {
@@ -201,7 +201,7 @@ export const BLOG_POSTS: BlogPost[] = [
         date: "Nov 27, 2024",
         readTime: "4 min read",
         tags: ["C Programming", "Raylib", "Graphics Programming", "Fractals", "Recursive Algorithms"],
-        url: "https://medium.com/@sanjeev-bhandari/creating-the-snowflake-in-c-using-raylib-07a0c4fa5e17",
+        url: "https://medium.com/@realsanjeev/creating-the-snowflake-in-c-using-raylib-07a0c4fa5e17",
         image: "https://images.unsplash.com/photo-1703192163744-2f9cc399755f?w=600&h=400&fit=crop"
     }
 ];

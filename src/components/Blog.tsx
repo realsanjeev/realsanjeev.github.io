@@ -98,7 +98,7 @@ const Blog = () => {
         {/* CTA */}
         <div className="text-center mt-12">
           <a
-            href="https://medium.com/@sanjeev-bhandari"
+            href="https://medium.com/@realsanjeev"
             target="_blank"
             rel="noopener noreferrer"
           >

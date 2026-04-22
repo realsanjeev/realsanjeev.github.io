@@ -7,7 +7,7 @@ export const EMAIL = "075bei033.sanjeev@pcampus.edu.np";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/realsanjeev";
 export const GITHUB_URL = "https://github.com/realsanjeev";
 export const TWITTER_URL = "https://twitter.com/realsanjeev2";
-export const MEDIUM_URL = "https://medium.com/@sanjeev-bhandari";
+export const MEDIUM_URL = "https://medium.com/@realsanjeev";
 
 export interface SocialLink {
   name: string;
@@ -41,7 +41,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     name: "Medium",
-    url: "https://medium.com/@sanjeev-bhandari",
+    url: "https://medium.com/@realsanjeev",
     icon: FaMedium,
     color: "hover:text-white hover:bg-green-600",
     ariaLabel: "Medium Profile"
