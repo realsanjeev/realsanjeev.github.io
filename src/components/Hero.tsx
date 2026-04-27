@@ -1,5 +1,3 @@
-
-import React from 'react';
 import { FiMail, FiDownload } from 'react-icons/fi';
 import { SOCIAL_LINKS } from '@/constants';
 
@@ -69,7 +67,7 @@ const Hero = () => {
                 Get in Touch
               </a>
               <a
-                href="mailto:075bei033.sanjeev@pcampus.edu.np?subject=Request for CV&body=Hi Sanjeev,%0D%0A%0D%0AI'm interested in learning more about your background. Could you please share your CV?%0D%0A%0D%0AThanks!"
+                href="mailto:realsanjeev2@gmail.com?subject=Request for CV&body=Hi Sanjeev,%0D%0A%0D%0AI'm interested in learning more about your background. Could you please share your CV?%0D%0A%0D%0AThanks!"
                 className="inline-flex items-center px-6 py-3.5 text-base font-medium text-foreground bg-card hover:bg-accent border border-border rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
                 <FiDownload className="mr-2 h-5 w-5" />

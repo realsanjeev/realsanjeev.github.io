@@ -210,11 +210,11 @@ const Contact = () => {
           <div className="space-y-8">
 
             <a
-              href="mailto:075bei033.sanjeev@pcampus.edu.np"
+              href="mailto:realsanjeev2@gmail.com"
               className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors"
             >
               <FiMail className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-              <span className="text-sm sm:text-base break-all">075bei033.sanjeev@pcampus.edu.np</span>
+              <span className="text-sm sm:text-base break-all">realsanjeev2@gmail.com</span>
             </a>
 
             <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">

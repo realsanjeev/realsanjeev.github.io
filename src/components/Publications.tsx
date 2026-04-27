@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from '@/components/ui/button';
 import { FiFileText, FiLink } from 'react-icons/fi';
 import { PUBLICATIONS } from '@/data/portfolio';

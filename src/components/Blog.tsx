@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from '@/components/ui/button';
 import { FiLink, FiCalendar, FiClock, FiArrowUpRight } from 'react-icons/fi';
 import { BLOG_POSTS } from '@/data/portfolio';
