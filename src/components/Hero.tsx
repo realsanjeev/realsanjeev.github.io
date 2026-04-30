@@ -22,7 +22,7 @@ const Hero = () => {
                 <span className="text-sm font-medium text-muted-foreground">Available for opportunities</span>
               </div>
               <a
-                href="https://realsanjeev.github.io/QuickTools"
+                href="https://bhandarisanjeev.com.np/QuickTools/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 backdrop-blur-sm border border-emerald-500/20 rounded-full shadow-sm transition-all duration-200 group"
