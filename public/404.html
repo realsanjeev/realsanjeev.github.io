@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Sanjeev Bhandari | Machine Learning Engineer</title>
+    <title>Sanjeev Bhandari (@realsanjeev) | Machine Learning Engineer</title>
+    <link rel="canonical" href="https://bhandarisanjeev.com.np/" />
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       // https://github.com/rafgraph/spa-github-pages
@@ -14,8 +15,12 @@
       var pathSegmentsToKeep = 0;
 
       var l = window.location;
+      var preferredHostname = 'bhandarisanjeev.com.np';
+      var isGithubPages = l.hostname.includes('github.io');
+      var hostname = isGithubPages ? preferredHostname : l.hostname;
+
       l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.protocol + '//' + hostname + (l.port ? ':' + l.port : '') +
         l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?p=/' +
         l.pathname.split('/').slice(1 + pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
         (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
