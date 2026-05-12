@@ -175,7 +175,7 @@ export const BLOG_POSTS: BlogPost[] = [
         readTime: "7 min read",
         tags: ["Nepali NLP", "Transformer Models", "mBART", "Text Summarization", "Multilingual AI"],
         url: "https://medium.com/@realsanjeev/nepali-text-summarization-2df72a8a3080",
-        image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop"
+        image: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=600&h=400&fit=crop"
     },
     {
         title: "Model Merging: A new way of creating model",
@@ -184,7 +184,7 @@ export const BLOG_POSTS: BlogPost[] = [
         readTime: "4 min read",
         tags: ["Model Merging", "SLERP", "TIES", "DARE", "Language Models", "AI Efficiency"],
         url: "https://medium.com/@realsanjeev/model-merging-a-new-way-of-creating-model-e62e6d14ef97",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop"
+        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=400&fit=crop"
     },
     {
         title: "🦀 Supercharge Python with Rust: Building Fast Python Extensions with PyO3 and Maturin",
@@ -193,7 +193,7 @@ export const BLOG_POSTS: BlogPost[] = [
         readTime: "3 min read",
         tags: ["Python", "Rust", "PyO3", "Maturin", "Performance Optimization", "Machine Learning"],
         url: "https://medium.com/@realsanjeev/supercharge-python-with-rust-building-fast-python-extensions-with-pyo3-and-maturin-da09306d97a8",
-        image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&h=400&fit=crop"
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop"
     },
     {
         title: "Creating the SnowFlake In C using recursive method with raylib",
@@ -202,7 +202,7 @@ export const BLOG_POSTS: BlogPost[] = [
         readTime: "4 min read",
         tags: ["C Programming", "Raylib", "Graphics Programming", "Fractals", "Recursive Algorithms"],
         url: "https://medium.com/@realsanjeev/creating-the-snowflake-in-c-using-raylib-07a0c4fa5e17",
-        image: "https://images.unsplash.com/photo-1703192163744-2f9cc399755f?w=600&h=400&fit=crop"
+        image: "https://images.unsplash.com/photo-1485594050903-8e8ee7b071a8?w=600&h=400&fit=crop"
     }
 ];
 

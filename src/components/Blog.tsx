@@ -67,11 +67,11 @@ const Blog = () => {
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {post.tags.map((tag) => (
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {post.tags.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 rounded-full text-xs font-medium border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors cursor-default"
+                      className="px-2 py-0.5 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 rounded-md text-[11px] font-medium border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors cursor-default"
                     >
                       #{tag}
                     </span>

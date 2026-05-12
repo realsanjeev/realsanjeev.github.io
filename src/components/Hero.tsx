@@ -92,6 +92,28 @@ const Hero = () => {
                 </a>
               ))}
             </div>
+
+            {/* Open to Collaboration */}
+            <div className="pt-6 border-t border-border/60">
+              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block mb-3">Open to Collaboration</span>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "AI/ML Research",
+                  "Speaking at Conferences",
+                  "ML Consulting",
+                  "Open Source Contributions",
+                  "Mentoring & Knowledge Sharing"
+                ].map((item, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center px-3 py-1.5 bg-emerald-500/10 dark:bg-emerald-400/5 text-emerald-700 dark:text-emerald-300 text-xs font-medium rounded-lg border border-emerald-500/20 dark:border-emerald-500/10 hover:shadow-sm hover:scale-105 transition-all duration-200 cursor-default"
+                  >
+                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2" />
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Right Content - Hero Image/Illustration */}
