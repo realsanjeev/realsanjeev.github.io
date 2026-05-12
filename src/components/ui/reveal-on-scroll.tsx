@@ -8,10 +8,22 @@ interface RevealOnScrollProps {
 }
 
 export const RevealOnScroll = ({ children, className, delay = 0 }: RevealOnScrollProps) => {
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(() => {
+        if (typeof window !== "undefined") {
+            const isAutomation = 
+                window.navigator.webdriver || 
+                window.location.search.includes("screenshot") || 
+                (window as any).__PLAYWRIGHT__ ||
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            if (isAutomation) return true;
+        }
+        return false;
+    });
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        if (isVisible) return;
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -30,7 +42,7 @@ export const RevealOnScroll = ({ children, className, delay = 0 }: RevealOnScrol
         }
 
         return () => observer.disconnect();
-    }, []);
+    }, [isVisible]);
 
     return (
         <div

@@ -3,7 +3,7 @@ import { SOCIAL_LINKS } from '@/constants';
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen max-h-[1080px] flex items-center justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
@@ -26,8 +26,9 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 backdrop-blur-sm border border-emerald-500/20 rounded-full shadow-sm transition-all duration-200 group"
+                title="QuickTools: An interactive suite of web utility and productivity tools for developers"
               >
-                <span className="text-sm font-medium text-emerald-700 dark:text-emerald-400">Try QuickTools</span>
+                <span className="text-sm font-medium text-emerald-700 dark:text-emerald-400">Try QuickTools (Developer Web App)</span>
                 <span className="ml-1.5 text-emerald-600 group-hover:translate-x-0.5 transition-transform">↗</span>
               </a>
             </div>
@@ -91,6 +92,28 @@ const Hero = () => {
                   <social.icon className="h-5 w-5 text-muted-foreground group-hover:text-inherit" />
                 </a>
               ))}
+            </div>
+
+            {/* Open to Collaboration */}
+            <div className="pt-6 border-t border-border/60">
+              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block mb-3">Open to Collaboration</span>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "AI/ML Research",
+                  "Speaking at Conferences",
+                  "ML Consulting",
+                  "Open Source Contributions",
+                  "Mentoring & Knowledge Sharing"
+                ].map((item, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center px-3 py-1.5 bg-emerald-500/10 dark:bg-emerald-400/5 text-emerald-700 dark:text-emerald-300 text-xs font-medium rounded-lg border border-emerald-500/20 dark:border-emerald-500/10 hover:shadow-sm hover:scale-105 transition-all duration-200 cursor-default"
+                  >
+                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2" />
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
