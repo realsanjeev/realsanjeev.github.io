@@ -38,12 +38,12 @@ const Contact = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Contact-specific styling for social links (dark background)
+  // Contact-specific styling for social links (themed background)
   const contactSocialLinks: SocialLink[] = SOCIAL_LINKS.map(link => ({
     ...link,
     color: link.name === "LinkedIn" ? "hover:bg-blue-600 hover:text-white hover:border-blue-600" :
-      link.name === "GitHub" ? "hover:bg-gray-900 hover:text-white hover:border-gray-900" :
-        link.name === "Twitter/X" ? "hover:bg-gray-900 hover:text-white hover:border-gray-900" :
+      link.name === "GitHub" ? "hover:bg-gray-900 hover:text-white hover:border-gray-900 dark:hover:bg-white dark:hover:text-slate-950 dark:hover:border-white" :
+        link.name === "Twitter/X" ? "hover:bg-gray-900 hover:text-white hover:border-gray-900 dark:hover:bg-white dark:hover:text-slate-950 dark:hover:border-white" :
           link.name === "Medium" ? "hover:bg-green-600 hover:text-white hover:border-green-600" :
             "hover:bg-yellow-500 hover:text-white hover:border-yellow-500"
   }));
@@ -185,19 +185,19 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-16 sm:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-white"
+      className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted text-foreground border-t border-border"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
             Let's{" "}
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               Connect
             </span>
           </h2>
           <div className="w-16 sm:w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
-          <p className="text-base sm:text-xl text-gray-300 mt-4 sm:mt-6 max-w-3xl mx-auto px-2">
+          <p className="text-base sm:text-xl text-muted-foreground mt-4 sm:mt-6 max-w-3xl mx-auto px-2">
             I'm always interested in discussing new opportunities, research collaborations,
             or just chatting about the latest developments in AI and machine learning.
           </p>
@@ -211,15 +211,15 @@ const Contact = () => {
 
             <a
               href="mailto:realsanjeev2@gmail.com"
-              className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors"
+              className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl border border-border shadow-sm hover:shadow-md hover:bg-muted/50 transition-all duration-200"
             >
-              <FiMail className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-              <span className="text-sm sm:text-base break-all">realsanjeev2@gmail.com</span>
+              <FiMail className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              <span className="text-sm sm:text-base break-all text-foreground">realsanjeev2@gmail.com</span>
             </a>
 
-            <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
-              <FiMapPin className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-              <span className="text-sm sm:text-base">Kathmandu, Nepal</span>
+            <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl border border-border shadow-sm">
+              <FiMapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              <span className="text-sm sm:text-base text-foreground">Kathmandu, Nepal</span>
             </div>
 
             <div className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-3">
@@ -229,7 +229,7 @@ const Contact = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 sm:p-3 md:p-4 bg-white/5 rounded-xl border border-white/10 ${social.color} transition-all duration-200 hover:scale-105`}
+                  className={`p-2 sm:p-3 md:p-4 bg-card rounded-xl border border-border shadow-sm text-muted-foreground hover:text-foreground ${social.color} transition-all duration-200 hover:scale-105`}
                 >
                   <social.icon className="mx-auto h-4 w-4 sm:h-5 sm:w-5" />
                 </a>
@@ -237,23 +237,23 @@ const Contact = () => {
             </div>
 
             {/* Areas of Interest */}
-            <div className="p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Open to</h4>
-              <ul className="space-y-2 text-gray-300 text-sm sm:text-base">
+            <div className="p-4 sm:p-6 bg-card rounded-xl border border-border shadow-md">
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Open to</h4>
+              <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
                   Research collaborations in AI/ML
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
                   Speaking opportunities at conferences
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
                   Consulting on ML projects
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
                   Open source contributions
                 </li>
                 <li className="flex items-center gap-2">
@@ -271,7 +271,7 @@ const Contact = () => {
             ref={formRef}
             onSubmit={handleSubmit}
             autoComplete="off"
-            className="space-y-4 p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
+            className="space-y-4 p-4 sm:p-6 bg-card rounded-2xl border border-border shadow-lg"
           >
 
             {/* honeypot */}
@@ -293,10 +293,10 @@ const Contact = () => {
                   autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={errors.name ? "border-red-500 focus-visible:ring-red-500" : "bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-emerald-400 focus-visible:border-emerald-400"}
+                  className={errors.name ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500"}
                 />
                 {errors.name && (
-                  <p className="text-red-400 text-xs flex items-center gap-1 mt-1">
+                  <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
                     <FiAlertCircle /> {errors.name}
                   </p>
                 )}
@@ -310,10 +310,10 @@ const Contact = () => {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={errors.email ? "border-red-500 focus-visible:ring-red-500" : "bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-emerald-400 focus-visible:border-emerald-400"}
+                  className={errors.email ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500"}
                 />
                 {errors.email && (
-                  <p className="text-red-400 text-xs flex items-center gap-1 mt-1">
+                  <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
                     <FiAlertCircle /> {errors.email}
                   </p>
                 )}
@@ -326,10 +326,10 @@ const Contact = () => {
                 placeholder="Subject"
                 value={formData.subject}
                 onChange={handleChange}
-                className={errors.subject ? "border-red-500 focus-visible:ring-red-500" : "bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-emerald-400 focus-visible:border-emerald-400"}
+                className={errors.subject ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500"}
               />
               {errors.subject && (
-                <p className="text-red-400 text-xs flex items-center gap-1 mt-1">
+                <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
                   <FiAlertCircle /> {errors.subject}
                 </p>
               )}
@@ -342,10 +342,10 @@ const Contact = () => {
                 placeholder="Your message..."
                 value={formData.message}
                 onChange={handleChange}
-                className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-base sm:text-sm text-white placeholder:text-gray-400 focus:outline-hidden focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 resize-none transition-colors`}
+                className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-background border border-border text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 resize-none transition-colors ${errors.message ? "border-red-500 focus:ring-emerald-500 focus:border-emerald-500" : ""}`}
               />
               {errors.message && (
-                <p className="text-red-400 text-xs flex items-center gap-1 mt-1">
+                <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
                   <FiAlertCircle /> {errors.message}
                 </p>
               )}
