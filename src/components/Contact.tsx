@@ -38,15 +38,25 @@ const Contact = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Contact-specific styling for social links (themed background)
-  const contactSocialLinks: SocialLink[] = SOCIAL_LINKS.map(link => ({
-    ...link,
-    color: link.name === "LinkedIn" ? "hover:bg-blue-600 hover:text-white hover:border-blue-600" :
-      link.name === "GitHub" ? "hover:bg-gray-900 hover:text-white hover:border-gray-900 dark:hover:bg-white dark:hover:text-slate-950 dark:hover:border-white" :
-        link.name === "Twitter/X" ? "hover:bg-gray-900 hover:text-white hover:border-gray-900 dark:hover:bg-white dark:hover:text-slate-950 dark:hover:border-white" :
-          link.name === "Medium" ? "hover:bg-green-600 hover:text-white hover:border-green-600" :
-            "hover:bg-yellow-500 hover:text-white hover:border-yellow-500"
-  }));
+  // Contact-specific styling for social links (themed background with brand colors for visual weight)
+  const contactSocialLinks: SocialLink[] = SOCIAL_LINKS.map(link => {
+    let customStyle = "";
+    if (link.name === "LinkedIn") {
+      customStyle = "text-blue-600 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border-blue-200 dark:border-blue-900/40 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-xs";
+    } else if (link.name === "GitHub") {
+      customStyle = "text-slate-800 dark:text-slate-200 bg-slate-500/5 dark:bg-slate-400/10 border-slate-200 dark:border-slate-800 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 hover:border-gray-900 dark:hover:border-white shadow-xs";
+    } else if (link.name === "Twitter/X") {
+      customStyle = "text-slate-800 dark:text-slate-200 bg-slate-500/5 dark:bg-slate-400/10 border-slate-200 dark:border-slate-800 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 hover:border-gray-900 dark:hover:border-white shadow-xs";
+    } else if (link.name === "Medium") {
+      customStyle = "text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-900/40 hover:bg-green-600 hover:text-white hover:border-green-600 shadow-xs";
+    } else {
+      customStyle = "text-yellow-600 dark:text-yellow-400 bg-yellow-500/5 dark:bg-yellow-500/10 border-yellow-200 dark:border-yellow-900/40 hover:bg-yellow-600 hover:text-white hover:border-yellow-600 shadow-xs";
+    }
+    return {
+      ...link,
+      color: customStyle
+    };
+  });
 
   const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
   const emailJsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
@@ -229,7 +239,7 @@ const Contact = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 sm:p-3 md:p-4 bg-card rounded-xl border border-border shadow-sm text-muted-foreground hover:text-foreground ${social.color} transition-all duration-200 hover:scale-105`}
+                  className={`p-2 sm:p-3 md:p-4 bg-card rounded-xl border ${social.color} transition-all duration-200 hover:scale-105 flex items-center justify-center`}
                 >
                   <social.icon className="mx-auto h-4 w-4 sm:h-5 sm:w-5" />
                 </a>
@@ -293,7 +303,7 @@ const Contact = () => {
                   autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={errors.name ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500"}
+                  className={errors.name ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500 transition-colors"}
                 />
                 {errors.name && (
                   <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
@@ -310,7 +320,7 @@ const Contact = () => {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={errors.email ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500"}
+                  className={errors.email ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500 transition-colors"}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
@@ -326,7 +336,7 @@ const Contact = () => {
                 placeholder="Subject"
                 value={formData.subject}
                 onChange={handleChange}
-                className={errors.subject ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500"}
+                className={errors.subject ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500 transition-colors"}
               />
               {errors.subject && (
                 <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
@@ -342,7 +352,7 @@ const Contact = () => {
                 placeholder="Your message..."
                 value={formData.message}
                 onChange={handleChange}
-                className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-background border border-border text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 resize-none transition-colors ${errors.message ? "border-red-500 focus:ring-emerald-500 focus:border-emerald-500" : ""}`}
+                className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-background border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 resize-none transition-colors ${errors.message ? "border-red-500 focus:ring-emerald-500 focus:border-emerald-500" : ""}`}
               />
               {errors.message && (
                 <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
