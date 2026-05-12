@@ -3,7 +3,7 @@ import { SOCIAL_LINKS } from '@/constants';
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen max-h-[1080px] flex items-center justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
