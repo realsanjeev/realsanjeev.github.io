@@ -26,8 +26,9 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 backdrop-blur-sm border border-emerald-500/20 rounded-full shadow-sm transition-all duration-200 group"
+                title="QuickTools: An interactive suite of web utility and productivity tools for developers"
               >
-                <span className="text-sm font-medium text-emerald-700 dark:text-emerald-400">Try QuickTools</span>
+                <span className="text-sm font-medium text-emerald-700 dark:text-emerald-400">Try QuickTools (Developer Web App)</span>
                 <span className="ml-1.5 text-emerald-600 group-hover:translate-x-0.5 transition-transform">↗</span>
               </a>
             </div>
