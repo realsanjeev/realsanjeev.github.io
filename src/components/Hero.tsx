@@ -51,11 +51,13 @@ const Hero = () => {
 
             {/* Description */}
             <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-              Driven by curiosity and a passion for innovation, I work at the intersection of{' '}
-              <span className="font-semibold text-foreground">artificial intelligence</span> and{' '}
-              <span className="font-semibold text-foreground">real-world impact</span>.
-              My mission is to harness the power of machine learning to develop transformative solutions
-              that create meaningful change.
+              I build things that see, read, and understand —{' '}
+              <span className="font-semibold text-foreground">computer vision</span> systems for
+              document verification,{' '}
+              <span className="font-semibold text-foreground">LLM-powered</span> apps for education,
+              facial recognition APIs, and{' '}
+              <span className="font-semibold text-foreground">Nepali NLP</span> tools.
+              Every project is a chance to turn a hard problem into something that actually works.
             </p>
 
             {/* CTA Buttons */}
