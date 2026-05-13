@@ -6,4 +6,28 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://bhandarisanjeev.com.np/QuickTools/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bhandarisanjeev.com.np/nepali_unicoder/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bhandarisanjeev.com.np/A-algorithm-implementation/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bhandarisanjeev.com.np/Air-conditioner-controller-recommendation-using-fuzzy-logic/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
