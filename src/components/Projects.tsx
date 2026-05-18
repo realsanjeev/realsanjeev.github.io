@@ -111,7 +111,7 @@ const Projects = () => {
                   <div className="relative h-48 overflow-hidden bg-muted">
                     <img
                       src={project.image}
-                      alt={`${project.name} - ${project.description}`}
+                      alt={project.alt || `${project.name} - ${project.description}`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
                     />

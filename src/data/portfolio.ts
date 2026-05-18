@@ -26,6 +26,7 @@ export interface Project {
     downloadUrl?: string;
     detailedDescription?: string;
     image?: string;
+    alt?: string;
 }
 
 
@@ -106,6 +107,7 @@ export const MAJOR_PROJECTS: Project[] = [
         downloadUrl: "https://drive.google.com/drive/folders/1ZsLWk0B2BmMbE0fqo6sSO5H2HlNNxwGY",
         url: "#",
         image: "https://images.unsplash.com/photo-1717699841849-98dcc1c6184a?q=400&w=600&auto=format&fit=crop",
+        alt: "Automatic Music Generation system displaying neural networks and digital keyboard interface - Bachelor's Degree Final Year project by Sanjeev Bhandari",
         tags: ["LSTM", "Deep Learning", "Python", "Music AI"]
     },
     {
@@ -115,6 +117,7 @@ export const MAJOR_PROJECTS: Project[] = [
         detailedDescription: "Applied Convolutional Neural Networks (CNNs) within the PyTorch framework for classifying music genres from audio features. Experimented with different CNN architectures and hyperparameters to optimize genre recognition accuracy on the GTZAN dataset.",
         url: "https://github.com/realsanjeev/Music-genre-classification-using-deep-learning",
         image: "https://images.unsplash.com/photo-1768033402852-dbafede8eae6?q=400&w=600&auto=format&fit=crop",
+        alt: "Music genre recognition CNN PyTorch model classifying GTZAN audio spectrum dataset - Sanjeev Bhandari Bachelor's Degree Third Year project",
         tags: ["CNN", "PyTorch", "Audio Processing", "GTZAN"]
     },
     {
@@ -124,6 +127,7 @@ export const MAJOR_PROJECTS: Project[] = [
         detailedDescription: "Developed and fine-tuned a BART-based model for abstractive summarization of Nepali news articles. Implemented and evaluated the Low-Rank Adaptation (LoRA) technique for parameter-efficient fine-tuning (PEFT) in a resource-constrained setting.",
         url: "https://medium.com/@realsanjeev/nepali-text-summarization-2df72a8a3080",
         image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop",
+        alt: "Abstractive text summarization in Nepali using BART and LoRA parameter-efficient fine-tuning - Sanjeev Bhandari ML Internship project at TAI Inc.",
         tags: ["NLP", "BART", "LoRA", "Nepali", "Transformers"]
     }
 ];
