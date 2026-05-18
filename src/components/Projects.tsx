@@ -38,6 +38,18 @@ const getGradientForProject = (index: number) => {
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
+  const [displayFilter, setDisplayFilter] = useState<ProjectFilter>('all');
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleFilterChange = (filter: ProjectFilter) => {
+    if (filter === activeFilter) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setDisplayFilter(filter);
+      setActiveFilter(filter);
+      setIsTransitioning(false);
+    }, 200);
+  };
 
   const getProjectTypeConfig = (type?: string) => {
     switch (type) {
@@ -52,9 +64,9 @@ const Projects = () => {
     }
   };
 
-  const filteredProjects = activeFilter === 'all'
+  const filteredProjects = displayFilter === 'all'
     ? MAJOR_PROJECTS
-    : MAJOR_PROJECTS.filter(project => project.type === activeFilter);
+    : MAJOR_PROJECTS.filter(project => project.type === displayFilter);
 
   const filterTabs: { id: ProjectFilter; label: string; icon: React.ReactNode }[] = [
     { id: 'all', label: 'All', icon: <FaList className="h-4 w-4" /> },
@@ -82,7 +94,7 @@ const Projects = () => {
           {filterTabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveFilter(tab.id)}
+              onClick={() => handleFilterChange(tab.id)}
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                 activeFilter === tab.id
                   ? 'bg-gradient-to-r from-emerald-600 to-cyan-600 text-white shadow-lg shadow-emerald-500/25'
@@ -96,7 +108,9 @@ const Projects = () => {
         </div>
 
         {/* Major Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 transition-all duration-300 transform ${
+          isTransitioning ? 'opacity-0 scale-95 translate-y-2' : 'opacity-100 scale-100 translate-y-0'
+        }`}>
           {filteredProjects.map((project, index) => {
             const typeConfig = getProjectTypeConfig(project.type);
             const Icon = typeConfig.icon;
@@ -111,7 +125,7 @@ const Projects = () => {
                   <div className="relative h-48 overflow-hidden bg-muted">
                     <img
                       src={project.image}
-                      alt={`${project.name} - ${project.description}`}
+                      alt={project.alt || `${project.name} - ${project.description}`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
                     />
@@ -165,6 +179,7 @@ const Projects = () => {
                         download
                         target="_blank"
                         rel="noopener noreferrer"
+                        title={`Download PDF for ${project.name}`}
                       >
                         <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-emerald-500/10 hover:border-emerald-500/50 hover:text-emerald-600">
                           <FiFileText className="mr-2 h-4 w-4" />
@@ -177,6 +192,7 @@ const Projects = () => {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        title={project.type === 'internship' ? `Read article about ${project.name}` : `View GitHub repository for ${project.name}`}
                       >
                         <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-foreground hover:text-background hover:border-foreground">
                           {project.type === 'internship' ? (
@@ -256,6 +272,7 @@ const Projects = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      title={`View ${project.name} on GitHub`}
                       className="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:text-emerald-700 transition-colors"
                     >
                       View on GitHub

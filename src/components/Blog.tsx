@@ -83,6 +83,7 @@ const Blog = () => {
                   href={post.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title={`Read article "${post.title}" on Medium`}
                   className="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-foreground bg-muted hover:bg-foreground hover:text-background rounded-xl transition-all duration-200 group/btn"
                 >
                   <FiLink className="mr-2 h-4 w-4" />
@@ -100,6 +101,7 @@ const Blog = () => {
             href="https://medium.com/@realsanjeev"
             target="_blank"
             rel="noopener noreferrer"
+            title="Follow Sanjeev Bhandari (@realsanjeev) on Medium"
           >
             <Button className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
               <FaMedium className="mr-2 h-5 w-5" />
