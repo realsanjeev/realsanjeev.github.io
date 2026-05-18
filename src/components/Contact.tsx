@@ -221,6 +221,7 @@ const Contact = () => {
 
             <a
               href="mailto:realsanjeev2@gmail.com"
+              title="Send an email to Sanjeev Bhandari (@realsanjeev)"
               className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl border border-border shadow-sm hover:shadow-md hover:bg-muted/50 transition-all duration-200"
             >
               <FiMail className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
@@ -239,6 +240,7 @@ const Contact = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title={social.ariaLabel}
                   className={`p-2 sm:p-3 md:p-4 bg-card rounded-xl border ${social.color} transition-all duration-200 hover:scale-105 flex items-center justify-center`}
                 >
                   <social.icon className="mx-auto h-4 w-4 sm:h-5 sm:w-5" />

@@ -89,6 +89,7 @@ const Hero = () => {
                   rel="noopener noreferrer"
                   className={`p-2.5 bg-accent/50 rounded-lg transition-all duration-200 hover:-translate-y-0.5 group ${social.color}`}
                   aria-label={social.ariaLabel}
+                  title={social.ariaLabel}
                   role="listitem"
                 >
                   <social.icon className="h-5 w-5 text-muted-foreground group-hover:text-inherit" />

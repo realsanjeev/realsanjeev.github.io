@@ -179,6 +179,7 @@ const Projects = () => {
                         download
                         target="_blank"
                         rel="noopener noreferrer"
+                        title={`Download PDF for ${project.name}`}
                       >
                         <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-emerald-500/10 hover:border-emerald-500/50 hover:text-emerald-600">
                           <FiFileText className="mr-2 h-4 w-4" />
@@ -191,6 +192,7 @@ const Projects = () => {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        title={project.type === 'internship' ? `Read article about ${project.name}` : `View GitHub repository for ${project.name}`}
                       >
                         <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-foreground hover:text-background hover:border-foreground">
                           {project.type === 'internship' ? (
@@ -270,6 +272,7 @@ const Projects = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      title={`View ${project.name} on GitHub`}
                       className="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:text-emerald-700 transition-colors"
                     >
                       View on GitHub

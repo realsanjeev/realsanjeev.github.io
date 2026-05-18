@@ -118,6 +118,7 @@ const Navigation = () => {
                 rel="noopener noreferrer"
                 className={`p-2 text-muted-foreground hover:text-foreground rounded-lg transition-all duration-200 hover:bg-accent ${social.color}`}
                 aria-label={social.ariaLabel}
+                title={social.ariaLabel}
               >
                 <social.icon className="h-5 w-5" />
               </a>
@@ -189,6 +190,7 @@ const Navigation = () => {
                     rel="noopener noreferrer"
                     className={`p-2 text-muted-foreground hover:text-foreground transition-colors hover:bg-accent rounded-lg ${social.color}`}
                     aria-label={social.ariaLabel}
+                    title={social.ariaLabel}
                   >
                     <social.icon className="h-5 w-5" />
                   </a>
