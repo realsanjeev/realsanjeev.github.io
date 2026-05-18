@@ -25,16 +25,16 @@ const Experience = () => {
             {EXPERIENCES.map((exp, index) => (
               <div
                 key={index}
-                className={`relative flex flex-col md:flex-row gap-8 ${
+                className={`group relative flex flex-col md:flex-row gap-8 ${
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-full border-4 border-card shadow-lg transform -translate-x-1/2 md:-translate-x-1/2 mt-6 z-10" />
+                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-full border-4 border-card shadow-lg transform -translate-x-1/2 md:-translate-x-1/2 mt-6 z-10 group-hover:scale-125 group-hover:shadow-emerald-500/50 group-hover:ring-4 group-hover:ring-emerald-500/25 transition-all duration-300" />
 
                 {/* Content */}
                 <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
-                  <div className="group bg-card rounded-2xl p-6 shadow-lg border border-border hover:shadow-xl hover:border-emerald-500/30 transition-all duration-300">
+                  <div className="bg-card rounded-2xl p-6 shadow-lg border border-border hover:shadow-xl hover:border-emerald-500/40 dark:hover:border-emerald-500/30 hover:-translate-y-1 hover:shadow-emerald-500/5 dark:hover:shadow-emerald-500/5 transition-all duration-300">
                     {/* Header with Logo */}
                     <div className="flex items-start gap-4 mb-4">
                       {exp.logo && (
@@ -42,16 +42,16 @@ const Experience = () => {
                           <img
                             src={exp.logo}
                             alt={`${exp.company} logo`}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                             loading="lazy"
                           />
                         </div>
                       )}
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-foreground">{exp.title}</h3>
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{exp.title}</h3>
                         <div className="flex items-center justify-between gap-4 mt-1">
                           <p className="text-emerald-600 font-semibold">{exp.company}</p>
-                          <span className="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full whitespace-nowrap">
+                          <span className="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full whitespace-nowrap group-hover:bg-emerald-500/10 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-all duration-300">
                             {exp.period}
                           </span>
                         </div>

@@ -64,16 +64,16 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center px-6 py-3.5 text-base font-medium text-white bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+                className="group inline-flex items-center px-6 py-3.5 text-base font-medium text-white bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
               >
-                <FiMail className="mr-2 h-5 w-5" />
+                <FiMail className="mr-2 h-5 w-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
                 Get in Touch
               </a>
               <a
                 href="mailto:realsanjeev2@gmail.com?subject=Request for CV&body=Hi Sanjeev,%0D%0A%0D%0AI'm interested in learning more about your background. Could you please share your CV?%0D%0A%0D%0AThanks!"
-                className="inline-flex items-center px-6 py-3.5 text-base font-medium text-foreground bg-card hover:bg-accent border border-border rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                className="group inline-flex items-center px-6 py-3.5 text-base font-medium text-foreground bg-card hover:bg-accent border border-border hover:border-emerald-500/40 dark:hover:border-emerald-500/30 hover:text-emerald-600 dark:hover:text-emerald-400 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
-                <FiDownload className="mr-2 h-5 w-5" />
+                <FiDownload className="mr-2 h-5 w-5 group-hover:translate-y-0.5 transition-transform duration-200" />
                 Request CV
               </a>
             </div>
