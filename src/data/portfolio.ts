@@ -166,7 +166,7 @@ export const GITHUB_PROJECTS: Project[] = [
     {
         name: "nepali_unicoder",
         description: "A python library for converting Nepali Preeti text to Unicode and translating Roman text into Nepali.",
-        url: "https://github.com/realsanjeev/nepali_unicoder",
+        url: "https://bhandarisanjeev.com.np/nepali_unicoder/",
         tags: ["Translation", "Nepali", "Unicode", "Text Conversion"]
     },
 ];
