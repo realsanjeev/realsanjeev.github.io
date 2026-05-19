@@ -26,36 +26,24 @@ const Index = () => {
           <Hero />
         </RevealOnScroll>
         <Suspense fallback={<Loader />}>
-          <div id="about">
-            <RevealOnScroll delay={100}>
-              <About />
-            </RevealOnScroll>
-          </div>
-          <div id="experience">
-            <RevealOnScroll delay={100}>
-              <Experience />
-            </RevealOnScroll>
-          </div>
-          <div id="projects">
-            <RevealOnScroll delay={100}>
-              <Projects />
-            </RevealOnScroll>
-          </div>
-          {/* <div id="publications">
-            <RevealOnScroll delay={100}>
-              <Publications />
-            </RevealOnScroll>
-          </div> */}
-          <div id="blog">
-            <RevealOnScroll delay={100}>
-              <Blog />
-            </RevealOnScroll>
-          </div>
-          <div id="contact">
-            <RevealOnScroll delay={100}>
-              <Contact />
-            </RevealOnScroll>
-          </div>
+          <RevealOnScroll delay={100}>
+            <About />
+          </RevealOnScroll>
+          <RevealOnScroll delay={100}>
+            <Experience />
+          </RevealOnScroll>
+          <RevealOnScroll delay={100}>
+            <Projects />
+          </RevealOnScroll>
+          {/* <RevealOnScroll delay={100}>
+            <Publications />
+          </RevealOnScroll> */}
+          <RevealOnScroll delay={100}>
+            <Blog />
+          </RevealOnScroll>
+          <RevealOnScroll delay={100}>
+            <Contact />
+          </RevealOnScroll>
         </Suspense>
       </main>
     </div>

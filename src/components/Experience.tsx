@@ -3,8 +3,8 @@ import { FiCheckCircle } from "react-icons/fi";
 
 const Experience = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted" id="experience">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted scroll-mt-24" id="experience">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
@@ -19,7 +19,7 @@ const Experience = () => {
         {/* Timeline */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-600 via-cyan-600 to-teal-600 transform md:-translate-x-1/2" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-600 via-cyan-600 to-teal-600 transform md:-translate-x-1/2" />
 
           <div className="space-y-12">
             {EXPERIENCES.map((exp, index) => (
@@ -30,10 +30,10 @@ const Experience = () => {
                 }`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-full border-4 border-card shadow-lg transform -translate-x-1/2 md:-translate-x-1/2 mt-6 z-10 group-hover:scale-125 group-hover:shadow-emerald-500/50 group-hover:ring-4 group-hover:ring-emerald-500/25 transition-all duration-300" />
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-full border-4 border-card shadow-lg transform -translate-x-1/2 md:-translate-x-1/2 mt-6 z-10 group-hover:scale-125 group-hover:shadow-emerald-500/50 group-hover:ring-4 group-hover:ring-emerald-500/25 transition-all duration-300" />
 
                 {/* Content */}
-                <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
+                <div className={`pl-8 md:pl-0 md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
                   <div className="bg-card rounded-2xl p-6 shadow-lg border border-border hover:shadow-xl hover:border-emerald-500/40 dark:hover:border-emerald-500/30 hover:-translate-y-1 hover:shadow-emerald-500/5 dark:hover:shadow-emerald-500/5 transition-all duration-300">
                     {/* Header with Logo */}
                     <div className="flex items-start gap-4 mb-4">
@@ -49,9 +49,9 @@ const Experience = () => {
                       )}
                       <div className="flex-1">
                         <h3 className="text-xl font-bold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{exp.title}</h3>
-                        <div className="flex items-center justify-between gap-4 mt-1">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-1">
                           <p className="text-emerald-600 font-semibold">{exp.company}</p>
-                          <span className="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full whitespace-nowrap group-hover:bg-emerald-500/10 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-all duration-300">
+                          <span className="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full whitespace-nowrap w-fit group-hover:bg-emerald-500/10 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-all duration-300">
                             {exp.period}
                           </span>
                         </div>

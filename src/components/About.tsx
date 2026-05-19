@@ -3,8 +3,8 @@ import { FaBrain, FaCode } from 'react-icons/fa';
 
 const About = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted" id="about">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted scroll-mt-24" id="about">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground">
@@ -31,7 +31,7 @@ const About = () => {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-8">
               <div className="text-center p-4 bg-card rounded-2xl shadow-sm border border-border">
                 <div className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">3+</div>
                 <div className="text-sm text-muted-foreground mt-1">Years Experience</div>

@@ -195,7 +195,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted text-foreground border-t border-border"
+      className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted text-foreground border-t border-border scroll-mt-24"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
@@ -233,7 +233,7 @@ const Contact = () => {
               <span className="text-sm sm:text-base text-foreground">Kathmandu, Nepal</span>
             </div>
 
-            <div className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-3">
+            <div className="grid grid-cols-5 gap-2 sm:gap-3">
               {contactSocialLinks.map((social) => (
                 <a
                   key={social.name}

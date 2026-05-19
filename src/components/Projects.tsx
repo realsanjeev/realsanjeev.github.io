@@ -76,11 +76,11 @@ const Projects = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted" id="projects">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted scroll-mt-24" id="projects">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
             Featured <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Projects</span>
           </h2>
           <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
@@ -90,12 +90,12 @@ const Projects = () => {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex overflow-x-auto sm:flex-wrap justify-start sm:justify-center gap-3 mb-12 pb-2 scrollbar-none -mx-6 px-6">
           {filterTabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => handleFilterChange(tab.id)}
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
+              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 shrink-0 ${
                 activeFilter === tab.id
                   ? 'bg-gradient-to-r from-emerald-600 to-cyan-600 text-white shadow-lg shadow-emerald-500/25'
                   : 'bg-card text-foreground border border-border hover:border-emerald-500/50 hover:bg-emerald-500/10'
@@ -108,7 +108,7 @@ const Projects = () => {
         </div>
 
         {/* Major Projects Grid */}
-        <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 transition-all duration-300 transform ${
+        <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 mb-16 transition-all duration-300 transform ${
           isTransitioning ? 'opacity-0 scale-95 translate-y-2' : 'opacity-100 scale-100 translate-y-0'
         }`}>
           {filteredProjects.map((project, index) => {

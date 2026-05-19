@@ -118,7 +118,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* Account for fixed navigation height */
+    scroll-padding-top: 72px; /* Mobile nav height (h-16) + buffer */
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 100px; /* Desktop nav height (h-20) + buffer */
+    }
   }
 
   * {
@@ -173,5 +179,14 @@
 
   .animate-scroll {
     animation: scroll 1.5s ease-in-out infinite;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-none {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 }

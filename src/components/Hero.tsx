@@ -3,7 +3,7 @@ import { SOCIAL_LINKS } from '@/constants';
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-screen max-h-[1080px] flex items-center justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen max-h-[1080px] flex lg:items-center lg:justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden pt-20 pb-16 lg:py-0 scroll-mt-24">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
@@ -11,12 +11,12 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/15 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="text-left space-y-8">
             {/* Badges */}
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <div className="inline-flex items-center px-4 py-2 bg-card/80 backdrop-blur-sm border border-border rounded-full shadow-sm">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2" />
                 <span className="text-sm font-medium text-muted-foreground">Available for opportunities</span>
@@ -35,7 +35,7 @@ const Hero = () => {
 
             {/* Name with Gradient */}
             <div className="space-y-4">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
                 <span className="bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-clip-text text-transparent">
                   Sanjeev
                 </span>
@@ -44,13 +44,13 @@ const Hero = () => {
                   Bhandari
                 </span>
               </h1>
-              <p className="text-2xl sm:text-3xl text-muted-foreground font-light">
+              <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground font-light">
                 Machine Learning Engineer
               </p>
             </div>
 
             {/* Description */}
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
               I build things that see, read, and understand —{' '}
               <span className="font-semibold text-foreground">computer vision</span> systems for
               document verification,{' '}
@@ -128,7 +128,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full border border-secondary/30 scale-125" />
 
               {/* Main image container */}
-              <div className="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem]">
+              <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-[28rem] lg:h-[28rem]">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-2xl" />
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-card shadow-2xl bg-gradient-to-br from-muted to-secondary">
                   <img
@@ -141,11 +141,11 @@ const Hero = () => {
                 </div>
 
                 {/* Floating badges */}
-                <div className="absolute -top-4 -right-4 px-4 py-2 bg-card rounded-xl shadow-lg border border-border animate-bounce">
-                  <span className="text-2xl">🚀</span>
+                <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 px-2.5 py-1.5 sm:px-4 sm:py-2 bg-card rounded-xl shadow-lg border border-border animate-bounce">
+                  <span className="text-lg sm:text-2xl">🚀</span>
                 </div>
-                <div className="absolute -bottom-4 -left-4 px-4 py-2 bg-card rounded-xl shadow-lg border border-border animate-bounce" style={{ animationDelay: '0.5s' }}>
-                  <span className="text-2xl">💡</span>
+                <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 px-2.5 py-1.5 sm:px-4 sm:py-2 bg-card rounded-xl shadow-lg border border-border animate-bounce" style={{ animationDelay: '0.5s' }}>
+                  <span className="text-lg sm:text-2xl">💡</span>
                 </div>
               </div>
             </div>
@@ -153,7 +153,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2">
           <div className="w-6 h-10 border-2 border-border rounded-full flex items-start justify-center p-2">
             <div className="w-1.5 h-3 bg-muted-foreground rounded-full animate-bounce" />
           </div>

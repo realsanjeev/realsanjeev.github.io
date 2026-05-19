@@ -74,8 +74,8 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50 shadow-sm" role="navigation" aria-label="Main navigation">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <a href="#" className="group" aria-label="Home">
             <span className="text-2xl font-bold bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-clip-text text-transparent">
@@ -132,34 +132,37 @@ const Navigation = () => {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden p-2 h-10 w-10 relative"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMenuOpen}
-          >
-            {/* Animated Hamburger Icon */}
-            <div className="w-5 h-5 relative">
-              <span
-                className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? 'rotate-45 top-2' : 'top-0.5'
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? 'opacity-0' : 'opacity-100 top-2'
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? '-rotate-45 top-2' : 'top-3.5'
-                }`}
-              />
-            </div>
-          </Button>
+          {/* Mobile Controls */}
+          <div className="flex md:hidden items-center space-x-2">
+            <ModeToggle />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="p-2 h-10 w-10 relative flex items-center justify-center"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
+            >
+              {/* Animated Hamburger Icon */}
+              <div className="w-5 h-5 relative">
+                <span
+                  className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'rotate-45 top-2' : 'top-0.5'
+                  }`}
+                />
+                <span
+                  className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'opacity-0' : 'opacity-100 top-2'
+                  }`}
+                />
+                <span
+                  className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? '-rotate-45 top-2' : 'top-3.5'
+                  }`}
+                />
+              </div>
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
