@@ -14,6 +14,71 @@
   <link rel="canonical" href="https://bhandarisanjeev.com.np/" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
+  <!-- P1 PATCH: Synchronous dark-mode detection.
+       Must run BEFORE the critical <style> block so the correct color vars
+       are active from pixel-zero. Reads localStorage (set by ThemeProvider
+       storageKey="vite-ui-theme") and falls back to prefers-color-scheme.
+       Three cases handled:
+         stored="dark"   → add .dark class (ThemeProvider expects this)
+         stored="light"  → add data-theme="light" attr (CSS guard signal)
+         system/null     → OS prefers-color-scheme decides at paint time -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('vite-ui-theme');
+        if (stored === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else if (stored === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          // "system" or no preference — let prefers-color-scheme CSS rule handle it
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (prefersDark) document.documentElement.classList.add('dark');
+        }
+      } catch (_) {
+        // localStorage or matchMedia unavailable (private browsing restrictions etc.)
+        // Safe to ignore — CSS will fall back to light-mode defaults
+      }
+    })();
+  </script>
+
+  <!-- Critical CSS: inlined to unblock first paint (LCP/FCP).
+       Provides the background color and base font so the page is visually
+       correct before the chunked stylesheet arrives. -->
+  <style>
+    /* Light-mode custom properties (default) */
+    :root {
+      color-scheme: light dark;
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+    }
+    /* Dark-mode: explicit .dark class set by sync script or ThemeProvider */
+    .dark {
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
+    }
+    /* Dark-mode: OS preference, only when user has NOT explicitly chosen light.
+       Guards on data-theme="light" which the sync script sets for stored="light".
+       This correctly suppresses dark for the OS-dark + user-chose-light case. */
+    @media (prefers-color-scheme: dark) {
+      html:not([data-theme="light"]) {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+      }
+    }
+    /* Prevent white/dark flash on first paint */
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    /* Reserve space so layout doesn't shift when #root fills in */
+    #root { min-height: 100vh; }
+  </style>
+
   <script type="text/javascript">
     // Redirect github.io to custom domain to consolidate SEO authority
     (function () {
