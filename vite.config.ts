@@ -15,46 +15,6 @@ export default defineConfig(() => ({
   plugins: [
     react(),
     tailwindcss(),
-    // Build-only plugin: converts render-blocking <link rel="stylesheet"> tags
-    // to async-load pattern (media="print" + onload swap), removing ~300ms from
-    // the critical path reported by Lighthouse. The inline critical CSS in
-    // index.html prevents FOUC while the full stylesheet loads.
-    {
-      name: "make-css-async",
-      apply: "build" as const,
-      transformIndexHtml(html: string) {
-        // P2 PATCH: Match <link> tags with rel="stylesheet" where href can appear
-        // anywhere in the attribute list (order-agnostic). Captures:
-        //   group 1 = everything before href
-        //   group 2 = the href value
-        //   group 3 = everything after href (up to closing >)
-        // This is resilient to future Vite attribute ordering changes.
-        return html.replace(
-          /<link\s([^>]*?)href="([^"]+)"([^>]*?)>/g,
-          (match, pre, href, post) => {
-            // Only transform stylesheet links, pass through all others (preload, icon, canonical…)
-            const fullAttrs = pre + post;
-            if (!fullAttrs.includes('rel="stylesheet"') && !match.includes('rel="stylesheet"')) {
-              return match;
-            }
-            // Strip rel="stylesheet" from the captured attrs so we can rebuild cleanly
-            const otherAttrs = fullAttrs
-              .replace(/rel="stylesheet"/, '')
-              .replace(/\s+/g, ' ')
-              .trim();
-            const attrStr = otherAttrs ? ' ' + otherAttrs : '';
-            return (
-              // Preload hint — tells browser to fetch at high priority, non-blocking
-              `<link rel="preload" as="style"${attrStr} href="${href}">` +
-              // Async stylesheet — media trick defers paint-blocking
-              `<link rel="stylesheet"${attrStr} href="${href}" media="print" onload="this.media='all'">` +
-              // P3 PATCH: include crossorigin so noscript request matches preload cache key
-              `<noscript><link rel="stylesheet"${attrStr} href="${href}"></noscript>`
-            );
-          }
-        );
-      },
-    },
   ],
   resolve: {
     alias: {

@@ -36,6 +36,7 @@ export function ThemeProvider({
     
     // Remove existing theme classes
     root.classList.remove("light", "dark")
+    root.removeAttribute("data-theme")
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ModeToggle } from '@/components/ui/mode-toggle';
 import { SOCIAL_LINKS } from '@/constants';
@@ -11,37 +11,41 @@ const navItems = [
   { name: 'Contact', href: '#contact' }
 ];
 
-const sectionIds = ['about', 'experience', 'projects', 'blog', 'contact'];
+const sectionIds = ['hero', 'about', 'experience', 'projects', 'blog', 'contact'];
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
-  const getActiveSection = useCallback(() => {
-    const scrollPosition = window.scrollY + 150;
-
-    for (const id of sectionIds) {
-      const section = document.getElementById(id);
-      if (section) {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          return `#${id}`;
-        }
-      }
-    }
-    return '';
-  }, []);
-
   useEffect(() => {
-    const handleScroll = () => {
-      setActiveSection(getActiveSection());
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px', // Focus on the middle-upper viewport
+      threshold: 0.1,
     };
 
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [getActiveSection]);
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          if (id === 'hero') {
+            setActiveSection('');
+          } else {
+            setActiveSection(`#${id}`);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   // Close menu on Escape key
   useEffect(() => {
