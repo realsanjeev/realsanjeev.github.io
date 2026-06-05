@@ -3,12 +3,12 @@ import { FaBrain, FaCode } from 'react-icons/fa';
 
 const About = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted" id="about">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-16 sm:py-24 bg-background" id="about">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground">
-            About <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">Me</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+            About <span className="text-emerald-600 dark:text-emerald-400">Me</span>
           </h2>
           <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
         </div>
@@ -31,18 +31,18 @@ const About = () => {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-8">
               <div className="text-center p-4 bg-card rounded-2xl shadow-sm border border-border">
-                <div className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">3+</div>
+                <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">3+</div>
                 <div className="text-sm text-muted-foreground mt-1">Years Experience</div>
               </div>
               <div className="text-center p-4 bg-card rounded-2xl shadow-sm border border-border">
-                <div className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">20+</div>
+                <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">20+</div>
                 <div className="text-sm text-muted-foreground mt-1">Projects</div>
               </div>
               <div className="text-center p-4 bg-card rounded-2xl shadow-sm border border-border">
-                <div className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">4</div>
-                <div className="text-sm text-muted-foreground mt-1">Publications</div>
+                <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">4</div>
+                <div className="text-sm text-muted-foreground mt-1">Tech Articles</div>
               </div>
             </div>
           </div>

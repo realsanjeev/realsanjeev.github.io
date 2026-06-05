@@ -11,8 +11,24 @@
     content="Sanjeev Bhandari, Machine Learning Engineer, Computer Vision, NLP, Deep Learning, AI, Portfolio, Developer" />
   <meta name="author" content="Sanjeev Bhandari(@realsanjeev)" />
   <meta name="robots" content="index, follow" />
+  <meta name="color-scheme" content="dark light" />
   <link rel="canonical" href="https://bhandarisanjeev.com.np/" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Synchronous dark-mode detection to prevent FOUC -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('vite-ui-theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (stored !== 'light' && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (_) {}
+    })();
+  </script>
 
   <script type="text/javascript">
     // Redirect github.io to custom domain to consolidate SEO authority
@@ -55,7 +71,7 @@
         "https://github.com/realsanjeev",
         "https://x.com/realsanjeev2",
         "https://medium.com/@realsanjeev",
-        "https://huggingface.co/sanjeev-bhandari01",
+        "https://huggingface.co/realsanjeev",
         "https://bhandarisanjeev.com.np/"
       ],
       "knowsAbout": [

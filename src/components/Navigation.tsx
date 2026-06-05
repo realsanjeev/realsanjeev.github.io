@@ -1,47 +1,51 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ModeToggle } from '@/components/ui/mode-toggle';
 import { SOCIAL_LINKS } from '@/constants';
+
+const navItems = [
+  { name: 'About', href: '#about' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Blog', href: '#blog' },
+  { name: 'Contact', href: '#contact' }
+];
+
+const sectionIds = ['hero', 'about', 'experience', 'projects', 'blog', 'contact'];
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
-  const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' }
-  ];
-
-  const sectionIds = ['about', 'experience', 'projects', 'blog', 'contact'];
-
-  const getActiveSection = useCallback(() => {
-    const scrollPosition = window.scrollY + 150;
-
-    for (const id of sectionIds) {
-      const section = document.getElementById(id);
-      if (section) {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          return `#${id}`;
-        }
-      }
-    }
-    return '';
-  }, []);
-
   useEffect(() => {
-    const handleScroll = () => {
-      setActiveSection(getActiveSection());
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px', // Focus on the middle-upper viewport
+      threshold: 0,
     };
 
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [getActiveSection]);
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          if (id === 'hero') {
+            setActiveSection('');
+          } else {
+            setActiveSection(`#${id}`);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   // Close menu on Escape key
   useEffect(() => {
@@ -74,11 +78,11 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50 shadow-sm" role="navigation" aria-label="Main navigation">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <a href="#" className="group" aria-label="Home">
-            <span className="text-2xl font-bold bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-clip-text text-transparent">
+          <a href="/" className="group" aria-label="Home">
+            <span className="text-2xl font-bold text-foreground">
               SB
             </span>
           </a>
@@ -132,34 +136,37 @@ const Navigation = () => {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden p-2 h-10 w-10 relative"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMenuOpen}
-          >
-            {/* Animated Hamburger Icon */}
-            <div className="w-5 h-5 relative">
-              <span
-                className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? 'rotate-45 top-2' : 'top-0.5'
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? 'opacity-0' : 'opacity-100 top-2'
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
-                  isMenuOpen ? '-rotate-45 top-2' : 'top-3.5'
-                }`}
-              />
-            </div>
-          </Button>
+          {/* Mobile Controls */}
+          <div className="flex md:hidden items-center space-x-2">
+            <ModeToggle />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="p-2 h-10 w-10 relative flex items-center justify-center"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
+            >
+              {/* Animated Hamburger Icon */}
+              <div className="w-5 h-5 relative">
+                <span
+                  className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'rotate-45 top-2' : 'top-0.5'
+                  }`}
+                />
+                <span
+                  className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'opacity-0' : 'opacity-100 top-2'
+                  }`}
+                />
+                <span
+                  className={`absolute h-0.5 w-5 bg-foreground rounded-full transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? '-rotate-45 top-2' : 'top-3.5'
+                  }`}
+                />
+              </div>
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -173,7 +180,7 @@ const Navigation = () => {
                   onClick={() => handleNavClick(item.href)}
                   className={`block px-4 py-3 rounded-lg transition-colors font-medium ${
                     activeSection === item.href
-                      ? 'text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30'
+                      ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30'
                       : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                   }`}
                   aria-current={activeSection === item.href ? 'page' : undefined}

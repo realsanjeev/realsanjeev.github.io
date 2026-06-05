@@ -103,12 +103,12 @@ export const MAJOR_PROJECTS: Project[] = [
         name: "Automatic Music Generation",
         type: 'major',
         description: "Bachelor's Degree Final Year",
-        detailedDescription: "Developed a system capable of generating novel musical compositions with multiple instrument tracks. Investigated various neural network architectures for sequential data generation, implementing an LSTM-based model for music creation. Explored hybrid approaches combining algorithmic composition (tone-matrix derived from image data) with deep learning model outputs.",
+        detailedDescription: "Developed a system capable of generating novel musical compositions with multiple instrument tracks. Investigated various neural network architectures for sequential data generation, implementing an LSTM-based model for music creation. Tracked experiments and model training runs using Weights & Biases. Explored hybrid approaches combining algorithmic composition (tone-matrix derived from image data) with deep learning model outputs.",
         downloadUrl: "https://drive.google.com/drive/folders/1ZsLWk0B2BmMbE0fqo6sSO5H2HlNNxwGY",
-        url: "#",
+        url: '#',
         image: "https://images.unsplash.com/photo-1717699841849-98dcc1c6184a?q=400&w=600&auto=format&fit=crop",
         alt: "Automatic Music Generation system displaying neural networks and digital keyboard interface - Bachelor's Degree Final Year project by Sanjeev Bhandari",
-        tags: ["LSTM", "Deep Learning", "Python", "Music AI"]
+        tags: ["LSTM", "Deep Learning", "Python", "Music AI", "W&B"]
     },
     {
         name: "Music Genre Recognition using Deep Learning",
@@ -210,42 +210,7 @@ export const BLOG_POSTS: BlogPost[] = [
     }
 ];
 
-export const PUBLICATIONS: Publication[] = [
-    {
-        title: "Advances in Deep Learning for Computer Vision: A Comprehensive Survey",
-        authors: "Sanjeev Bhandari, Co-Author A, Co-Author B",
-        venue: "Conference on Computer Vision and Pattern Recognition (CVPR) 2023",
-        type: "Conference Paper",
-        abstract: "This paper presents a comprehensive survey of recent advances in deep learning architectures for computer vision tasks, highlighting breakthrough methods and future research directions.",
-        links: {
-            paper: "#",
-            code: "#",
-            demo: "#"
-        }
-    },
-    {
-        title: "Efficient Training of Large Language Models with Distributed Computing",
-        authors: "Sanjeev Bhandari, Research Team",
-        venue: "International Conference on Machine Learning (ICML) 2023",
-        type: "Conference Paper",
-        abstract: "We propose a novel distributed training framework that significantly reduces the computational overhead of training large language models while maintaining model performance.",
-        links: {
-            paper: "#",
-            code: "#"
-        }
-    },
-    {
-        title: "Transfer Learning in Medical Image Analysis: Challenges and Opportunities",
-        authors: "Sanjeev Bhandari, Medical AI Team",
-        venue: "Journal of Machine Learning Research (JMLR) 2022",
-        type: "Journal Article",
-        abstract: "This work explores the application of transfer learning techniques in medical imaging, addressing domain adaptation challenges and presenting novel solutions for healthcare AI.",
-        links: {
-            paper: "#",
-            supplement: "#"
-        }
-    }
-];
+export const PUBLICATIONS: Publication[] = [];
 
 export const SKILLS: SkillCategory[] = [
     {

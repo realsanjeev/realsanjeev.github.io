@@ -15,10 +15,25 @@ export default defineConfig(() => ({
   plugins: [
     react(),
     tailwindcss(),
-  ].filter(Boolean),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  build: {
+    // Split CSS per JS chunk so each stylesheet loads only when its chunk loads,
+    // removing the single render-blocking index-*.css from the critical path.
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        // Separate vendor CSS from app CSS for better caching granularity
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            return "vendor";
+          }
+        },
+      },
     },
   },
 }));

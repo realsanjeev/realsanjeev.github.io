@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ChangeEvent } from "react";
+import React, { useState, useRef, ChangeEvent, useTransition } from "react";
 import emailjs from "@emailjs/browser";
 import confetti from "canvas-confetti";
 
@@ -21,13 +21,32 @@ type FormErrors = Partial<FormData>;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const Contact = () => {
+// Contact-specific styling for social links (themed background with brand colors for visual weight)
+// Relocated outside the component to prevent calculation on every render
+const contactSocialLinks: SocialLink[] = SOCIAL_LINKS.map(link => {
+  let customStyle = "";
+  if (link.name === "LinkedIn") {
+    customStyle = "text-blue-600 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border-blue-200 dark:border-blue-900/40 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-xs";
+  } else if (link.name === "GitHub") {
+    customStyle = "text-slate-800 dark:text-slate-200 bg-slate-500/5 dark:bg-slate-400/10 border-slate-200 dark:border-slate-800 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 hover:border-gray-900 dark:hover:border-white shadow-xs";
+  } else if (link.name === "Twitter/X") {
+    customStyle = "text-slate-800 dark:text-slate-200 bg-slate-500/5 dark:bg-slate-400/10 border-slate-200 dark:border-slate-800 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 hover:border-gray-900 dark:hover:border-white shadow-xs";
+  } else if (link.name === "Medium") {
+    customStyle = "text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-900/40 hover:bg-green-600 hover:text-white hover:border-green-600 shadow-xs";
+  } else {
+    customStyle = "text-yellow-600 dark:text-yellow-400 bg-yellow-500/5 dark:bg-yellow-500/10 border-yellow-200 dark:border-yellow-900/40 hover:bg-yellow-600 hover:text-white hover:border-yellow-600 shadow-xs";
+  }
+  return {
+    ...link,
+    color: customStyle
+  };
+});
 
+const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const lastSubmitRef = useRef<number>(0);
 
   const [success, setSuccess] = useState(false);
-
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -36,38 +55,13 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
-  // Contact-specific styling for social links (themed background with brand colors for visual weight)
-  const contactSocialLinks: SocialLink[] = SOCIAL_LINKS.map(link => {
-    let customStyle = "";
-    if (link.name === "LinkedIn") {
-      customStyle = "text-blue-600 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border-blue-200 dark:border-blue-900/40 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-xs";
-    } else if (link.name === "GitHub") {
-      customStyle = "text-slate-800 dark:text-slate-200 bg-slate-500/5 dark:bg-slate-400/10 border-slate-200 dark:border-slate-800 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 hover:border-gray-900 dark:hover:border-white shadow-xs";
-    } else if (link.name === "Twitter/X") {
-      customStyle = "text-slate-800 dark:text-slate-200 bg-slate-500/5 dark:bg-slate-400/10 border-slate-200 dark:border-slate-800 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 hover:border-gray-900 dark:hover:border-white shadow-xs";
-    } else if (link.name === "Medium") {
-      customStyle = "text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-900/40 hover:bg-green-600 hover:text-white hover:border-green-600 shadow-xs";
-    } else {
-      customStyle = "text-yellow-600 dark:text-yellow-400 bg-yellow-500/5 dark:bg-yellow-500/10 border-yellow-200 dark:border-yellow-900/40 hover:bg-yellow-600 hover:text-white hover:border-yellow-600 shadow-xs";
-    }
-    return {
-      ...link,
-      color: customStyle
-    };
-  });
-
-  const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
-  const emailJsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
-  const emailJsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+  const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
+  const emailJsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
+  const emailJsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
 
   const isEmailJsConfigured = emailJsPublicKey && emailJsServiceId && emailJsTemplateId;
-
-  useEffect(() => {
-    const firstInput = formRef.current?.querySelector("input");
-    firstInput?.focus();
-  }, []);
 
   const validate = () => {
     const newErrors: FormErrors = {};
@@ -125,7 +119,7 @@ const Contact = () => {
     setErrors({});
   };
 
-  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!isEmailJsConfigured) {
@@ -135,7 +129,7 @@ const Contact = () => {
       return;
     }
 
-    if (isSubmitting) return;
+    if (isPending) return;
 
     const now = Date.now();
     if (now - lastSubmitRef.current < 10000) {
@@ -146,63 +140,59 @@ const Contact = () => {
     }
 
     const form = e.currentTarget;
-
-    const honeypot = (form.elements.namedItem("company") as HTMLInputElement)
-      ?.value;
+    const honeypot = (form.elements.namedItem("x_bot_trap_field") as HTMLInputElement)?.value;
 
     if (honeypot) return;
 
     if (!validate()) return;
 
-    setIsSubmitting(true);
+    startTransition(async () => {
+      try {
+        await emailjs.send(
+          emailJsServiceId,
+          emailJsTemplateId,
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            to_name: "Sanjeev Bhandari"
+          },
+          emailJsPublicKey
+        );
 
-    try {
-      await emailjs.send(
-        emailJsServiceId,
-        emailJsTemplateId,
-        {
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_name: "Sanjeev Bhandari"
-        },
-        emailJsPublicKey
-      );
+        lastSubmitRef.current = now;
 
-      lastSubmitRef.current = now;
+        triggerConfetti();
+        setSuccess(true);
 
-      triggerConfetti();
-      setSuccess(true);
+        toast("Message Sent", {
+          description: "Thanks for reaching out!"
+        });
 
-      toast("Message Sent", {
-        description: "Thanks for reaching out!"
-      });
+        resetForm();
 
-      resetForm();
-
-      setTimeout(() => setSuccess(false), 4000);
-    } catch (err) {
-      console.error("EmailJS Error:", err);
-      toast("Failed to send", {
-        description: "Please try again later. Error: " + (err instanceof Error ? err.message : "Unknown error")
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+        setTimeout(() => setSuccess(false), 4000);
+      } catch (err) {
+        console.error("EmailJS Error:", err);
+        toast("Failed to send", {
+          description: "Please try again later. Error: " + (err instanceof Error ? err.message : "Unknown error")
+        });
+      }
+    });
   };
 
   return (
     <section
       id="contact"
-      className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted text-foreground border-t border-border"
+      className="py-16 sm:py-24 bg-background text-foreground border-t border-border"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
             Let's{" "}
-            <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="text-emerald-600 dark:text-emerald-400">
               Connect
             </span>
           </h2>
@@ -216,9 +206,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
           {/* LEFT COLUMN */}
-
           <div className="space-y-8">
-
             <a
               href="mailto:realsanjeev2@gmail.com"
               title="Send an email to Sanjeev Bhandari (@realsanjeev)"
@@ -233,7 +221,7 @@ const Contact = () => {
               <span className="text-sm sm:text-base text-foreground">Kathmandu, Nepal</span>
             </div>
 
-            <div className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-3">
+            <div className="grid grid-cols-5 gap-2 sm:gap-3">
               {contactSocialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -276,30 +264,30 @@ const Contact = () => {
             </div>
           </div>
 
-
           {/* RIGHT COLUMN */}
-
           <form
             ref={formRef}
             onSubmit={handleSubmit}
             autoComplete="off"
             className="space-y-4 p-4 sm:p-6 bg-card rounded-2xl border border-border shadow-lg"
           >
-
-            {/* honeypot */}
-
+            {/* honeypot: renamed and marked with autoComplete/aria-hidden for screen readers/autofillers */}
+            <label htmlFor="x_bot_trap_field" className="sr-only">Do not fill this field</label>
             <input
+              id="x_bot_trap_field"
               type="text"
-              name="company"
+              name="x_bot_trap_field"
               tabIndex={-1}
-              autoComplete="off"
+              autoComplete="new-password"
+              aria-hidden="true"
               className="hidden"
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-
               <div>
+                <label htmlFor="contact-name" className="sr-only">Name</label>
                 <Input
+                  id="contact-name"
                   name="name"
                   placeholder="Name"
                   autoComplete="name"
@@ -315,7 +303,9 @@ const Contact = () => {
               </div>
 
               <div>
+                <label htmlFor="contact-email" className="sr-only">Email Address</label>
                 <Input
+                  id="contact-email"
                   name="email"
                   type="email"
                   placeholder="Email"
@@ -333,7 +323,9 @@ const Contact = () => {
             </div>
 
             <div>
+              <label htmlFor="contact-subject" className="sr-only">Subject</label>
               <Input
+                id="contact-subject"
                 name="subject"
                 placeholder="Subject"
                 value={formData.subject}
@@ -348,7 +340,9 @@ const Contact = () => {
             </div>
 
             <div>
+              <label htmlFor="contact-message" className="sr-only">Message</label>
               <textarea
+                id="contact-message"
                 name="message"
                 rows={6}
                 placeholder="Your message..."
@@ -364,11 +358,11 @@ const Contact = () => {
             </div>
 
             <Button
-              disabled={isSubmitting}
+              disabled={isPending}
               type="submit"
               className="w-full py-5 sm:py-6 text-sm sm:text-base rounded-xl bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white font-medium shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-lg"
             >
-              {isSubmitting ? (
+              {isPending ? (
                 <>
                   <FiLoader className="animate-spin mr-2" />
                   Sending...

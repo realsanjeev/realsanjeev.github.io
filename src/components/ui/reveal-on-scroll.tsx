@@ -13,7 +13,7 @@ export const RevealOnScroll = ({ children, className, delay = 0 }: RevealOnScrol
             const isAutomation = 
                 window.navigator.webdriver || 
                 window.location.search.includes("screenshot") || 
-                (window as any).__PLAYWRIGHT__ ||
+                window.__PLAYWRIGHT__ ||
                 window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             if (isAutomation) return true;
         }
