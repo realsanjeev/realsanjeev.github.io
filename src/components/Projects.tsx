@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { FiFileText, FiGithub, FiLink, FiArrowRight } from "react-icons/fi";
 import { MAJOR_PROJECTS, GITHUB_PROJECTS } from "@/data/portfolio";
-import { FaGraduationCap, FaProjectDiagram, FaPython, FaJava, FaPenNib, FaTeamspeak, FaGamepad, FaBorderStyle, FaCameraRetro } from "react-icons/fa";
+import { FaGraduationCap, FaProjectDiagram, FaPython, FaJava, FaPenNib, FaTeamspeak, FaGamepad, FaBorderStyle, FaCameraRetro, FaChrome } from "react-icons/fa";
 import { SiPytorch, SiTensorflow, SiJavascript, SiRust, SiImmersivetranslate } from "react-icons/si";
 
 const getLanguageIcon = (tag: string) => {
@@ -18,6 +18,7 @@ const getLanguageIcon = (tag: string) => {
   if (normalizedTag == 'game ai') return <FaGamepad className="h-5 w-5" />;
   if (normalizedTag == 'computer vision') return <FaBorderStyle className="h-5 w-5" />;
   if (normalizedTag == 'sam') return <FaCameraRetro className="h-5 w-5" />;
+  if (normalizedTag === 'chrome extension') return <FaChrome className="h-5 w-5" />;
   return <FiGithub className="h-5 w-5" />;
 };
 
@@ -68,7 +69,7 @@ const Projects = () => {
             return (
               <div
                 key={index}
-                className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+                className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full"
               >
                 {/* Project Image */}
                 {project.image && (
@@ -86,7 +87,8 @@ const Projects = () => {
                 {/* Card Header with Gradient */}
                 <div className={`h-1.5 bg-gradient-to-r ${typeConfig.color}`} />
 
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="flex-grow">
                   {/* Type Badge */}
                   <div className="flex items-center justify-between mb-4">
                     <span className={`inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r ${typeConfig.color} text-white text-xs font-medium rounded-full`}>
@@ -120,9 +122,10 @@ const Projects = () => {
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3">
                     {project.detailedDescription}
                   </p>
+                  </div>
 
                   {/* Actions */}
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 pt-4 mt-auto">
                     {project.downloadUrl && (
                       <a
                         href={project.downloadUrl}
@@ -182,7 +185,7 @@ const Projects = () => {
               return (
                 <div
                   key={idx}
-                  className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-xl hover:border-border/50 transition-all duration-300"
+                  className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-xl hover:border-border/50 transition-all duration-300 flex flex-col h-full"
                 >
                   {/* Gradient Header with Language Icon */}
                   <div className={`relative h-24 bg-gradient-to-r ${gradient} p-6`}>
@@ -197,7 +200,8 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex-grow">
                     <h4 className="text-lg font-bold text-foreground mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                       {project.name}
                     </h4>
@@ -218,24 +222,50 @@ const Projects = () => {
                       </div>
                     )}
 
+                    {project.name.toLowerCase() === "read-aloud-extension" && (
+                      <div className="mb-4 pt-3 border-t border-border/60 space-y-2 text-left">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Chrome Web Store</span>
+                          <span className="inline-flex items-center px-2 py-0.5 bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[10px] font-medium rounded-full">Extension</span>
+                        </div>
+                        <a
+                          href="https://chromewebstore.google.com/detail/read-aloud-extension/albdidadjkmkoieokamkkdhpidmjgpea?authuser=0&hl=en"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-slate-950 dark:bg-black/40 border border-border/80 rounded-xl p-3 font-mono text-[11px] text-slate-100 flex items-center justify-between hover:bg-slate-900 dark:hover:bg-black/60 hover:border-sky-500/50 transition-colors shadow-inner group/cws"
+                          title="View on Chrome Web Store"
+                        >
+                          <span className="flex items-center gap-1.5">
+                            <span className="text-sky-400 font-semibold">★</span>
+                            <span>Add to Chrome</span>
+                          </span>
+                          <span className="text-[10px] text-slate-500 group-hover/cws:text-sky-400 transition-colors">Install Extension ↗</span>
+                        </a>
+                      </div>
+                    )}
+
                     {project.name.toLowerCase() === "nepali_unicoder" && (
                       <div className="mb-4 pt-3 border-t border-border/60 space-y-2 text-left">
                         <div className="flex items-center justify-between">
                           <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">PyPI Package</span>
                           <span className="inline-flex items-center px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-medium rounded-full">Stable</span>
                         </div>
-                        <div className="bg-muted dark:bg-black/30 border border-border/80 rounded-lg p-2 font-mono text-[11px] text-foreground select-all cursor-pointer flex items-center justify-between" title="Copy command">
-                          <span>pip install nepali-unicoder</span>
-                          <span className="text-[10px] text-muted-foreground">pip</span>
+                        <div className="bg-slate-950 dark:bg-black/40 border border-border/80 rounded-xl p-3 font-mono text-[11px] text-slate-100 select-all cursor-pointer flex items-center justify-between shadow-inner" title="Copy command">
+                          <span className="flex items-center gap-1.5">
+                            <span className="text-emerald-500 font-semibold">$</span>
+                            <span>pip install nepali-unicoder</span>
+                          </span>
+                          <span className="text-[10px] text-slate-500 uppercase font-semibold">pip</span>
                         </div>
-                        <div className="bg-muted/50 dark:bg-black/20 border border-border/50 rounded-lg p-2 font-mono text-[10px] text-muted-foreground overflow-x-auto whitespace-pre">
-                          <span className="text-purple-600 dark:text-purple-400">from</span> nepali_unicoder <span className="text-purple-600 dark:text-purple-400">import</span> preeti_to_unicode<br />
-                          print(preeti_to_unicode(<span className="text-emerald-600 dark:text-emerald-400">"k|L"</span>)) <span className="text-slate-400 dark:text-slate-600"># Output: श्री</span>
+                        <div className="bg-slate-950 dark:bg-black/30 border border-border/60 rounded-xl p-3 font-mono text-[11px] text-slate-100 overflow-x-auto whitespace-pre shadow-inner">
+                          <span className="text-purple-400 font-semibold">from</span> nepali_unicoder <span className="text-purple-400 font-semibold">import</span> <span className="text-sky-300">preeti_to_unicode</span><br />
+                          <span className="text-sky-300">print</span>(<span className="text-sky-300">preeti_to_unicode</span>(<span className="text-amber-400">"k|L"</span>)) <span className="text-slate-500 italic"># Output: श्री</span>
                         </div>
                       </div>
                     )}
+                    </div>
 
-                    <div className="pt-2">
+                    <div className="pt-4 mt-auto">
                       <a
                         href={project.url}
                         target="_blank"

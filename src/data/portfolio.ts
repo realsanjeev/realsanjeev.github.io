@@ -158,10 +158,10 @@ export const GITHUB_PROJECTS: Project[] = [
         tags: ["Whisper", "Speech-to-Text", "Real-time"]
     },
     {
-        name: "Reinforcement Learning in Python Game",
-        description: "An implementation of reinforcement learning applied to the classic Snake game, demonstrating AI gameplay.",
-        url: "https://github.com/defyingdemonprogram/Reinforcement-Learning-in-Python-Game",
-        tags: ["Game AI", "Reinforcement Learning", "Q-learning"]
+        name: "read-aloud-extension",
+        description: "A Chrome Extension that reads web page content aloud using Text-to-Speech (TTS), helping with accessibility and multitasking.",
+        url: "https://github.com/realsanjeev/read-aloud-extension",
+        tags: ["Chrome Extension", "TTS", "Accessibility", "Productivity"]
     },
     {
         name: "nepali_unicoder",
