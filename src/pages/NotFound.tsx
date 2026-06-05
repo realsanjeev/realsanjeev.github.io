@@ -51,14 +51,14 @@ const NotFound = () => {
             className="p-4 bg-card hover:bg-accent rounded-xl border border-border hover:border-emerald-500/50 transition-all duration-200 group shadow-sm"
           >
             <p className="text-sm text-muted-foreground mb-1">Learn about</p>
-            <p className="text-lg font-semibold group-hover:text-emerald-600 transition-colors">About Me</p>
+            <p className="text-lg font-semibold group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">About Me</p>
           </a>
           <a
             href="/#experience"
             className="p-4 bg-card hover:bg-accent rounded-xl border border-border hover:border-emerald-500/50 transition-all duration-200 group shadow-sm"
           >
             <p className="text-sm text-muted-foreground mb-1">Check out</p>
-            <p className="text-lg font-semibold group-hover:text-emerald-600 transition-colors">Experience</p>
+            <p className="text-lg font-semibold group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Experience</p>
           </a>
         </div>
 

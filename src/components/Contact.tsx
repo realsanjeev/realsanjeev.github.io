@@ -195,14 +195,14 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted text-foreground border-t border-border scroll-mt-24"
+      className="py-16 sm:py-24 bg-background text-foreground border-t border-border"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
             Let's{" "}
-            <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="text-emerald-600 dark:text-emerald-400">
               Connect
             </span>
           </h2>

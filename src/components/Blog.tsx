@@ -5,12 +5,12 @@ import { FaMedium } from 'react-icons/fa6';
 
 const Blog = () => {
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted scroll-mt-24" id="blog">
+    <section className="py-16 sm:py-24 bg-muted/30 dark:bg-muted/10" id="blog">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Blog & <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">Articles</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Blog & <span className="text-emerald-600 dark:text-emerald-400">Articles</span>
           </h2>
           <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
           <p className="text-lg text-muted-foreground mt-6 max-w-3xl mx-auto">
@@ -47,17 +47,17 @@ const Blog = () => {
                 {/* Meta Info */}
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                   <div className="flex items-center gap-1.5">
-                    <FiCalendar className="h-4 w-4 text-emerald-600" />
+                    <FiCalendar className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                     <span>{post.date}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <FiClock className="h-4 w-4 text-emerald-600" />
+                    <FiClock className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                     <span>{post.readTime}</span>
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-foreground mb-3 line-clamp-2 group-hover:text-emerald-600 transition-colors">
+                <h3 className="text-xl font-bold text-foreground mb-3 line-clamp-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   {post.title}
                 </h3>
 

@@ -78,7 +78,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <a href="#" className="group" aria-label="Home">
-            <span className="text-2xl font-bold bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-clip-text text-transparent">
+            <span className="text-2xl font-bold text-foreground">
               SB
             </span>
           </a>
@@ -176,7 +176,7 @@ const Navigation = () => {
                   onClick={() => handleNavClick(item.href)}
                   className={`block px-4 py-3 rounded-lg transition-colors font-medium ${
                     activeSection === item.href
-                      ? 'text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30'
+                      ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30'
                       : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                   }`}
                   aria-current={activeSection === item.href ? 'page' : undefined}

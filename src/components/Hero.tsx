@@ -3,7 +3,7 @@ import { SOCIAL_LINKS } from '@/constants';
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-screen max-h-[1080px] flex lg:items-center lg:justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden pt-20 pb-16 lg:py-0 scroll-mt-24">
+    <section id="hero" className="relative min-h-[100dvh] flex flex-col lg:flex-row lg:items-center lg:justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden pt-32 sm:pt-40 pb-16 lg:pt-32 lg:pb-16">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
@@ -11,8 +11,8 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/15 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-16">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-12 pb-16 lg:py-0">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="text-left space-y-8">
             {/* Badges */}
@@ -33,14 +33,13 @@ const Hero = () => {
               </a>
             </div>
 
-            {/* Name with Gradient */}
+            {/* Name with Gradient (Removed bg-clip-text due to Samsung Internet Dark Mode bugs) */}
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-                <span className="bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-clip-text text-transparent">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight sm:leading-tight md:leading-tight lg:leading-tight">
+                <span className="text-foreground pb-2 block sm:inline-block sm:mr-3">
                   Sanjeev
                 </span>
-                <br />
-                <span className="bg-gradient-to-r from-emerald-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">
+                <span className="text-emerald-600 dark:text-emerald-400 pb-2 block sm:inline-block">
                   Bhandari
                 </span>
               </h1>
@@ -55,9 +54,10 @@ const Hero = () => {
               <span className="font-semibold text-foreground">computer vision</span> systems for
               document verification,{' '}
               <span className="font-semibold text-foreground">LLM-powered</span> apps for education,
-              facial recognition APIs, and{' '}
+              and{' '}
               <span className="font-semibold text-foreground">Nepali NLP</span> tools.
-              Every project is a chance to turn a hard problem into something that actually works.
+              My work is backed by robust{' '}
+              <span className="font-semibold text-foreground">Python backend</span> API services, Docker configurations, and graph databases.
             </p>
 
             {/* CTA Buttons */}
@@ -70,11 +70,14 @@ const Hero = () => {
                 Get in Touch
               </a>
               <a
-                href="mailto:realsanjeev2@gmail.com?subject=Request for CV&body=Hi Sanjeev,%0D%0A%0D%0AI'm interested in learning more about your background. Could you please share your CV?%0D%0A%0D%0AThanks!"
+                href="/Sanjeev_Bhandari_CV.pdf"
+                download="Sanjeev_Bhandari_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center px-6 py-3.5 text-base font-medium text-foreground bg-card hover:bg-accent border border-border hover:border-emerald-500/40 dark:hover:border-emerald-500/30 hover:text-emerald-600 dark:hover:text-emerald-400 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
                 <FiDownload className="mr-2 h-5 w-5 group-hover:translate-y-0.5 transition-transform duration-200" />
-                Request CV
+                Download CV
               </a>
             </div>
 
@@ -121,7 +124,7 @@ const Hero = () => {
           </div>
 
           {/* Right Content - Hero Image/Illustration */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
             <div className="relative">
               {/* Decorative rings */}
               <div className="absolute inset-0 rounded-full border-2 border-primary/20 scale-110" />
@@ -139,14 +142,6 @@ const Hero = () => {
                     loading="lazy"
                   />
                 </div>
-
-                {/* Floating badges */}
-                <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 px-2.5 py-1.5 sm:px-4 sm:py-2 bg-card rounded-xl shadow-lg border border-border animate-bounce">
-                  <span className="text-lg sm:text-2xl">🚀</span>
-                </div>
-                <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 px-2.5 py-1.5 sm:px-4 sm:py-2 bg-card rounded-xl shadow-lg border border-border animate-bounce" style={{ animationDelay: '0.5s' }}>
-                  <span className="text-lg sm:text-2xl">💡</span>
-                </div>
               </div>
             </div>
           </div>
@@ -155,7 +150,7 @@ const Hero = () => {
         {/* Scroll Indicator */}
         <div className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2">
           <div className="w-6 h-10 border-2 border-border rounded-full flex items-start justify-center p-2">
-            <div className="w-1.5 h-3 bg-muted-foreground rounded-full animate-bounce" />
+            <div className="w-1.5 h-3 bg-muted-foreground rounded-full animate-scroll" />
           </div>
         </div>
       </div>

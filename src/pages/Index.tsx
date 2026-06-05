@@ -35,9 +35,6 @@ const Index = () => {
           <RevealOnScroll delay={100}>
             <Projects />
           </RevealOnScroll>
-          {/* <RevealOnScroll delay={100}>
-            <Publications />
-          </RevealOnScroll> */}
           <RevealOnScroll delay={100}>
             <Blog />
           </RevealOnScroll>

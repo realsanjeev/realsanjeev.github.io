@@ -3,12 +3,12 @@ import { FiCheckCircle } from "react-icons/fi";
 
 const Experience = () => {
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted scroll-mt-24" id="experience">
+    <section className="py-16 sm:py-24 bg-muted/30 dark:bg-muted/10" id="experience">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Work <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">Experience</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Work <span className="text-emerald-600 dark:text-emerald-400">Experience</span>
           </h2>
           <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
           <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
@@ -50,7 +50,7 @@ const Experience = () => {
                       <div className="flex-1">
                         <h3 className="text-xl font-bold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{exp.title}</h3>
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-1">
-                          <p className="text-emerald-600 font-semibold">{exp.company}</p>
+                          <p className="text-emerald-600 dark:text-emerald-400 font-semibold">{exp.company}</p>
                           <span className="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full whitespace-nowrap w-fit group-hover:bg-emerald-500/10 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-all duration-300">
                             {exp.period}
                           </span>
