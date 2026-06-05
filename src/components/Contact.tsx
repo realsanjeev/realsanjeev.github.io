@@ -58,16 +58,11 @@ const Contact = () => {
     };
   });
 
-  const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
-  const emailJsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
-  const emailJsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+  const emailJsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
+  const emailJsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
+  const emailJsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
 
   const isEmailJsConfigured = emailJsPublicKey && emailJsServiceId && emailJsTemplateId;
-
-  useEffect(() => {
-    const firstInput = formRef.current?.querySelector("input");
-    firstInput?.focus();
-  }, []);
 
   const validate = () => {
     const newErrors: FormErrors = {};

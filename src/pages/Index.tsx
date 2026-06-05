@@ -22,22 +22,28 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <main id="main-content">
-        <RevealOnScroll>
-          <Hero />
-        </RevealOnScroll>
+        <Hero />
         <Suspense fallback={<Loader />}>
           <RevealOnScroll delay={100}>
             <About />
           </RevealOnScroll>
+        </Suspense>
+        <Suspense fallback={<Loader />}>
           <RevealOnScroll delay={100}>
             <Experience />
           </RevealOnScroll>
+        </Suspense>
+        <Suspense fallback={<Loader />}>
           <RevealOnScroll delay={100}>
             <Projects />
           </RevealOnScroll>
+        </Suspense>
+        <Suspense fallback={<Loader />}>
           <RevealOnScroll delay={100}>
             <Blog />
           </RevealOnScroll>
+        </Suspense>
+        <Suspense fallback={<Loader />}>
           <RevealOnScroll delay={100}>
             <Contact />
           </RevealOnScroll>

@@ -3,19 +3,19 @@ import { Button } from '@/components/ui/button';
 import { ModeToggle } from '@/components/ui/mode-toggle';
 import { SOCIAL_LINKS } from '@/constants';
 
+const navItems = [
+  { name: 'About', href: '#about' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Blog', href: '#blog' },
+  { name: 'Contact', href: '#contact' }
+];
+
+const sectionIds = ['about', 'experience', 'projects', 'blog', 'contact'];
+
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-
-  const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' }
-  ];
-
-  const sectionIds = ['about', 'experience', 'projects', 'blog', 'contact'];
 
   const getActiveSection = useCallback(() => {
     const scrollPosition = window.scrollY + 150;
@@ -77,7 +77,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <a href="#" className="group" aria-label="Home">
+          <a href="/" className="group" aria-label="Home">
             <span className="text-2xl font-bold text-foreground">
               SB
             </span>

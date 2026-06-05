@@ -34,3 +34,6 @@ bun.lock
 .agent
 .agents
 _bmad
+.opencode/
+.playwright-mcp/
+_bmad-output/

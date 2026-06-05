@@ -1,13 +1,7 @@
 import { FaLinkedinIn, FaGithub, FaXTwitter, FaMedium } from "react-icons/fa6";
 import { SiHuggingface } from "react-icons/si";
 
-export const NAME = "Sanjeev Bhandari";
-export const TITLE = "Machine Learning Engineer";
-export const EMAIL = "realsanjeev2@gmail.com";
-export const LINKEDIN_URL = "https://www.linkedin.com/in/realsanjeev";
-export const GITHUB_URL = "https://github.com/realsanjeev";
-export const TWITTER_URL = "https://twitter.com/realsanjeev2";
-export const MEDIUM_URL = "https://medium.com/@realsanjeev";
+
 
 export interface SocialLink {
   name: string;

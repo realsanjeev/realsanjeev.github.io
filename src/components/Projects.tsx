@@ -127,7 +127,6 @@ const Projects = () => {
                     {project.downloadUrl && (
                       <a
                         href={project.downloadUrl}
-                        download
                         target="_blank"
                         rel="noopener noreferrer"
                         title={`Download PDF for ${project.name}`}

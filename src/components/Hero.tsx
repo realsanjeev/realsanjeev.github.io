@@ -139,7 +139,8 @@ const Hero = () => {
                     alt="Sanjeev Bhandari"
                     className="w-full h-full object-cover"
                     draggable={false}
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
                   />
                 </div>
               </div>

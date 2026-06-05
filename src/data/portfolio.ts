@@ -105,7 +105,6 @@ export const MAJOR_PROJECTS: Project[] = [
         description: "Bachelor's Degree Final Year",
         detailedDescription: "Developed a system capable of generating novel musical compositions with multiple instrument tracks. Investigated various neural network architectures for sequential data generation, implementing an LSTM-based model for music creation. Tracked experiments and model training runs using Weights & Biases. Explored hybrid approaches combining algorithmic composition (tone-matrix derived from image data) with deep learning model outputs.",
         downloadUrl: "https://drive.google.com/drive/folders/1ZsLWk0B2BmMbE0fqo6sSO5H2HlNNxwGY",
-        url: "#",
         image: "https://images.unsplash.com/photo-1717699841849-98dcc1c6184a?q=400&w=600&auto=format&fit=crop",
         alt: "Automatic Music Generation system displaying neural networks and digital keyboard interface - Bachelor's Degree Final Year project by Sanjeev Bhandari",
         tags: ["LSTM", "Deep Learning", "Python", "Music AI", "W&B"]
