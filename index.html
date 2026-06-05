@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sanjeev Bhandari (@realsanjeev) | Machine Learning Engineer</title>
   <meta name="description"
-    content="Portfolio of Sanjeev Bhandari (@realsanjeev), a Machine Learning Engineer specializing in Computer Vision, NLP, and LLMs. Explore projects in music generation, genre recognition, and more." />
+    content="Portfolio of Sanjeev Bhandari (@realsanjeev), a Machine Learning Engineer specializing in Computer Vision, Nepali NLP, and RAG/LLM applications." />
   <meta name="keywords"
     content="Sanjeev Bhandari, Machine Learning Engineer, Computer Vision, NLP, Deep Learning, AI, Portfolio, Developer" />
   <meta name="author" content="Sanjeev Bhandari(@realsanjeev)" />
@@ -60,39 +60,104 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Sanjeev Bhandari",
-      "alternateName": "realsanjeev",
-      "url": "https://bhandarisanjeev.com.np/",
-      "image": "https://avatars.githubusercontent.com/u/45820805?v=4",
-      "jobTitle": "Machine Learning Engineer",
-      "sameAs": [
-        "https://linkedin.com/in/realsanjeev",
-        "https://github.com/realsanjeev",
-        "https://x.com/realsanjeev2",
-        "https://medium.com/@realsanjeev",
-        "https://huggingface.co/realsanjeev",
-        "https://bhandarisanjeev.com.np/"
-      ],
-      "knowsAbout": [
-        "Machine Learning",
-        "Deep Learning",
-        "Artificial Intelligence"
-      ],
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "Bachelor's Degree",
-        "name": "Electronics and Information Engineering",
-        "recognizedBy": {
-          "@type": "GovernmentOrganization",
-          "name": "Nepal Engineering Council (NEC)",
-          "url": "https://nec.gov.np"
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://bhandarisanjeev.com.np/#person",
+          "name": "Sanjeev Bhandari",
+          "alternateName": "realsanjeev",
+          "url": "https://bhandarisanjeev.com.np/",
+          "image": "https://avatars.githubusercontent.com/u/45820805?v=4",
+          "jobTitle": "Machine Learning Engineer",
+          "sameAs": [
+            "https://linkedin.com/in/realsanjeev",
+            "https://github.com/realsanjeev",
+            "https://x.com/realsanjeev2",
+            "https://medium.com/@realsanjeev",
+            "https://huggingface.co/realsanjeev"
+          ],
+          "knowsAbout": [
+            "Machine Learning",
+            "Deep Learning",
+            "Artificial Intelligence",
+            "Computer Vision",
+            "Natural Language Processing",
+            "Large Language Models (LLMs)",
+            "Retrieval-Augmented Generation (RAG)"
+          ],
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "Bachelor's Degree",
+            "name": "Electronics and Information Engineering",
+            "recognizedBy": {
+              "@type": "GovernmentOrganization",
+              "name": "Nepal Engineering Council (NEC)",
+              "url": "https://nec.gov.np"
+            }
+          },
+          "worksFor": {
+            "@type": "Organization",
+            "name": "TAI Inc.",
+            "url": "https://www.tai.io"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://bhandarisanjeev.com.np/#website",
+          "name": "Sanjeev Bhandari Portfolio",
+          "url": "https://bhandarisanjeev.com.np/",
+          "publisher": {
+            "@id": "https://bhandarisanjeev.com.np/#person"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://bhandarisanjeev.com.np/#nepali_unicoder",
+          "name": "nepali_unicoder",
+          "description": "A python library for converting Nepali Preeti text to Unicode and translating Roman text into Nepali.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "All",
+          "author": {
+            "@id": "https://bhandarisanjeev.com.np/#person"
+          },
+          "downloadUrl": "https://pypi.org/project/nepali-unicoder/",
+          "url": "https://bhandarisanjeev.com.np/nepali_unicoder/"
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://bhandarisanjeev.com.np/#music_generation",
+          "name": "Automatic Music Generation",
+          "description": "A deep learning system using LSTMs to generate multi-instrument musical compositions, tracked with Weights & Biases.",
+          "author": {
+            "@id": "https://bhandarisanjeev.com.np/#person"
+          },
+          "genre": "Deep Learning / Music Generation",
+          "url": "https://drive.google.com/drive/folders/1ZsLWk0B2BmMbE0fqo6sSO5H2HlNNxwGY"
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://bhandarisanjeev.com.np/#sam2_gui",
+          "name": "SAM2-GUI",
+          "description": "A video object segmentation and tracking GUI wrapper utilizing the Segment Anything Model 2.1 (SAM2.1).",
+          "author": {
+            "@id": "https://bhandarisanjeev.com.np/#person"
+          },
+          "url": "https://github.com/realsanjeev/sam2-gui"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://bhandarisanjeev.com.np/#read_aloud_extension",
+          "name": "read-aloud-extension",
+          "description": "A Chrome Extension that reads web page content aloud using Text-to-Speech (TTS), helping with accessibility and multitasking.",
+          "applicationCategory": "BrowserExtension",
+          "operatingSystem": "All",
+          "author": {
+            "@id": "https://bhandarisanjeev.com.np/#person"
+          },
+          "downloadUrl": "https://chromewebstore.google.com/detail/read-aloud-extension/albdidadjkmkoieokamkkdhpidmjgpea?authuser=0&hl=en",
+          "url": "https://github.com/realsanjeev/read-aloud-extension"
         }
-      },
-      "worksFor": {
-        "@type": "Organization",
-        "name": "TAI Inc."
-      }
+      ]
     }
   </script>
   <script type="text/javascript">
@@ -119,9 +184,9 @@
       }
     }(window.location))
   </script>
-  <script type="module" crossorigin src="./assets/index-1DTvzijU.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/vendor-Bn-J7e0X.js">
-  <link rel="stylesheet" crossorigin href="./assets/index-HkJ8g5MO.css">
+  <script type="module" crossorigin src="./assets/index-PCPQD7Fm.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/vendor-ByfC1OM3.js">
+  <link rel="stylesheet" crossorigin href="./assets/index-CD9uUg08.css">
 </head>
 
 <!-- Google tag (gtag.js) -->
