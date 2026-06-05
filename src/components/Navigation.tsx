@@ -21,7 +21,7 @@ const Navigation = () => {
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -60% 0px', // Focus on the middle-upper viewport
-      threshold: 0.1,
+      threshold: 0,
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {

@@ -42,7 +42,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     name: "Hugging Face",
-    url: "https://huggingface.co/sanjeev-bhandari01",
+    url: "https://huggingface.co/realsanjeev",
     icon: SiHuggingface,
     color: "hover:text-white hover:bg-yellow-500",
     ariaLabel: "Hugging Face Profile"
