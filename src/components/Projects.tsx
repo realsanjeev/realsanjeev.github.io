@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@/components/ui/button";
 import { FiFileText, FiGithub, FiLink, FiArrowRight } from "react-icons/fi";
 import { MAJOR_PROJECTS, GITHUB_PROJECTS } from "@/data/portfolio";
