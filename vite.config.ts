@@ -30,6 +30,10 @@ export default defineConfig(() => ({
         // Separate vendor CSS from app CSS for better caching granularity
         manualChunks(id) {
           if (id.includes("node_modules")) {
+            // Do not group dynamic imports in the main vendor chunk to enable lazy-loading
+            if (id.includes("canvas-confetti") || id.includes("@emailjs")) {
+              return;
+            }
             return "vendor";
           }
         },

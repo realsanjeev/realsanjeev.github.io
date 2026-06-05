@@ -1,7 +1,4 @@
 import React, { useState, useRef, ChangeEvent, useTransition } from "react";
-import emailjs from "@emailjs/browser";
-import confetti from "canvas-confetti";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -101,12 +98,17 @@ const Contact = () => {
     }
   };
 
-  const triggerConfetti = () => {
-    confetti({
-      particleCount: 120,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
+  const triggerConfetti = async () => {
+    try {
+      const { default: confetti } = await import("canvas-confetti");
+      confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    } catch (err) {
+      console.error("Failed to load confetti module:", err);
+    }
   };
 
   const resetForm = () => {
@@ -148,6 +150,7 @@ const Contact = () => {
 
     startTransition(async () => {
       try {
+        const emailjs = (await import("@emailjs/browser")).default;
         await emailjs.send(
           emailJsServiceId,
           emailJsTemplateId,

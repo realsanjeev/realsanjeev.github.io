@@ -15,6 +15,8 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-foreground relative overflow-hidden">
+      <title>Page Not Found | Sanjeev Bhandari(@realsanjeev)</title>
+      <meta name="robots" content="noindex, nofollow" />
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl" />
