@@ -1,0 +1,4 @@
+# Contact info for security researchers
+Contact: mailto:realsanjeev2@gmail.com
+Preferred-Languages: en
+Canonical: https://bhandarisanjeev.com.np/.well-known/security.txt
