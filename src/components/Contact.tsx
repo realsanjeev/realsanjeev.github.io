@@ -21,7 +21,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Contact-specific styling for social links (themed background with brand colors for visual weight)
 // Relocated outside the component to prevent calculation on every render
 const contactSocialLinks: SocialLink[] = SOCIAL_LINKS.map(link => {
-  let customStyle = "";
+  let customStyle: string;
   if (link.name === "LinkedIn") {
     customStyle = "text-blue-600 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border-blue-200 dark:border-blue-900/40 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-xs";
   } else if (link.name === "GitHub") {
