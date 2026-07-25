@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { FiFileText, FiGithub, FiLink, FiArrowRight } from "react-icons/fi";
 import { MAJOR_PROJECTS, GITHUB_PROJECTS } from "@/data/portfolio";
-import { FaGraduationCap, FaProjectDiagram, FaPython, FaJava, FaPenNib, FaTeamspeak, FaGamepad, FaBorderStyle, FaCameraRetro, FaChrome } from "react-icons/fa";
+import { FaGraduationCap, FaProjectDiagram, FaPython, FaJava, FaPenNib, FaTeamspeak, FaGamepad, FaBorderStyle, FaCameraRetro, FaChrome, FaFirefox } from "react-icons/fa";
 import { SiPytorch, SiTensorflow, SiJavascript, SiRust, SiImmersivetranslate } from "react-icons/si";
 
 const getLanguageIcon = (tag: string) => {
@@ -18,7 +18,7 @@ const getLanguageIcon = (tag: string) => {
   if (normalizedTag == 'game ai') return <FaGamepad className="h-5 w-5" />;
   if (normalizedTag == 'computer vision') return <FaBorderStyle className="h-5 w-5" />;
   if (normalizedTag == 'sam') return <FaCameraRetro className="h-5 w-5" />;
-  if (normalizedTag === 'chrome extension') return <FaChrome className="h-5 w-5" />;
+  if (normalizedTag === 'chrome extension' || normalizedTag === 'browser extension') return <FaChrome className="h-5 w-5" />;
   return <FiGithub className="h-5 w-5" />;
 };
 
@@ -225,22 +225,37 @@ const Projects = () => {
                     {project.name.toLowerCase() === "read-aloud-extension" && (
                       <div className="mb-4 pt-3 border-t border-border/60 space-y-2 text-left">
                         <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Chrome Web Store</span>
+                          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Browser Extensions</span>
                           <span className="inline-flex items-center px-2 py-0.5 bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[10px] font-medium rounded-full">Extension</span>
                         </div>
-                        <a
-                          href="https://chromewebstore.google.com/detail/read-aloud-extension/albdidadjkmkoieokamkkdhpidmjgpea?authuser=0&hl=en"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-slate-950 dark:bg-black/40 border border-border/80 rounded-xl p-3 font-mono text-[11px] text-slate-100 flex items-center justify-between hover:bg-slate-900 dark:hover:bg-black/60 hover:border-sky-500/50 transition-colors shadow-inner group/cws"
-                          title="View on Chrome Web Store"
-                        >
-                          <span className="flex items-center gap-1.5">
-                            <span className="text-sky-400 font-semibold">★</span>
-                            <span>Add to Chrome</span>
-                          </span>
-                          <span className="text-[10px] text-slate-500 group-hover/cws:text-sky-400 transition-colors">Install Extension ↗</span>
-                        </a>
+                        <div className="flex flex-col gap-2">
+                          <a
+                            href="https://chromewebstore.google.com/detail/read-aloud-extension/albdidadjkmkoieokamkkdhpidmjgpea?authuser=0&hl=en"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-slate-950 dark:bg-black/40 border border-border/80 rounded-xl p-3 font-mono text-[11px] text-slate-100 flex items-center justify-between hover:bg-slate-900 dark:hover:bg-black/60 hover:border-sky-500/50 transition-colors shadow-inner group/cws"
+                            title="View on Chrome Web Store"
+                          >
+                            <span className="flex items-center gap-1.5">
+                              <FaChrome className="text-sky-400 h-3.5 w-3.5" />
+                              <span>Chrome Web Store</span>
+                            </span>
+                            <span className="text-[10px] text-slate-500 group-hover/cws:text-sky-400 transition-colors">Install Extension ↗</span>
+                          </a>
+                          <a
+                            href="https://addons.mozilla.org/en-US/firefox/addon/read-aloud-extension/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-slate-950 dark:bg-black/40 border border-border/80 rounded-xl p-3 font-mono text-[11px] text-slate-100 flex items-center justify-between hover:bg-slate-900 dark:hover:bg-black/60 hover:border-amber-500/50 transition-colors shadow-inner group/ff"
+                            title="View on Firefox Add-ons"
+                          >
+                            <span className="flex items-center gap-1.5">
+                              <FaFirefox className="text-amber-500 h-3.5 w-3.5" />
+                              <span>Firefox Add-ons</span>
+                            </span>
+                            <span className="text-[10px] text-slate-500 group-hover/ff:text-amber-400 transition-colors">Install Add-on ↗</span>
+                          </a>
+                        </div>
                       </div>
                     )}
 
