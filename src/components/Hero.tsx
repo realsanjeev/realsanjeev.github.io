@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section id="hero" className="relative min-h-[100dvh] flex flex-col lg:flex-row lg:items-center lg:justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden pt-32 sm:pt-40 pb-16 lg:pt-32 lg:pb-16">
       {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/20 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/15 rounded-full blur-3xl" />

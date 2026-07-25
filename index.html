@@ -7,11 +7,12 @@
   <title>Sanjeev Bhandari (@realsanjeev) | Machine Learning Engineer</title>
   <meta name="description"
     content="Portfolio of Sanjeev Bhandari (@realsanjeev), a Machine Learning Engineer specializing in Computer Vision, Nepali NLP, and RAG/LLM applications." />
-  <meta name="keywords"
-    content="Sanjeev Bhandari, Machine Learning Engineer, Computer Vision, NLP, Deep Learning, AI, Portfolio, Developer" />
   <meta name="author" content="Sanjeev Bhandari(@realsanjeev)" />
   <meta name="robots" content="index, follow" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#059669" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#022c22" media="(prefers-color-scheme: dark)" />
   <link rel="canonical" href="https://bhandarisanjeev.com.np/" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
@@ -30,22 +31,15 @@
     })();
   </script>
 
-  <script type="text/javascript">
-    // Redirect github.io to custom domain to consolidate SEO authority
-    (function () {
-      var preferredHostname = 'bhandarisanjeev.com.np';
-      if (window.location.hostname.includes('github.io')) {
-        window.location.replace('https://' + preferredHostname + window.location.pathname + window.location.search + window.location.hash);
-      }
-    })();
-  </script>
-
   <meta property="og:title" content="Sanjeev Bhandari (@realsanjeev) - Portfolio" />
   <meta property="og:description"
     content="Machine Learning Engineer specializing in AI and real-world impact. Explore my projects and experience." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/45820805?v=4" />
+  <meta property="og:image:width" content="460" />
+  <meta property="og:image:height" content="460" />
+  <meta property="og:image:alt" content="Sanjeev Bhandari (@realsanjeev) Profile" />
   <meta property="og:url" content="https://bhandarisanjeev.com.np/" />
   <meta property="og:site_name" content="Sanjeev Bhandari (@realsanjeev)" />
 
@@ -55,12 +49,22 @@
   <meta name="twitter:title" content="Sanjeev Bhandari (@realsanjeev) - Portfolio" />
   <meta name="twitter:description" content="Portfolio of Sanjeev Bhandari (@realsanjeev), ML Engineer." />
   <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/45820805?v=4" />
+  <meta name="twitter:image:alt" content="Sanjeev Bhandari (@realsanjeev) Profile" />
 
   <!-- Structured Data / JSON-LD -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
+        {
+          "@type": "ProfilePage",
+          "@id": "https://bhandarisanjeev.com.np/#profilepage",
+          "url": "https://bhandarisanjeev.com.np/",
+          "name": "Sanjeev Bhandari (@realsanjeev) Portfolio",
+          "mainEntity": {
+            "@id": "https://bhandarisanjeev.com.np/#person"
+          }
+        },
         {
           "@type": "Person",
           "@id": "https://bhandarisanjeev.com.np/#person",
@@ -111,37 +115,6 @@
           }
         },
         {
-          "@type": "SiteNavigationElement",
-          "@id": "https://bhandarisanjeev.com.np/#navigation",
-          "name": "Main Navigation",
-          "hasPart": [
-            {
-              "@type": "WebPage",
-              "name": "Experience",
-              "description": "Professional experience, achievements, and tech stack in ML & AI.",
-              "url": "https://bhandarisanjeev.com.np/#experience"
-            },
-            {
-              "@type": "WebPage",
-              "name": "Featured Projects",
-              "description": "Machine Learning, Computer Vision, NLP, and open-source project portfolio.",
-              "url": "https://bhandarisanjeev.com.np/#projects"
-            },
-            {
-              "@type": "WebPage",
-              "name": "Blog & Writing",
-              "description": "Technical articles on Nepali NLP, Model Merging, Rust extensions, and C graphics.",
-              "url": "https://bhandarisanjeev.com.np/#blog"
-            },
-            {
-              "@type": "WebPage",
-              "name": "Contact",
-              "description": "Connect with Sanjeev Bhandari(realsanjeev) for inquiries, engineering roles, or collaborations.",
-              "url": "https://bhandarisanjeev.com.np/#contact"
-            }
-          ]
-        },
-        {
           "@type": "SoftwareApplication",
           "@id": "https://bhandarisanjeev.com.np/#nepali_unicoder",
           "name": "nepali_unicoder",
@@ -157,11 +130,6 @@
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "ratingCount": "3"
           }
         },
         {
@@ -204,11 +172,6 @@
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "ratingCount": "5"
           }
         }
       ]
