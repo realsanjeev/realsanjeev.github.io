@@ -159,9 +159,9 @@ export const GITHUB_PROJECTS: Project[] = [
     },
     {
         name: "read-aloud-extension",
-        description: "A Chrome Extension that reads web page content aloud using Text-to-Speech (TTS), helping with accessibility and multitasking.",
+        description: "A Browser Extension (Chrome & Firefox) that reads web page content aloud using Text-to-Speech (TTS), helping with accessibility and multitasking.",
         url: "https://github.com/realsanjeev/read-aloud-extension",
-        tags: ["Chrome Extension", "TTS", "Accessibility", "Productivity"]
+        tags: ["Browser Extension", "TTS", "Accessibility", "Productivity"]
     },
     {
         name: "nepali_unicoder",
