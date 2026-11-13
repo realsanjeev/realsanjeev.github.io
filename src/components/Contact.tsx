@@ -215,12 +215,12 @@ const Contact = () => {
               title="Send an email to Sanjeev Bhandari (@realsanjeev)"
               className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl border border-border shadow-sm hover:shadow-md hover:bg-muted/50 transition-all duration-200"
             >
-              <FiMail className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              <FiMail className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span className="text-sm sm:text-base break-all text-foreground">realsanjeev2@gmail.com</span>
             </a>
 
             <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl border border-border shadow-sm">
-              <FiMapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              <FiMapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span className="text-sm sm:text-base text-foreground">Kathmandu, Nepal</span>
             </div>
 
@@ -244,23 +244,23 @@ const Contact = () => {
               <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Open to</h4>
               <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
                   Research collaborations in AI/ML
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
                   Speaking opportunities at conferences
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
                   Consulting on ML projects
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
                   Open source contributions
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full shrink-0" />
                   Mentoring and knowledge sharing
                 </li>
               </ul>
