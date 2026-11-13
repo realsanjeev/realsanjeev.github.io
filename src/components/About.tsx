@@ -41,7 +41,7 @@ const About = () => {
                 <div className="text-sm text-muted-foreground mt-1">Projects</div>
               </div>
               <div className="text-center p-4 bg-card rounded-2xl shadow-sm border border-border">
-                <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">4</div>
+                <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">10+</div>
                 <div className="text-sm text-muted-foreground mt-1">Tech Articles</div>
               </div>
             </div>
