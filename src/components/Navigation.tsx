@@ -171,7 +171,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-6 border-t border-border animate-in slide-in-from-top-2 duration-200">
+          <div className="md:hidden py-6 border-t border-border animate-in slide-in-from-top-2 duration-200 max-h-[calc(100dvh-4rem)] overflow-y-auto">
             <div className="space-y-2">
               {navItems.map((item) => (
                 <a
