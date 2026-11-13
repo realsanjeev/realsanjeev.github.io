@@ -29,7 +29,7 @@ const Hero = () => {
                 title="QuickTools: An interactive suite of web utility and productivity tools for developers"
               >
                 <span className="text-sm font-medium text-emerald-700 dark:text-emerald-400">Try QuickTools (Developer Web App)</span>
-                <span className="ml-1.5 text-emerald-600 group-hover:translate-x-0.5 transition-transform">↗</span>
+                <span className="ml-1.5 text-emerald-600 dark:text-emerald-400 group-hover:translate-x-0.5 transition-transform">↗</span>
               </a>
             </div>
 
