@@ -38,7 +38,7 @@ const Experience = () => {
                     {/* Header with Logo */}
                     <div className="flex items-start gap-4 mb-4">
                       {exp.logo && (
-                        <div className="flex-shrink-0 w-12 h-12 rounded-xl overflow-hidden border-2 border-emerald-500/30 shadow-sm">
+                        <div className="shrink-0 w-12 h-12 rounded-xl overflow-hidden border-2 border-emerald-500/30 shadow-sm">
                           <img
                             src={exp.logo}
                             alt={`${exp.company} logo`}
@@ -89,7 +89,7 @@ const Experience = () => {
                             key={i}
                             className="text-sm text-muted-foreground flex items-start gap-2"
                           >
-                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0" />
+                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 shrink-0" />
                             <span>{achievement}</span>
                           </li>
                         ))}

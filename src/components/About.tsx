@@ -23,7 +23,7 @@ const About = () => {
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               With a background in both theoretical foundations and practical implementation, I enjoy tackling
-              complex challenges in <span className="font-semibold text-emerald-600">computer vision</span>, <span className="font-semibold text-emerald-600">natural language processing</span>, and <span className="font-semibold text-emerald-600">deep learning</span>. I believe
+              complex challenges in <span className="font-semibold text-emerald-600 dark:text-emerald-400">computer vision</span>, <span className="font-semibold text-emerald-600 dark:text-emerald-400">natural language processing</span>, and <span className="font-semibold text-emerald-600 dark:text-emerald-400">deep learning</span>. I believe
               that AI has the potential to transform industries and improve lives worldwide.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -41,7 +41,7 @@ const About = () => {
                 <div className="text-sm text-muted-foreground mt-1">Projects</div>
               </div>
               <div className="text-center p-4 bg-card rounded-2xl shadow-sm border border-border">
-                <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">4</div>
+                <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">10+</div>
                 <div className="text-sm text-muted-foreground mt-1">Tech Articles</div>
               </div>
             </div>

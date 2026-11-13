@@ -87,8 +87,8 @@ const Projects = () => {
                 {/* Card Header with Gradient */}
                 <div className={`h-1.5 bg-gradient-to-r ${typeConfig.color}`} />
 
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex-grow">
+                <div className="p-6 flex flex-col grow">
+                  <div className="grow">
                   {/* Type Badge */}
                   <div className="flex items-center justify-between mb-4">
                     <span className={`inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r ${typeConfig.color} text-white text-xs font-medium rounded-full`}>
@@ -200,8 +200,8 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex-grow">
+                  <div className="p-6 flex flex-col grow">
+                    <div className="grow">
                     <h4 className="text-lg font-bold text-foreground mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                       {project.name}
                     </h4>

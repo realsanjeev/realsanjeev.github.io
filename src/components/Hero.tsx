@@ -3,7 +3,7 @@ import { SOCIAL_LINKS } from '@/constants';
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-[100dvh] flex flex-col lg:flex-row lg:items-center lg:justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden pt-32 sm:pt-40 pb-16 lg:pt-32 lg:pb-16">
+    <section id="hero" className="relative min-h-[100dvh] flex flex-col lg:flex-row lg:items-center lg:justify-center bg-gradient-to-br from-background via-muted to-accent/20 overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-16">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
@@ -11,7 +11,7 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/15 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-12 pb-16 lg:py-0">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="text-left space-y-8">
@@ -29,7 +29,7 @@ const Hero = () => {
                 title="QuickTools: An interactive suite of web utility and productivity tools for developers"
               >
                 <span className="text-sm font-medium text-emerald-700 dark:text-emerald-400">Try QuickTools (Developer Web App)</span>
-                <span className="ml-1.5 text-emerald-600 group-hover:translate-x-0.5 transition-transform">↗</span>
+                <span className="ml-1.5 text-emerald-600 dark:text-emerald-400 group-hover:translate-x-0.5 transition-transform">↗</span>
               </a>
             </div>
 
@@ -147,12 +147,12 @@ const Hero = () => {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Scroll Indicator */}
-        <div className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2">
-          <div className="w-6 h-10 border-2 border-border rounded-full flex items-start justify-center p-2">
-            <div className="w-1.5 h-3 bg-muted-foreground rounded-full animate-scroll" />
-          </div>
+      {/* Scroll Indicator */}
+      <div className="hidden lg:block absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-none">
+        <div className="w-6 h-10 border-2 border-border rounded-full flex items-start justify-center p-2">
+          <div className="w-1.5 h-3 bg-muted-foreground rounded-full animate-scroll" />
         </div>
       </div>
     </section>

@@ -215,12 +215,12 @@ const Contact = () => {
               title="Send an email to Sanjeev Bhandari (@realsanjeev)"
               className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl border border-border shadow-sm hover:shadow-md hover:bg-muted/50 transition-all duration-200"
             >
-              <FiMail className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              <FiMail className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span className="text-sm sm:text-base break-all text-foreground">realsanjeev2@gmail.com</span>
             </a>
 
             <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl border border-border shadow-sm">
-              <FiMapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              <FiMapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span className="text-sm sm:text-base text-foreground">Kathmandu, Nepal</span>
             </div>
 
@@ -244,23 +244,23 @@ const Contact = () => {
               <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Open to</h4>
               <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
                   Research collaborations in AI/ML
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
                   Speaking opportunities at conferences
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
                   Consulting on ML projects
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
                   Open source contributions
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full shrink-0" />
                   Mentoring and knowledge sharing
                 </li>
               </ul>
@@ -296,7 +296,7 @@ const Contact = () => {
                   autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={errors.name ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500 transition-colors"}
+                  className={errors.name ? "rounded-xl border-red-500 focus-visible:border-red-500 focus-visible:ring-2 focus-visible:ring-red-500/20 focus-visible:ring-offset-0" : "rounded-xl bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:border-emerald-500 focus-visible:ring-2 focus-visible:ring-emerald-500/20 focus-visible:ring-offset-0 transition-colors"}
                 />
                 {errors.name && (
                   <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
@@ -315,7 +315,7 @@ const Contact = () => {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={errors.email ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500 transition-colors"}
+                  className={errors.email ? "rounded-xl border-red-500 focus-visible:border-red-500 focus-visible:ring-2 focus-visible:ring-red-500/20 focus-visible:ring-offset-0" : "rounded-xl bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:border-emerald-500 focus-visible:ring-2 focus-visible:ring-emerald-500/20 focus-visible:ring-offset-0 transition-colors"}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
@@ -333,7 +333,7 @@ const Contact = () => {
                 placeholder="Subject"
                 value={formData.subject}
                 onChange={handleChange}
-                className={errors.subject ? "border-red-500 focus-visible:ring-red-500" : "bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:ring-emerald-500 focus-visible:border-emerald-500 transition-colors"}
+                className={errors.subject ? "rounded-xl border-red-500 focus-visible:border-red-500 focus-visible:ring-2 focus-visible:ring-red-500/20 focus-visible:ring-offset-0" : "rounded-xl bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:border-emerald-500 focus-visible:ring-2 focus-visible:ring-emerald-500/20 focus-visible:ring-offset-0 transition-colors"}
               />
               {errors.subject && (
                 <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
@@ -351,7 +351,7 @@ const Contact = () => {
                 placeholder="Your message..."
                 value={formData.message}
                 onChange={handleChange}
-                className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-background border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 resize-none transition-colors ${errors.message ? "border-red-500 focus:ring-emerald-500 focus:border-emerald-500" : ""}`}
+                className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-background border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-offset-0 resize-none transition-colors ${errors.message ? "border-red-500 focus:ring-red-500/20 focus:border-red-500" : "focus:border-emerald-500 focus:ring-emerald-500/20"}`}
               />
               {errors.message && (
                 <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
