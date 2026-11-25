@@ -1,8 +1,22 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { FiFileText, FiGithub, FiLink, FiArrowRight } from "react-icons/fi";
+import { FiFileText, FiGithub, FiLink, FiArrowUpRight, FiCopy, FiCheck } from "react-icons/fi";
 import { MAJOR_PROJECTS, GITHUB_PROJECTS } from "@/data/portfolio";
-import { FaGraduationCap, FaProjectDiagram, FaPython, FaJava, FaPenNib, FaTeamspeak, FaGamepad, FaBorderStyle, FaCameraRetro, FaChrome, FaFirefox } from "react-icons/fa";
+import {
+  FaGraduationCap,
+  FaProjectDiagram,
+  FaPython,
+  FaJava,
+  FaPenNib,
+  FaTeamspeak,
+  FaGamepad,
+  FaBorderStyle,
+  FaCameraRetro,
+  FaChrome,
+  FaFirefox,
+} from "react-icons/fa";
 import { SiPytorch, SiTensorflow, SiJavascript, SiRust, SiImmersivetranslate } from "react-icons/si";
+import { toast } from "@/components/ui/sonner";
 
 const getLanguageIcon = (tag: string) => {
   const normalizedTag = tag.toLowerCase();
@@ -12,64 +26,69 @@ const getLanguageIcon = (tag: string) => {
   if (normalizedTag.includes('javascript')) return <SiJavascript className="h-5 w-5" />;
   if (normalizedTag === 'java') return <FaJava className="h-5 w-5" />;
   if (normalizedTag === 'rust') return <SiRust className="h-5 w-5" />;
-  if (normalizedTag == 'translation') return <SiImmersivetranslate className="h-5 w-5" />;
-  if (normalizedTag == 'writer') return <FaPenNib className="h-5 w-5" />;
-  if (normalizedTag == 'whisper') return <FaTeamspeak className="h-5 w-5" />;
-  if (normalizedTag == 'game ai') return <FaGamepad className="h-5 w-5" />;
-  if (normalizedTag == 'computer vision') return <FaBorderStyle className="h-5 w-5" />;
-  if (normalizedTag == 'sam') return <FaCameraRetro className="h-5 w-5" />;
+  if (normalizedTag === 'translation') return <SiImmersivetranslate className="h-5 w-5" />;
+  if (normalizedTag === 'writer') return <FaPenNib className="h-5 w-5" />;
+  if (normalizedTag === 'whisper') return <FaTeamspeak className="h-5 w-5" />;
+  if (normalizedTag === 'game ai') return <FaGamepad className="h-5 w-5" />;
+  if (normalizedTag === 'computer vision') return <FaBorderStyle className="h-5 w-5" />;
+  if (normalizedTag === 'sam') return <FaCameraRetro className="h-5 w-5" />;
   if (normalizedTag === 'chrome extension' || normalizedTag === 'browser extension') return <FaChrome className="h-5 w-5" />;
   return <FiGithub className="h-5 w-5" />;
 };
 
-const getGradientForProject = (index: number) => {
-  const gradients = [
-    'from-emerald-500 to-teal-600',
-    'from-teal-500 to-cyan-600',
-    'from-emerald-600 to-cyan-600',
-    'from-cyan-500 to-emerald-600',
-  ];
-  return gradients[index % gradients.length];
-};
-
 const Projects = () => {
+  const [copiedPip, setCopiedPip] = useState(false);
+
+  const handleCopyPip = () => {
+    navigator.clipboard.writeText("pip install nepali-unicoder").then(() => {
+      setCopiedPip(true);
+      toast("Copied to clipboard", {
+        description: "pip install nepali-unicoder",
+      });
+      setTimeout(() => setCopiedPip(false), 2500);
+    });
+  };
+
   const getProjectTypeConfig = (type?: string) => {
     switch (type) {
       case 'major':
-        return { color: 'from-emerald-500 to-cyan-600', label: 'Major Project', icon: FaGraduationCap };
+        return { color: 'from-emerald-600 to-cyan-600', label: 'Major Project', icon: FaGraduationCap };
       case 'minor':
-        return { color: 'from-green-500 to-emerald-600', label: 'Minor Project', icon: FaProjectDiagram };
+        return { color: 'from-teal-600 to-emerald-600', label: 'Minor Project', icon: FaProjectDiagram };
       case 'internship':
-        return { color: 'from-purple-500 to-pink-600', label: 'Internship Project', icon: FaProjectDiagram };
+        return { color: 'from-cyan-600 to-sky-600', label: 'Internship Project', icon: FaProjectDiagram };
       default:
-        return { color: 'from-gray-500 to-slate-600', label: 'Project', icon: FaProjectDiagram };
+        return { color: 'from-slate-600 to-slate-700', label: 'Project', icon: FaProjectDiagram };
     }
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-background" id="projects">
+    <section className="py-20 sm:py-28 bg-background" id="projects">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <span className="inline-block px-3.5 py-1 mb-3 text-xs font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+            Portfolio &amp; Open Source
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-4">
             Featured <span className="text-emerald-600 dark:text-emerald-400">Projects</span>
           </h2>
           <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
-          <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
-            A collection of my academic and research projects showcasing ML and software development skills
+          <p className="text-base sm:text-lg text-muted-foreground mt-5 max-w-2xl mx-auto">
+            Academic research, production machine learning systems, and open-source developer tools
           </p>
         </div>
 
         {/* Major Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-20">
           {MAJOR_PROJECTS.map((project, index) => {
             const typeConfig = getProjectTypeConfig(project.type);
             const Icon = typeConfig.icon;
 
             return (
-              <div
+              <article
                 key={index}
-                className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full"
+                className="group bg-card rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl hover:border-emerald-500/40 dark:hover:border-emerald-500/30 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full"
               >
                 {/* Project Image */}
                 {project.image && (
@@ -77,55 +96,53 @@ const Projects = () => {
                     <img
                       src={project.image}
                       alt={project.alt || `${project.name} - ${project.description}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+                    <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2">
+                      <span
+                        className={`inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r ${typeConfig.color} text-white text-xs font-semibold rounded-full shadow-sm`}
+                      >
+                        <Icon className="h-3 w-3" aria-hidden="true" />
+                        {typeConfig.label}
+                      </span>
+                      <span className="px-2.5 py-1 bg-black/55 backdrop-blur-md text-white/95 rounded-full text-[11px] font-medium">
+                        {project.description}
+                      </span>
+                    </div>
                   </div>
                 )}
 
-                {/* Card Header with Gradient */}
-                <div className={`h-1.5 bg-gradient-to-r ${typeConfig.color}`} />
-
                 <div className="p-6 flex flex-col grow">
                   <div className="grow">
-                  {/* Type Badge */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r ${typeConfig.color} text-white text-xs font-medium rounded-full`}>
-                      <Icon className="h-3 w-3" />
-                      {typeConfig.label}
-                    </span>
-                  </div>
+                    {/* Project Name */}
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors leading-snug">
+                      {project.name}
+                    </h3>
 
-                  {/* Project Name */}
-                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                    {project.name}
-                  </h3>
+                    {/* Detailed Description */}
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+                      {project.detailedDescription}
+                    </p>
 
-                  <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-
-                  {/* Tech Tags */}
-                  {project.tags && project.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2.5 py-1 bg-muted text-muted-foreground rounded-md text-xs font-medium"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Description */}
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3">
-                    {project.detailedDescription}
-                  </p>
+                    {/* Tech Tags */}
+                    {project.tags && project.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 mb-5">
+                        {project.tags.map((tag, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2.5 py-1 bg-muted text-foreground/85 rounded-lg text-xs font-medium border border-border/80"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   {/* Actions */}
-                  <div className="flex flex-wrap gap-3 pt-4 mt-auto">
+                  <div className="flex flex-wrap gap-2.5 pt-4 border-t border-border/60 mt-auto">
                     {project.downloadUrl && (
                       <a
                         href={project.downloadUrl}
@@ -133,9 +150,9 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         title={`Download PDF for ${project.name}`}
                       >
-                        <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-emerald-500/10 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400">
-                          <FiFileText className="mr-2 h-4 w-4" />
-                          PDF
+                        <Button variant="outline" size="sm">
+                          <FiFileText className="mr-1.5 h-4 w-4" aria-hidden="true" />
+                          Report PDF
                         </Button>
                       </a>
                     )}
@@ -144,18 +161,22 @@ const Projects = () => {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title={project.type === 'internship' ? `Read article about ${project.name}` : `View GitHub repository for ${project.name}`}
+                        title={
+                          project.type === 'internship'
+                            ? `Read article about ${project.name}`
+                            : `View GitHub repository for ${project.name}`
+                        }
                       >
-                        <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-foreground hover:text-background hover:border-foreground">
+                        <Button variant="outline" size="sm">
                           {project.type === 'internship' ? (
                             <>
-                              <FiLink className="mr-2 h-4 w-4" />
+                              <FiLink className="mr-1.5 h-4 w-4" aria-hidden="true" />
                               Read Article
                             </>
                           ) : (
                             <>
-                              <FiGithub className="mr-2 h-4 w-4" />
-                              View Code
+                              <FiGithub className="mr-1.5 h-4 w-4" aria-hidden="true" />
+                              View Source
                             </>
                           )}
                         </Button>
@@ -163,137 +184,152 @@ const Projects = () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
 
         {/* GitHub Projects Section */}
         <div>
-          <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-foreground rounded-lg text-background">
-              <FiGithub className="h-5 w-5" />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-xl text-white shadow-xs">
+                <FiGithub className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-foreground">Open Source &amp; Libraries</h3>
+                <p className="text-sm text-muted-foreground">Tools, extensions, and experiments published on GitHub &amp; PyPI</p>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-foreground">More on GitHub</h3>
+            <a
+              href="https://github.com/realsanjeev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300"
+            >
+              View All Repositories
+              <FiArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </a>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {GITHUB_PROJECTS.map((project, idx) => {
-              const gradient = getGradientForProject(idx);
               const primaryTag = project.tags?.[0] || 'Code';
 
               return (
-                <div
+                <article
                   key={idx}
-                  className="group bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-xl hover:border-border/50 transition-all duration-300 flex flex-col h-full"
+                  className="group bg-card rounded-2xl p-6 shadow-sm border border-border hover:shadow-xl hover:border-emerald-500/40 dark:hover:border-emerald-500/30 hover:-translate-y-0.5 transition-all duration-300 flex flex-col h-full"
                 >
-                  {/* Gradient Header with Language Icon */}
-                  <div className={`relative h-24 bg-gradient-to-r ${gradient} p-6`}>
-                    <div className="absolute top-4 right-4 p-3 bg-white/20 backdrop-blur-sm rounded-xl text-white">
+                  {/* Card Top Bar */}
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div className="p-2.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-xl border border-emerald-500/20">
                       {getLanguageIcon(primaryTag)}
                     </div>
-                    <div className="absolute bottom-4 left-6">
-                      <span className="inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
-                        <FiGithub className="mr-1.5 h-3.5 w-3.5" />
-                        GitHub Project
-                      </span>
-                    </div>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`View ${project.name} on GitHub`}
+                      aria-label={`Open ${project.name}`}
+                      className="p-2 text-muted-foreground hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-muted rounded-xl transition-colors"
+                    >
+                      <FiArrowUpRight className="h-5 w-5" aria-hidden="true" />
+                    </a>
                   </div>
 
-                  <div className="p-6 flex flex-col grow">
-                    <div className="grow">
+                  <div className="grow flex flex-col">
                     <h4 className="text-lg font-bold text-foreground mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                      {project.name}
+                      <a href={project.url} target="_blank" rel="noopener noreferrer">
+                        {project.name}
+                      </a>
                     </h4>
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                       {project.description}
                     </p>
+
+                    {/* Special Widget: Browser Extensions */}
+                    {project.name.toLowerCase() === "read-aloud-extension" && (
+                      <div className="mb-4 p-3 bg-muted/60 rounded-xl border border-border/80 space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">
+                            Available Stores
+                          </span>
+                          <span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold rounded-full">
+                            Published
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <a
+                            href="https://chromewebstore.google.com/detail/read-aloud-extension/albdidadjkmkoieokamkkdhpidmjgpea?authuser=0&hl=en"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-2.5 py-2 bg-card hover:bg-emerald-500/10 border border-border hover:border-emerald-500/40 rounded-lg text-xs font-medium text-foreground flex items-center justify-center gap-1.5 transition-colors"
+                            title="Install from Chrome Web Store"
+                          >
+                            <FaChrome className="text-sky-500 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                            <span>Chrome</span>
+                          </a>
+                          <a
+                            href="https://addons.mozilla.org/en-US/firefox/addon/read-aloud-extension/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-2.5 py-2 bg-card hover:bg-emerald-500/10 border border-border hover:border-emerald-500/40 rounded-lg text-xs font-medium text-foreground flex items-center justify-center gap-1.5 transition-colors"
+                            title="Install from Firefox Add-ons"
+                          >
+                            <FaFirefox className="text-amber-500 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                            <span>Firefox</span>
+                          </a>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Special Widget: PyPI Package */}
+                    {project.name.toLowerCase() === "nepali_unicoder" && (
+                      <div className="mb-4 p-3 bg-muted/60 rounded-xl border border-border/80 space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">
+                            PyPI Package
+                          </span>
+                          <span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-[10px] font-semibold rounded-full">
+                            Stable
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={handleCopyPip}
+                          className="w-full px-3 py-2 bg-card hover:bg-emerald-500/10 border border-border hover:border-emerald-500/40 rounded-lg font-mono text-xs text-foreground flex items-center justify-between transition-colors"
+                          title="Copy pip install command"
+                          aria-label="Copy pip install nepali-unicoder command"
+                        >
+                          <span className="truncate">
+                            <span className="text-emerald-600 dark:text-emerald-400 font-semibold mr-1.5">$</span>
+                            pip install nepali-unicoder
+                          </span>
+                          {copiedPip ? (
+                            <FiCheck className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 ml-2" aria-hidden="true" />
+                          ) : (
+                            <FiCopy className="h-3.5 w-3.5 text-muted-foreground shrink-0 ml-2" aria-hidden="true" />
+                          )}
+                        </button>
+                      </div>
+                    )}
+
                     {/* Tech Tags */}
                     {project.tags && project.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-border/60">
                         {project.tags.map((tag, tagIdx) => (
                           <span
                             key={tagIdx}
-                            className="px-2.5 py-1 bg-muted text-muted-foreground rounded-md text-xs font-medium"
+                            className="px-2.5 py-0.5 bg-muted text-muted-foreground rounded-md text-xs font-medium"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
                     )}
-
-                    {project.name.toLowerCase() === "read-aloud-extension" && (
-                      <div className="mb-4 pt-3 border-t border-border/60 space-y-2 text-left">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Browser Extensions</span>
-                          <span className="inline-flex items-center px-2 py-0.5 bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[10px] font-medium rounded-full">Extension</span>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                          <a
-                            href="https://chromewebstore.google.com/detail/read-aloud-extension/albdidadjkmkoieokamkkdhpidmjgpea?authuser=0&hl=en"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-slate-950 dark:bg-black/40 border border-border/80 rounded-xl p-3 font-mono text-[11px] text-slate-100 flex items-center justify-between hover:bg-slate-900 dark:hover:bg-black/60 hover:border-sky-500/50 transition-colors shadow-inner group/cws"
-                            title="View on Chrome Web Store"
-                          >
-                            <span className="flex items-center gap-1.5">
-                              <FaChrome className="text-sky-400 h-3.5 w-3.5" />
-                              <span>Chrome Web Store</span>
-                            </span>
-                            <span className="text-[10px] text-slate-500 group-hover/cws:text-sky-400 transition-colors">Install Extension ↗</span>
-                          </a>
-                          <a
-                            href="https://addons.mozilla.org/en-US/firefox/addon/read-aloud-extension/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-slate-950 dark:bg-black/40 border border-border/80 rounded-xl p-3 font-mono text-[11px] text-slate-100 flex items-center justify-between hover:bg-slate-900 dark:hover:bg-black/60 hover:border-amber-500/50 transition-colors shadow-inner group/ff"
-                            title="View on Firefox Add-ons"
-                          >
-                            <span className="flex items-center gap-1.5">
-                              <FaFirefox className="text-amber-500 h-3.5 w-3.5" />
-                              <span>Firefox Add-ons</span>
-                            </span>
-                            <span className="text-[10px] text-slate-500 group-hover/ff:text-amber-400 transition-colors">Install Add-on ↗</span>
-                          </a>
-                        </div>
-                      </div>
-                    )}
-
-                    {project.name.toLowerCase() === "nepali_unicoder" && (
-                      <div className="mb-4 pt-3 border-t border-border/60 space-y-2 text-left">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">PyPI Package</span>
-                          <span className="inline-flex items-center px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-medium rounded-full">Stable</span>
-                        </div>
-                        <div className="bg-slate-950 dark:bg-black/40 border border-border/80 rounded-xl p-3 font-mono text-[11px] text-slate-100 select-all cursor-pointer flex items-center justify-between shadow-inner" title="Copy command">
-                          <span className="flex items-center gap-1.5">
-                            <span className="text-emerald-500 font-semibold">$</span>
-                            <span>pip install nepali-unicoder</span>
-                          </span>
-                          <span className="text-[10px] text-slate-500 uppercase font-semibold">pip</span>
-                        </div>
-                        <div className="bg-slate-950 dark:bg-black/30 border border-border/60 rounded-xl p-3 font-mono text-[11px] text-slate-100 overflow-x-auto whitespace-pre shadow-inner">
-                          <span className="text-purple-400 font-semibold">from</span> nepali_unicoder <span className="text-purple-400 font-semibold">import</span> <span className="text-sky-300">preeti_to_unicode</span><br />
-                          <span className="text-sky-300">print</span>(<span className="text-sky-300">preeti_to_unicode</span>(<span className="text-amber-400">"k|L"</span>)) <span className="text-slate-500 italic"># Output: श्री</span>
-                        </div>
-                      </div>
-                    )}
-                    </div>
-
-                    <div className="pt-4 mt-auto">
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={`View ${project.name} on GitHub`}
-                        className="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
-                      >
-                        View on GitHub
-                        <FiArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </a>
-                    </div>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>

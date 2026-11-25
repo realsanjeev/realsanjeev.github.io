@@ -27,41 +27,41 @@ export function ThemeProvider({
   storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-  )
+  const [theme, setTheme] = useState<Theme>(() => {
+    try {
+      const stored = localStorage.getItem(storageKey)
+      if (stored === "light" || stored === "dark" || stored === "system") {
+        return stored
+      }
+    } catch {
+      // Ignore localStorage access errors
+    }
+    return defaultTheme
+  })
 
   useEffect(() => {
     const root = window.document.documentElement
-    
-    root.classList.remove("dark")
+    root.classList.remove("light", "dark")
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light"
-      if (systemTheme === "dark") {
-        root.classList.add("dark")
-      }
-    } else {
-      if (theme === "dark") {
-        root.classList.add("dark")
-      }
+      root.classList.add(systemTheme)
+      return
     }
+
+    root.classList.add(theme)
   }, [theme])
 
-  // Handle system theme changes when theme is set to "system"
   useEffect(() => {
     if (theme !== "system") return
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
     const handleSystemThemeChange = (e: MediaQueryListEvent) => {
       const root = window.document.documentElement
-      if (e.matches) {
-        root.classList.add("dark")
-      } else {
-        root.classList.remove("dark")
-      }
+      root.classList.remove("light", "dark")
+      root.classList.add(e.matches ? "dark" : "light")
     }
 
     mediaQuery.addEventListener("change", handleSystemThemeChange)
@@ -71,7 +71,11 @@ export function ThemeProvider({
   const value = {
     theme,
     setTheme: (newTheme: Theme) => {
-      localStorage.setItem(storageKey, newTheme)
+      try {
+        localStorage.setItem(storageKey, newTheme)
+      } catch {
+        // Ignore localStorage write errors
+      }
       setTheme(newTheme)
     },
   }

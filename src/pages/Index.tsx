@@ -5,13 +5,14 @@ import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import Blog from '@/components/Blog';
 import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <main id="main-content">
+      <main id="main-content" className="grow">
         <Hero />
         <RevealOnScroll delay={100}>
           <About />
@@ -29,6 +30,7 @@ const Index = () => {
           <Contact />
         </RevealOnScroll>
       </main>
+      <Footer />
     </div>
   );
 };

@@ -1,10 +1,8 @@
 import React, { useState, useRef, ChangeEvent, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
-import { FiMail, FiSend, FiMapPin, FiLoader, FiAlertCircle, FiCheck } from "react-icons/fi";
-import { SOCIAL_LINKS, type SocialLink } from "@/constants";
-
+import { FiMail, FiSend, FiMapPin, FiLoader, FiAlertCircle, FiCheck, FiArrowUpRight } from "react-icons/fi";
+import { SOCIAL_LINKS } from "@/constants";
 import { toast } from "@/components/ui/sonner";
 
 interface FormData {
@@ -18,29 +16,17 @@ type FormErrors = Partial<FormData>;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Contact-specific styling for social links (themed background with brand colors for visual weight)
-// Relocated outside the component to prevent calculation on every render
-const contactSocialLinks: SocialLink[] = SOCIAL_LINKS.map(link => {
-  let customStyle: string;
-  if (link.name === "LinkedIn") {
-    customStyle = "text-blue-600 dark:text-blue-400 bg-blue-500/5 dark:bg-blue-500/10 border-blue-200 dark:border-blue-900/40 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-xs";
-  } else if (link.name === "GitHub") {
-    customStyle = "text-slate-800 dark:text-slate-200 bg-slate-500/5 dark:bg-slate-400/10 border-slate-200 dark:border-slate-800 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 hover:border-gray-900 dark:hover:border-white shadow-xs";
-  } else if (link.name === "Twitter/X") {
-    customStyle = "text-slate-800 dark:text-slate-200 bg-slate-500/5 dark:bg-slate-400/10 border-slate-200 dark:border-slate-800 hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 hover:border-gray-900 dark:hover:border-white shadow-xs";
-  } else if (link.name === "Medium") {
-    customStyle = "text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-900/40 hover:bg-green-600 hover:text-white hover:border-green-600 shadow-xs";
-  } else {
-    customStyle = "text-yellow-600 dark:text-yellow-400 bg-yellow-500/5 dark:bg-yellow-500/10 border-yellow-200 dark:border-yellow-900/40 hover:bg-yellow-600 hover:text-white hover:border-yellow-600 shadow-xs";
-  }
-  return {
-    ...link,
-    color: customStyle
-  };
-});
+const COLLABORATION_TOPICS = [
+  "Research collaborations in AI/ML",
+  "Speaking opportunities at conferences",
+  "Consulting on production ML systems",
+  "Open-source contributions & tooling",
+  "Mentoring & technical knowledge sharing",
+];
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const errorSummaryRef = useRef<HTMLDivElement>(null);
   const lastSubmitRef = useRef<number>(0);
 
   const [success, setSuccess] = useState(false);
@@ -48,7 +34,7 @@ const Contact = () => {
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -63,37 +49,41 @@ const Contact = () => {
   const validate = () => {
     const newErrors: FormErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    else if (formData.name.length < 2) newErrors.name = "Minimum 2 characters";
+    if (!formData.name.trim()) newErrors.name = "Please enter your name";
+    else if (formData.name.trim().length < 2) newErrors.name = "Name must be at least 2 characters";
 
-    if (!formData.email.trim()) newErrors.email = "Email required";
-    else if (!EMAIL_REGEX.test(formData.email)) newErrors.email = "Invalid email";
+    if (!formData.email.trim()) newErrors.email = "Please enter your email address";
+    else if (!EMAIL_REGEX.test(formData.email)) newErrors.email = "Please enter a valid email address";
 
-    if (!formData.subject.trim()) newErrors.subject = "Subject required";
-    else if (formData.subject.length < 3) newErrors.subject = "Minimum 3 characters";
+    if (!formData.subject.trim()) newErrors.subject = "Please enter a subject";
+    else if (formData.subject.trim().length < 3) newErrors.subject = "Subject must be at least 3 characters";
 
-    if (!formData.message.trim()) newErrors.message = "Message required";
-    else if (formData.message.length < 10) newErrors.message = "Minimum 10 characters";
+    if (!formData.message.trim()) newErrors.message = "Please enter your message";
+    else if (formData.message.trim().length < 10) newErrors.message = "Message must be at least 10 characters";
 
     setErrors(newErrors);
 
-    return Object.keys(newErrors).length === 0;
+    const isValid = Object.keys(newErrors).length === 0;
+    if (!isValid) {
+      requestAnimationFrame(() => {
+        errorSummaryRef.current?.focus();
+      });
+    }
+    return isValid;
   };
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
 
     if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: undefined
+        [name]: undefined,
       }));
     }
   };
@@ -104,7 +94,7 @@ const Contact = () => {
       confetti({
         particleCount: 120,
         spread: 70,
-        origin: { y: 0.6 }
+        origin: { y: 0.6 },
       });
     } catch (err) {
       console.error("Failed to load confetti module:", err);
@@ -116,7 +106,7 @@ const Contact = () => {
       name: "",
       email: "",
       subject: "",
-      message: ""
+      message: "",
     });
     setErrors({});
   };
@@ -124,9 +114,11 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!validate()) return;
+
     if (!isEmailJsConfigured) {
       toast("Configuration Error", {
-        description: "Email service is not configured. Please contact the site administrator."
+        description: "Email service is not configured. Please email realsanjeev2@gmail.com directly.",
       });
       return;
     }
@@ -136,7 +128,7 @@ const Contact = () => {
     const now = Date.now();
     if (now - lastSubmitRef.current < 10000) {
       toast("Please wait", {
-        description: "You just sent a message."
+        description: "You just sent a message.",
       });
       return;
     }
@@ -145,8 +137,6 @@ const Contact = () => {
     const honeypot = (form.elements.namedItem("x_bot_trap_field") as HTMLInputElement)?.value;
 
     if (honeypot) return;
-
-    if (!validate()) return;
 
     startTransition(async () => {
       try {
@@ -159,7 +149,7 @@ const Contact = () => {
             email: formData.email,
             subject: formData.subject,
             message: formData.message,
-            to_name: "Sanjeev Bhandari"
+            to_name: "Sanjeev Bhandari",
           },
           emailJsPublicKey
         );
@@ -170,7 +160,7 @@ const Contact = () => {
         setSuccess(true);
 
         toast("Message Sent", {
-          description: "Thanks for reaching out!"
+          description: "Thanks for reaching out! I'll get back to you soon.",
         });
 
         resetForm();
@@ -179,103 +169,150 @@ const Contact = () => {
       } catch (err) {
         console.error("EmailJS Error:", err);
         toast("Failed to send", {
-          description: "Please try again later. Error: " + (err instanceof Error ? err.message : "Unknown error")
+          description: "Please try again later. Error: " + (err instanceof Error ? err.message : "Unknown error"),
         });
       }
     });
   };
 
+  const errorEntries = Object.entries(errors).filter(([, msg]) => Boolean(msg)) as [keyof FormData, string][];
+
   return (
     <section
       id="contact"
-      className="py-16 sm:py-24 bg-background text-foreground border-t border-border"
+      className="py-20 sm:py-28 bg-background text-foreground border-t border-border/60"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
-            Let's{" "}
-            <span className="text-emerald-600 dark:text-emerald-400">
-              Connect
-            </span>
+        <div className="text-center mb-16">
+          <span className="inline-block px-3.5 py-1 mb-3 text-xs font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+            Get in Touch
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-4">
+            Let's <span className="text-emerald-600 dark:text-emerald-400">Connect</span>
           </h2>
-          <div className="w-16 sm:w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
-          <p className="text-base sm:text-xl text-muted-foreground mt-4 sm:mt-6 max-w-3xl mx-auto px-2">
-            I'm always interested in discussing new opportunities, research collaborations,
-            or just chatting about the latest developments in AI and machine learning.
+          <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-600 to-cyan-600 mx-auto rounded-full" />
+          <p className="text-base sm:text-lg text-muted-foreground mt-5 max-w-2xl mx-auto">
+            Interested in discussing ML opportunities, research collaborations, or AI engineering? Reach out directly or send a message below.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* LEFT COLUMN */}
-          <div className="space-y-8">
-            <a
-              href="mailto:realsanjeev2@gmail.com"
-              title="Send an email to Sanjeev Bhandari (@realsanjeev)"
-              className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl border border-border shadow-sm hover:shadow-md hover:bg-muted/50 transition-all duration-200"
-            >
-              <FiMail className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-              <span className="text-sm sm:text-base break-all text-foreground">realsanjeev2@gmail.com</span>
-            </a>
+          <div className="lg:col-span-5 space-y-6">
+            {/* Direct Contact Cards */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-4">
+              <a
+                href="mailto:realsanjeev2@gmail.com"
+                title="Send an email to Sanjeev Bhandari (@realsanjeev)"
+                className="group flex items-center gap-4 p-4 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all duration-200"
+              >
+                <div className="p-3 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-xl shrink-0">
+                  <FiMail className="w-5 h-5" aria-hidden="true" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Email
+                  </span>
+                  <span className="text-sm sm:text-base font-medium break-all text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                    realsanjeev2@gmail.com
+                  </span>
+                </div>
+                <FiArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 shrink-0" aria-hidden="true" />
+              </a>
 
-            <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl border border-border shadow-sm">
-              <FiMapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-              <span className="text-sm sm:text-base text-foreground">Kathmandu, Nepal</span>
+              <div className="flex items-center gap-4 p-4 bg-card rounded-2xl border border-border shadow-sm">
+                <div className="p-3 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 rounded-xl shrink-0">
+                  <FiMapPin className="w-5 h-5" aria-hidden="true" />
+                </div>
+                <div>
+                  <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Location
+                  </span>
+                  <span className="text-sm sm:text-base font-medium text-foreground">
+                    Kathmandu, Nepal
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-5 gap-2 sm:gap-3">
-              {contactSocialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={social.ariaLabel}
-                  className={`p-2 sm:p-3 md:p-4 bg-card rounded-xl border ${social.color} transition-all duration-200 hover:scale-105 flex items-center justify-center`}
-                >
-                  <social.icon className="mx-auto h-4 w-4 sm:h-5 sm:w-5" />
-                </a>
-              ))}
+            {/* Social Profiles Card */}
+            <div className="p-6 bg-card rounded-2xl border border-border shadow-sm">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">
+                Social Profiles
+              </h3>
+              <div className="grid grid-cols-5 gap-2.5">
+                {SOCIAL_LINKS.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={social.ariaLabel}
+                    aria-label={social.ariaLabel}
+                    className={`p-3 bg-muted/60 rounded-xl border border-border/80 ${social.color} transition-all duration-200 hover:-translate-y-0.5 flex flex-col items-center justify-center gap-1.5`}
+                  >
+                    <social.icon className="h-5 w-5" aria-hidden="true" />
+                    <span className="text-[10px] font-medium truncate max-w-full">
+                      {social.name.split('/')[0]}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
 
             {/* Areas of Interest */}
-            <div className="p-4 sm:p-6 bg-card rounded-xl border border-border shadow-md">
-              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Open to</h4>
-              <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
-                  Research collaborations in AI/ML
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
-                  Speaking opportunities at conferences
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
-                  Consulting on ML projects
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
-                  Open source contributions
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full shrink-0" />
-                  Mentoring and knowledge sharing
-                </li>
+            <div className="p-6 bg-card rounded-2xl border border-border shadow-sm">
+              <h3 className="text-base font-bold mb-4 text-foreground">
+                Open to Collaboration
+              </h3>
+              <ul className="space-y-2.5 text-muted-foreground text-sm">
+                {COLLABORATION_TOPICS.map((topic) => (
+                  <li key={topic} className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" aria-hidden="true" />
+                    <span>{topic}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
-          {/* RIGHT COLUMN */}
+          {/* RIGHT COLUMN - FORM */}
           <form
             ref={formRef}
             onSubmit={handleSubmit}
+            noValidate
             autoComplete="off"
-            className="space-y-4 p-4 sm:p-6 bg-card rounded-2xl border border-border shadow-lg"
+            className="lg:col-span-7 space-y-5 p-6 sm:p-8 bg-card rounded-2xl border border-border shadow-sm"
           >
-            {/* honeypot: renamed and marked with autoComplete/aria-hidden for screen readers/autofillers */}
-            <label htmlFor="x_bot_trap_field" className="sr-only">Do not fill this field</label>
+            {/* Focusable Error Summary for keyboard & screen-reader accessibility */}
+            {errorEntries.length > 0 && (
+              <div
+                ref={errorSummaryRef}
+                role="alert"
+                tabIndex={-1}
+                aria-labelledby="contact-error-summary-title"
+                className="p-4 rounded-xl bg-destructive/10 border border-destructive/30 text-destructive text-sm space-y-1.5"
+              >
+                <p id="contact-error-summary-title" className="font-semibold flex items-center gap-2">
+                  <FiAlertCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  Please fix the following before sending:
+                </p>
+                <ul className="list-disc list-inside space-y-0.5 text-xs sm:text-sm">
+                  {errorEntries.map(([field, msg]) => (
+                    <li key={field}>
+                      <a href={`#contact-${field}`} className="underline hover:opacity-80">
+                        {msg}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Honeypot */}
+            <label htmlFor="x_bot_trap_field" className="sr-only">
+              Do not fill this field
+            </label>
             <input
               id="x_bot_trap_field"
               type="text"
@@ -286,76 +323,108 @@ const Contact = () => {
               className="hidden"
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="contact-name" className="sr-only">Name</label>
+                <label htmlFor="contact-name" className="block text-sm font-semibold text-foreground mb-1.5">
+                  Full Name <span className="text-emerald-600 dark:text-emerald-400">*</span>
+                </label>
                 <Input
                   id="contact-name"
                   name="name"
-                  placeholder="Name"
+                  placeholder="Sanjeev Bhandari"
                   autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={errors.name ? "rounded-xl border-red-500 focus-visible:border-red-500 focus-visible:ring-2 focus-visible:ring-red-500/20 focus-visible:ring-offset-0" : "rounded-xl bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:border-emerald-500 focus-visible:ring-2 focus-visible:ring-emerald-500/20 focus-visible:ring-offset-0 transition-colors"}
+                  aria-invalid={Boolean(errors.name)}
+                  aria-describedby={errors.name ? "contact-name-error" : undefined}
+                  className={
+                    errors.name
+                      ? "h-11 rounded-xl border-destructive focus-visible:ring-destructive/30"
+                      : "h-11 rounded-xl bg-background border-input hover:border-emerald-500/40 focus-visible:border-emerald-500 focus-visible:ring-emerald-500/20"
+                  }
                 />
                 {errors.name && (
-                  <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
-                    <FiAlertCircle /> {errors.name}
+                  <p id="contact-name-error" role="alert" className="text-destructive text-xs flex items-center gap-1 mt-1.5 font-medium">
+                    <FiAlertCircle aria-hidden="true" /> {errors.name}
                   </p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="contact-email" className="sr-only">Email Address</label>
+                <label htmlFor="contact-email" className="block text-sm font-semibold text-foreground mb-1.5">
+                  Email Address <span className="text-emerald-600 dark:text-emerald-400">*</span>
+                </label>
                 <Input
                   id="contact-email"
                   name="email"
                   type="email"
-                  placeholder="Email"
+                  placeholder="you@example.com"
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={errors.email ? "rounded-xl border-red-500 focus-visible:border-red-500 focus-visible:ring-2 focus-visible:ring-red-500/20 focus-visible:ring-offset-0" : "rounded-xl bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:border-emerald-500 focus-visible:ring-2 focus-visible:ring-emerald-500/20 focus-visible:ring-offset-0 transition-colors"}
+                  aria-invalid={Boolean(errors.email)}
+                  aria-describedby={errors.email ? "contact-email-error" : undefined}
+                  className={
+                    errors.email
+                      ? "h-11 rounded-xl border-destructive focus-visible:ring-destructive/30"
+                      : "h-11 rounded-xl bg-background border-input hover:border-emerald-500/40 focus-visible:border-emerald-500 focus-visible:ring-emerald-500/20"
+                  }
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
-                    <FiAlertCircle /> {errors.email}
+                  <p id="contact-email-error" role="alert" className="text-destructive text-xs flex items-center gap-1 mt-1.5 font-medium">
+                    <FiAlertCircle aria-hidden="true" /> {errors.email}
                   </p>
                 )}
               </div>
             </div>
 
             <div>
-              <label htmlFor="contact-subject" className="sr-only">Subject</label>
+              <label htmlFor="contact-subject" className="block text-sm font-semibold text-foreground mb-1.5">
+                Subject <span className="text-emerald-600 dark:text-emerald-400">*</span>
+              </label>
               <Input
                 id="contact-subject"
                 name="subject"
-                placeholder="Subject"
+                placeholder="Research collaboration / ML opportunity"
                 value={formData.subject}
                 onChange={handleChange}
-                className={errors.subject ? "rounded-xl border-red-500 focus-visible:border-red-500 focus-visible:ring-2 focus-visible:ring-red-500/20 focus-visible:ring-offset-0" : "rounded-xl bg-background border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-foreground placeholder:text-muted-foreground focus-visible:border-emerald-500 focus-visible:ring-2 focus-visible:ring-emerald-500/20 focus-visible:ring-offset-0 transition-colors"}
+                aria-invalid={Boolean(errors.subject)}
+                aria-describedby={errors.subject ? "contact-subject-error" : undefined}
+                className={
+                  errors.subject
+                    ? "h-11 rounded-xl border-destructive focus-visible:ring-destructive/30"
+                    : "h-11 rounded-xl bg-background border-input hover:border-emerald-500/40 focus-visible:border-emerald-500 focus-visible:ring-emerald-500/20"
+                }
               />
               {errors.subject && (
-                <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
-                  <FiAlertCircle /> {errors.subject}
+                <p id="contact-subject-error" role="alert" className="text-destructive text-xs flex items-center gap-1 mt-1.5 font-medium">
+                  <FiAlertCircle aria-hidden="true" /> {errors.subject}
                 </p>
               )}
             </div>
 
             <div>
-              <label htmlFor="contact-message" className="sr-only">Message</label>
+              <label htmlFor="contact-message" className="block text-sm font-semibold text-foreground mb-1.5">
+                Message <span className="text-emerald-600 dark:text-emerald-400">*</span>
+              </label>
               <textarea
                 id="contact-message"
                 name="message"
-                rows={6}
-                placeholder="Your message..."
+                rows={5}
+                placeholder="Tell me about your project, team, or question..."
                 value={formData.message}
                 onChange={handleChange}
-                className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-background border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-offset-0 resize-none transition-colors ${errors.message ? "border-red-500 focus:ring-red-500/20 focus:border-red-500" : "focus:border-emerald-500 focus:ring-emerald-500/20"}`}
+                aria-invalid={Boolean(errors.message)}
+                aria-describedby={errors.message ? "contact-message-error" : undefined}
+                className={`w-full px-3.5 py-3 rounded-xl bg-background border text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 resize-y transition-colors ${
+                  errors.message
+                    ? "border-destructive focus-visible:ring-destructive/30"
+                    : "border-input hover:border-emerald-500/40 focus-visible:border-emerald-500 focus-visible:ring-emerald-500/20"
+                }`}
               />
               {errors.message && (
-                <p className="text-red-500 text-xs flex items-center gap-1 mt-1 font-medium">
-                  <FiAlertCircle /> {errors.message}
+                <p id="contact-message-error" role="alert" className="text-destructive text-xs flex items-center gap-1 mt-1.5 font-medium">
+                  <FiAlertCircle aria-hidden="true" /> {errors.message}
                 </p>
               )}
             </div>
@@ -363,26 +432,26 @@ const Contact = () => {
             <Button
               disabled={isPending}
               type="submit"
-              className="w-full py-5 sm:py-6 text-sm sm:text-base rounded-xl bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700 text-white font-medium shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-lg"
+              size="lg"
+              className="w-full"
             >
               {isPending ? (
                 <>
-                  <FiLoader className="animate-spin mr-2" />
+                  <FiLoader className="animate-spin mr-2" aria-hidden="true" />
                   Sending...
                 </>
               ) : success ? (
                 <>
-                  <FiCheck className="mr-2" />
+                  <FiCheck className="mr-2" aria-hidden="true" />
                   Sent Successfully
                 </>
               ) : (
                 <>
-                  <FiSend className="mr-2" />
+                  <FiSend className="mr-2" aria-hidden="true" />
                   Send Message
                 </>
               )}
             </Button>
-
           </form>
         </div>
       </div>

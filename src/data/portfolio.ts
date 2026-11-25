@@ -191,7 +191,7 @@ export const BLOG_POSTS: BlogPost[] = [
         image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=400&fit=crop"
     },
     {
-        title: "🦀 Supercharge Python with Rust: Building Fast Python Extensions with PyO3 and Maturin",
+        title: "Supercharge Python with Rust: Building Fast Python Extensions with PyO3 and Maturin",
         excerpt: "Learn how to enhance Python performance by building native extensions using Rust, PyO3, and Maturin, including benchmarking for performance gains.",
         date: "May 23, 2025",
         readTime: "3 min read",
